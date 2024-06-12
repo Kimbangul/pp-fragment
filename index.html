@@ -10,7 +10,7 @@
     <script src="js/script.js" defer></script>
   </head>
   <body>
-    <!-- 헤더 -->
+    <!-- header -->
     <header class="header">
       <div class="header-inner">
         <h1 class="title">
@@ -79,9 +79,9 @@
       </nav>
       <!-- //  메뉴 -->
     </header>
-    <!-- // 헤더 -->
+    <!-- // header -->
     <main>
-      <!-- 메인 -->
+      <!-- main -->
       <section class="sc main">
         <div class="sc-inner">
           <div class="main-text-container">
@@ -106,8 +106,8 @@
           </div>
         </div>
       </section>
-      <!-- // 메인 -->
-      <!-- 소개 -->
+      <!-- // main -->
+      <!-- introduction -->
       <section class="sc introduce">
         <div class="sc-inner">
           <p class="introduce-desc">
@@ -163,8 +163,10 @@
                 endeavour.
               </p>
               <a href="#" target="_blank" class="btn">
-                <span>READ THE INTERVIEW ON PP® FOUNDRY</span>
-                <span>READ THE INTERVIEW ON PP® FOUNDRY</span>
+                <span class="btn-slide">READ THE INTERVIEW ON PP® FOUNDRY</span>
+                <span class="btn-slide" aria-hidden="true"
+                  >READ THE INTERVIEW ON PP® FOUNDRY</span
+                >
               </a>
             </div>
           </div>
@@ -180,7 +182,112 @@
           </div>
         </div>
       </section>
-      <!-- // 소개 -->
+      <!-- // introduction -->
+      <!-- sans to serif -->
+      <section class="sc">
+        <h2 class="blind">sans to serif</h2>
+        <div class="sc-inner">
+          <div class="ticker">
+            <div class="ticker-inner">
+              <span class="ticker-item">And so many possibilities</span>
+              <span class="ticker-item">Unlimitied combinations</span>
+              <span class="ticker-item">And so many possibilities</span>
+              <span class="ticker-item">Unlimitied combinations</span>
+              <span class="ticker-item">And so many possibilities</span>
+              <span class="ticker-item">Unlimitied combinations</span>
+            </div>
+          </div>
+          <button class="btn">
+            <span class="btn-slide">randomize</span>
+            <span class="btn-slide" aria-hidden="true">randomize</span>
+          </button>
+          <div class="random-text-container">
+            <div class="random-text-item" data-line="1">① So</div>
+            <div class="random-text-item" data-line="2">many things</div>
+            <div class="random-text-item" data-line="3">②〖are possible〗</div>
+            <div class="random-text-item" data-line="4">
+              <div>as long as</div>
+              <div>③ you</div>
+            </div>
+            <div class="random-text-item" data-line="5">don't know</div>
+            <div class="random-text-item" data-line="6">④ they</div>
+            <div class="random-text-item" data-line="7">are impossible</div>
+          </div>
+        </div>
+      </section>
+      <!-- // sans to serif -->
+      <!-- glyph set -->
+      <section class="sc glyph">
+        <h2 class="blind">Glyph set</h2>
+        <div class="sc-inner">
+          <div class="select-wrap">
+            <select name="glyph-selector" id="glyph-selector">
+              <option value="Sans thin">Sans Thin</option>
+              <option value="Sans thin">Sans Extra Light</option>
+            </select>
+          </div>
+          <div class="glyph-grid">
+            <div class="glyph-cell">
+              <p>
+                Pangram Pangram® Foundry offers you an elegant & retro
+                contemporary new font — Fragment
+              </p>
+              <ul class="glyph-list">
+                <li class="glyph-item"></li>
+              </ul>
+            </div>
+            <div class="glyph-cell">
+              <div class="glyph-word"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- // glyph set -->
+      <!-- font sampler -->
+      <section class="sc sampler">
+        <h2 class="blind">Font sampler</h2>
+        <div class="sc-inner">
+          <div class="label">Font</div>
+          <div class="sampler-grid">
+            <div class="sampler-btn-container">
+              <button class="btn">Sans</button>
+              <button class="btn">Glare</button>
+              <button class="btn">Serif</button>
+              <button class="btn">Text</button>
+            </div>
+            <div class="slider-wrap">
+              <div class="slider-info">
+                <label class="slider-label" for="size">Size</label>
+                <span class="slider-value">10pt</span>
+              </div>
+              <input name="size" type="range" min="1" max="10" value="5" />
+            </div>
+            <div class="slider-wrap">
+              <div class="slider-info">
+                <label class="slider-label" for="weight">Weight</label>
+                <span class="slider-value">382</span>
+              </div>
+              <input name="weight" type="range" min="1" max="10" value="5" />
+            </div>
+            <div class="slider-wrap">
+              <div class="slider-info">
+                <label class="slider-label" for="spacing">Letter Spacing</label>
+                <span class="slider-value">10%</span>
+              </div>
+              <input name="spacing" type="range" min="1" max="10" value="5" />
+            </div>
+            <div class="slider-wrap">
+              <div class="slider-info">
+                <label class="slider-label" for="height">Line Height</label>
+                <span class="slider-value">13pt</span>
+              </div>
+              <input name="height" type="range" min="1" max="10" value="5" />
+            </div>
+          </div>
+          <p class="sampler-result">Sphinx of Black Quartz, Judge My Vow</p>
+        </div>
+      </section>
+      <!-- // font sampler -->
     </main>
   </body>
 </html>
