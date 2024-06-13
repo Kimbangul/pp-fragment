@@ -1,0 +1,99 @@
+@font-face {
+  font-family: "PPGlare";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../assets/fonts/PPFragment-GlareVariable.woff2") format("woff2");
+}
+@font-face {
+  font-family: "PPSans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../assets/fonts/PPFragment-SansVariable.woff2") format("woff2");
+}
+@font-face {
+  font-family: "PPSerif";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../assets/fonts/PPFragment-SerifVariable.woff2") format("woff2");
+}
+@font-face {
+  font-family: "PPText";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../assets/fonts/PPFragment-TextVariable.woff2") format("woff2");
+}
+.glare {
+  font-family: "PPGlare", sans-serif;
+}
+
+.sans {
+  font-family: "PPSans", sans-serif;
+}
+
+.serif {
+  font-family: "PPSerif", sans-serif;
+}
+
+.text {
+  font-family: "PPText", sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+  width: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  color: inherit;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+}
+
+a,
+img {
+  display: block;
+}
+
+button {
+  outline: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: none;
+}
+
+body {
+  font-size: 1.4rem;
+  word-break: keep-all;
+  font-family: "PPSans", sans-serif;
+  word-break: keep-all;
+  position: relative;
+  overflow-x: hidden;
+}
+
+main {
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "PPSans", sans-serif;
+}
+
+button {
+  font-family: "PPSans", sans-serif;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}/*# sourceMappingURL=style.css.map */

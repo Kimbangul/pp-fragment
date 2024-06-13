@@ -1,0 +1,59 @@
+html {
+  font-size: 62.5%;
+  width: 100%;
+}
+html,
+body {
+}
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  color: inherit;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+}
+a,
+img {
+  display: block;
+}
+button {
+  outline: none;
+  appearance: none;
+  border: none;
+}
+body {
+  font-size: 1.4rem;
+  // min-width: 280px;
+  word-break: keep-all;
+  font-family: $font__sans;
+  word-break: keep-all;
+  position: relative;
+  overflow-x: hidden;
+}
+input,
+textarea {
+}
+
+main {
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font__sans;
+}
+button {
+  font-family: $font__sans;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
