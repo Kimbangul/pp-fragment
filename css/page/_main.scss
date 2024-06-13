@@ -1,2 +1,47 @@
-.header {
+main {
+  background: $color__black;
+  color: $color__white;
 }
+
+// header
+.header {
+  width: 100%;
+  height: 6.587rem;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  font-size: 1.2rem;
+  font-weight: 100;
+  background: $color__black;
+  &-inner {
+    @include util__flex(space-between, center);
+    height: 100%;
+    padding: 0 2rem;
+    color: $color__white;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+}
+.menu {
+  position: fixed;
+  width: calc(37.5vw + 6.2rem);
+  height: 100vh;
+  z-index: 998;
+  top: 0;
+  left: 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  &-btn {
+    display: none;
+    @include mb {
+      display: block;
+    }
+  }
+}
+.title {
+  @include util__absolute-center;
+  font-size: inherit;
+  font-weight: inherit;
+  position: absolute;
+}
+// // header
