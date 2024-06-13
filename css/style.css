@@ -46,6 +46,7 @@
   display: inline-block;
   padding: 1.2rem 2rem;
   position: relative;
+  line-height: 1;
   text-transform: uppercase;
 }
 .btn-white {
@@ -59,6 +60,19 @@
   height: 100%;
   top: 0;
   left: 0;
+}
+
+/** 접근성 관련 **/
+.blind {
+  font-size: 0;
+  position: absolute;
+  display: block;
+  z-index: -9999;
+  text-indent: 9999;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  clip: rect(0, 0, 0, 0);
 }
 
 html {
@@ -179,12 +193,20 @@ main {
   flex-direction: row;
   height: 100%;
   padding: 0 2rem;
+  background: #000;
   color: #fff;
   text-transform: uppercase;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  z-index: 1000;
 }
 
 .menu {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 0;
+  flex-direction: row;
   position: fixed;
   width: calc(37.5vw + 6.2rem);
   height: 100vh;
@@ -192,6 +214,34 @@ main {
   top: 0;
   left: 0;
   border-right: 1px solid rgba(255, 255, 255, 0.2);
+  font-weight: 100;
+  font-size: 2.8rem;
+  padding-top: 6.587rem;
+  background: #000;
+  color: #fff;
+  font-size: 2.8rem;
+}
+.menu a:hover {
+  text-decoration: underline;
+}
+.menu-opener {
+  width: 6.2rem;
+  order: 1;
+  position: relative;
+}
+.menu-title {
+  position: absolute;
+  font-weight: 100;
+  font-size: 1.6rem;
+  bottom: 2rem;
+  right: 0;
+  white-space: nowrap;
+  line-height: 1;
+}
+.menu-title span {
+  display: inline-block;
+  writing-mode: vertical-rl;
+  transform: rotate(-180deg) translateX(150%);
 }
 .menu-btn {
   display: none;
@@ -201,7 +251,87 @@ main {
     display: block;
   }
 }
-
+.menu-close-btn {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+}
+.menu-close-btn::after,
+.menu-close-btn ::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 50%;
+  height: 0.2rem;
+  left: 0;
+  top: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  display: inline-block;
+  background: #fff;
+}
+.menu-inner {
+  padding: 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.menu-contents {
+  flex-grow: 1;
+}
+.menu-site-title {
+  font-family: "PPSerif", sans-serif;
+  font-size: 2.8rem;
+  font-weight: 100;
+  padding-top: 2.1rem;
+  padding-bottom: 5.6rem;
+}
+.menu-list {
+  font-weight: 100;
+  margin-bottom: 4.2rem;
+}
+.menu-item a {
+  position: relative;
+}
+.menu-item a::before {
+  display: inline-block;
+}
+.menu-item:nth-child(1) a::before {
+  content: "①";
+}
+.menu-item:nth-child(2) a::before {
+  content: "②";
+}
+.menu-item:nth-child(3) a::before {
+  content: "③";
+}
+.menu-item:nth-child(4) a::before {
+  content: "④";
+}
+.menu-item:nth-child(5) a::before {
+  content: "⑤";
+}
+.menu-item:nth-child(6) a::before {
+  content: "⑥";
+}
+.menu-external-list {
+  font-size: 1.6rem;
+}
+.menu-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0;
+  flex-direction: row;
+  margin-top: 4.405rem;
+  font-size: 1.6rem;
+  max-width: 30.4rem;
+  width: 100%;
+}
 .title {
   position: absolute;
   top: 50%;

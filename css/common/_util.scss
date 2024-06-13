@@ -54,3 +54,13 @@
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
 }
+
+@mixin util__pseudo($width: 100%, $height: 100%) {
+  content: '';
+  display: block;
+  position: absolute;
+  width: $width;
+  height: $height;
+  left: 0;
+  top: 0;
+}

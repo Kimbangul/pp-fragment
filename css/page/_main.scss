@@ -6,7 +6,7 @@ main {
 // header
 .header {
   width: 100%;
-  height: 6.587rem;
+  height: $size__header-height;
   position: fixed;
   z-index: 999;
   top: 0;
@@ -14,16 +14,21 @@ main {
   font-size: 1.2rem;
   font-weight: 100;
   background: $color__black;
+
   &-inner {
     @include util__flex(space-between, center);
     height: 100%;
     padding: 0 2rem;
+    background: $color__black;
     color: $color__white;
     text-transform: uppercase;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    z-index: 1000;
   }
 }
 .menu {
+  @include util__flex;
   position: fixed;
   width: calc(37.5vw + 6.2rem);
   height: 100vh;
@@ -31,10 +36,113 @@ main {
   top: 0;
   left: 0;
   border-right: 1px solid rgba(255, 255, 255, 0.2);
+  font-weight: 100;
+  font-size: 2.8rem;
+  padding-top: $size__header-height;
+  background: $color__black;
+  color: $color__white;
+  font-size: 2.8rem;
+  a:hover {
+    text-decoration: underline;
+  }
+
+  &-opener {
+    width: 6.2rem;
+    order: 1;
+    position: relative;
+  }
+  &-title {
+    position: absolute;
+    font-weight: 100;
+    font-size: 1.6rem;
+    bottom: 2rem;
+    right: 0;
+    white-space: nowrap;
+    line-height: 1;
+
+    span {
+      display: inline-block;
+      writing-mode: vertical-rl;
+      transform: rotate(-180deg) translateX(150%);
+    }
+  }
   &-btn {
     display: none;
+
     @include mb {
       display: block;
+    }
+  }
+  &-close-btn {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    &::after,
+    ::before {
+      @include util__pseudo(50%, 0.2rem);
+      @include util__absolute-center;
+      display: inline-block;
+      background: $color__white;
+    }
+  }
+  &-inner {
+    padding: 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  &-contents {
+    flex-grow: 1;
+  }
+  &-site-title {
+    font-family: $font__serif;
+    font-size: 2.8rem;
+    font-weight: 100;
+    padding-top: 2.1rem;
+    padding-bottom: 5.6rem;
+  }
+  &-list {
+    font-weight: 100;
+    margin-bottom: 4.2rem;
+  }
+  &-item {
+    a {
+      position: relative;
+      &::before {
+        display: inline-block;
+      }
+    }
+    &:nth-child(1) a::before {
+      content: '①';
+    }
+    &:nth-child(2) a::before {
+      content: '②';
+    }
+    &:nth-child(3) a::before {
+      content: '③';
+    }
+    &:nth-child(4) a::before {
+      content: '④';
+    }
+    &:nth-child(5) a::before {
+      content: '⑤';
+    }
+    &:nth-child(6) a::before {
+      content: '⑥';
+    }
+  }
+  &-external-list {
+    font-size: 1.6rem;
+  }
+  &-bottom {
+    @include util__flex(space-between, center);
+    margin-top: 4.405rem;
+    font-size: 1.6rem;
+    max-width: 30.4rem;
+    width: 100%;
+    &-item {
     }
   }
 }

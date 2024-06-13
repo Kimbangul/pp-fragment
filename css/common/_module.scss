@@ -18,6 +18,7 @@
   display: inline-block;
   padding: 1.2rem 2rem;
   position: relative;
+  line-height: 1;
   text-transform: uppercase;
   &-white {
     background: $color__white;
@@ -34,4 +35,17 @@
       left: 0;
     }
   }
+}
+
+/** 접근성 관련 **/
+.blind {
+  font-size: 0;
+  position: absolute;
+  display: block;
+  z-index: -9999;
+  text-indent: 9999;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  clip: rect(0, 0, 0, 0);
 }
