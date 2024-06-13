@@ -4,10 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fragment | Pangram Pangram® Foundry + Locomotive®</title>
-    <script src="js/lib/gsap.min.js"></script>
-    <script src="js/lib/scrolltrigger.min.js"></script>
-    <script src="js/lib/splittype.js"></script>
-    <script src="js/script.js" defer></script>
+    <script src="/js/lib/gsap.min.js"></script>
+    <script src="/js/lib/scrolltrigger.min.js"></script>
+    <script src="/js/lib/splittype.js"></script>
+    <script src="/js/dom.js" defer></script>
+    <script src="/js/script.js" defer></script>
   </head>
   <body>
     <!-- header -->
@@ -104,7 +105,9 @@
               <a href="mailto:pangrampangram.com">pangrampangram.com</a>
             </p>
           </div>
-          <div class="main-bg"></div>
+          <div class="main-bg">
+            <img src="assets/img/main/fragment-1.png" alt="" />
+          </div>
         </div>
       </section>
       <!-- // main -->
@@ -123,7 +126,7 @@
           </p>
           <div class="introduce-info-grid">
             <div class="introduce-info-item">
-              <img src="/assets/img/intro.jpg" alt="" />
+              <img src="/assets/img/introduce/intro.jpg" alt="" />
               <dl class="spec">
                 <div class="spec-row">
                   <dt class="spec-cate">Styles</dt>
@@ -176,9 +179,9 @@
             <div class="visaul-text">9 Styles</div>
             <div class="visaul-text">581 Glyphs</div>
             <div class="visual-overlay">
-              <img src="assets/img/a-1.png" alt="" />
-              <img src="assets/img/a-2.png" alt="" />
-              <img src="assets/img/a-3.png" alt="" />
+              <img src="assets/img/introduce/a-1.png" alt="" />
+              <img src="assets/img/introduce/a-2.png" alt="" />
+              <img src="assets/img/introduce/a-3.png" alt="" />
             </div>
           </div>
         </div>
@@ -233,9 +236,7 @@
                 Pangram Pangram® Foundry offers you an elegant & retro
                 contemporary new font — Fragment
               </p>
-              <ul class="glyph-list">
-                <li class="glyph-item"></li>
-              </ul>
+              <ul class="glyph-list"></ul>
             </div>
             <div class="glyph-cell">
               <div class="glyph-word"></div>
@@ -261,28 +262,56 @@
                 <label class="slider-label" for="size">Size</label>
                 <span class="slider-value">10pt</span>
               </div>
-              <input name="size" type="range" min="1" max="10" value="5" />
+              <input
+                id="size"
+                name="size"
+                type="range"
+                min="1"
+                max="10"
+                value="5"
+              />
             </div>
             <div class="slider-wrap">
               <div class="slider-info">
                 <label class="slider-label" for="weight">Weight</label>
                 <span class="slider-value">382</span>
               </div>
-              <input name="weight" type="range" min="1" max="10" value="5" />
+              <input
+                id="weight"
+                name="weight"
+                type="range"
+                min="1"
+                max="10"
+                value="5"
+              />
             </div>
             <div class="slider-wrap">
               <div class="slider-info">
                 <label class="slider-label" for="spacing">Letter Spacing</label>
                 <span class="slider-value">10%</span>
               </div>
-              <input name="spacing" type="range" min="1" max="10" value="5" />
+              <input
+                id="spacing"
+                name="spacing"
+                type="range"
+                min="1"
+                max="10"
+                value="5"
+              />
             </div>
             <div class="slider-wrap">
               <div class="slider-info">
                 <label class="slider-label" for="height">Line Height</label>
                 <span class="slider-value">13pt</span>
               </div>
-              <input name="height" type="range" min="1" max="10" value="5" />
+              <input
+                id="height"
+                name="height"
+                type="range"
+                min="1"
+                max="10"
+                value="5"
+              />
             </div>
           </div>
           <p class="sampler-result">Sphinx of Black Quartz, Judge My Vow</p>
