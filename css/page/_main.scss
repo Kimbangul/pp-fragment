@@ -283,6 +283,7 @@ main {
     line-height: 0.95;
     letter-spacing: -0.04em;
     text-transform: uppercase;
+    margin-top: calc(-#{$size__header-height} - 2rem);
     &-roller {
       display: inline-block;
     }
@@ -316,10 +317,11 @@ main {
     &-item {
       display: flex;
       position: absolute;
-      width: 100%;
+      width: 60vw;
       height: 100%;
-      top: 0;
-      left: 0;
+      top: -2rem;
+      left: 50%;
+      transform: translateX(-50%);
       img {
         width: 100%;
         object-fit: contain;
@@ -335,7 +337,7 @@ main {
 
   &-desc {
     @include util__font-weight(200);
-    font-size: clamp(2.4rem, 3.33vw, 4rem);
+    font-size: $size__font-size-h2;
     width: 33.3vw;
 
     &:nth-child(2) {
@@ -421,7 +423,10 @@ main {
       &:nth-child(2) {
         margin-right: 0;
         margin-left: auto;
-        margin-top: 10vh;
+
+        @include mb {
+          margin-top: 10vh;
+        }
       }
     }
   }
@@ -483,6 +488,21 @@ main {
       top: 0;
       left: 0;
     }
+  }
+}
+
+.sans {
+  margin-top: -100vh;
+  height: 300vh;
+  position: relative;
+  &-contents {
+    position: sticky;
+    top: 0;
+    background: $color__white;
+    color: $color__black;
+    height: calc(100vh - $size__header-height - 4rem);
+    padding: 1.2rem 0 2rem 0;
+    border-radius: 16px;
   }
 }
 // // section

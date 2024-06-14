@@ -26,7 +26,7 @@
 
 /*버튼 관련*/
 .btn {
-  @include util__font-weight(500);
+  @include util__font-weight(400);
   display: inline-block;
   padding: 1.2rem 2rem;
   position: relative;
@@ -75,6 +75,7 @@
 .spec {
   &-row {
     @include util__flex(stretch, flex-start);
+    @include util__font-weight(400);
     font-size: 1.6rem;
     padding: 0.8rem 0;
     border-top: 1px solid $color__white;
@@ -85,5 +86,36 @@
   }
   &-desc {
     flex: 1 0 0;
+  }
+}
+
+/** ticker **/
+.ticker {
+  @include util__font-weight(200);
+  font-size: 1.328vw;
+  display: flex;
+  white-space: nowrap;
+  -webkit-text-stroke-width: 1px;
+
+  &-item {
+    text-transform: uppercase;
+
+    &::before {
+      width: 4em;
+      display: inline-block;
+      text-align: center;
+    }
+
+    &:nth-child(2n + 1) {
+      &::before {
+        content: '✳';
+      }
+    }
+    &:nth-child(2n) {
+      font-family: $font__serif;
+      &::before {
+        content: '●';
+      }
+    }
   }
 }
