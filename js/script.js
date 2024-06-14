@@ -1,6 +1,9 @@
 // PARAM 랜덤 텍스트 아이템 타이머
 let timer = null;
 
+// PARAM 이벤트 리스너 부착 대상
+const randomizeBtn = document.querySelector('.sans-to-serif-btn');
+
 // FUNCTION header 메뉴 버튼 클릭 시 수행
 const onClickMenuBtn = () => {
   const menuBtn = document.querySelectorAll('.menu-close-btn');
@@ -18,7 +21,7 @@ const getRandomInt = (max) => {
   return Math.floor(Math.random() * max);
 };
 
-// FUNCTION 랜덤 텍스트 아이템
+// FUNCTION 랜덤 텍스트 애니메이션
 const onRandomizeText = () => {
   const textArr = document.querySelectorAll('.random-text');
 
@@ -38,6 +41,7 @@ const onRandomizeText = () => {
 
   console.log(windowWidth);
 
+  if (windowWidth < 700) return;
   // 텍스트 포지션 변경
   textArr.forEach((el, idx) => {
     const center = el.offsetParent.offsetWidth / 2 - el.offsetWidth / 2;
@@ -62,12 +66,20 @@ const onRandomizeText = () => {
   });
 };
 
+// FUNCTION 랜덤 텍스트 애니메이션 초기화
+const onInitRandomizeText = () => {
+  clearInterval(timer);
+  onRandomizeText();
+  timer = setInterval(onRandomizeText, 5000);
+};
+
 (function () {
   const menuOpener = document.querySelector('.menu-opener');
   const mbMenuBtn = document.querySelector('.menu-close-btn-container');
   mbMenuBtn.addEventListener('click', onClickMenuBtn);
   menuOpener.addEventListener('click', onClickMenuBtn);
 
-  onRandomizeText();
-  timer = setInterval(onRandomizeText, 5000);
+  onInitRandomizeText();
+
+  randomizeBtn.addEventListener('click', onInitRandomizeText);
 })();

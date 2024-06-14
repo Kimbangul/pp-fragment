@@ -435,6 +435,7 @@ main {
 .visual {
   position: relative;
   height: 500vh;
+  margin-top: 10vh;
   &-inner {
     top: $size__header-height;
     display: flex;
@@ -501,7 +502,7 @@ main {
   &-contents {
     @include util__flex(space-between, stretch, 0, column);
     position: sticky;
-    top: 0;
+    top: calc($size__header-height + 2rem);
     background: $color__white;
     color: $color__black;
     height: calc(100vh - $size__header-height - 4rem);
@@ -519,18 +520,47 @@ main {
   display: inline-block;
   transition: transform 0.5s, font-variation-settings 0.5s;
   will-change: transform, font-variation-settings;
+
+  @include mb {
+    transform: translateX(0) !important;
+  }
+
   &-container {
     font-size: clamp(36px, 92/1800 * 100vw, 92px);
     text-transform: uppercase;
+
+    @media (max-width: 480px) {
+      font-size: 28px;
+    }
   }
   &-inner {
     @include util__flex(start, stretch, 10vw);
     display: inline-flex;
     transition: transform 0.5s;
     will-change: transform;
+
+    @include mb {
+      display: block;
+      transform: translateX(0) !important;
+    }
   }
   &-item {
     position: relative;
+
+    @include mb {
+      &:nth-child(3),
+      &:nth-child(4),
+      &:nth-child(6) {
+        text-align: center;
+      }
+      &:nth-child(5) {
+        text-align: right;
+      }
+
+      &:nth-child(4) .serif {
+        text-align: right;
+      }
+    }
   }
 }
 // // section

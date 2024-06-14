@@ -127,7 +127,7 @@
 /** ticker **/
 .ticker {
   font-variation-settings: "wght" 200;
-  font-size: 1.328vw;
+  font-size: clamp(21px, 1.328vw, 30px);
   display: flex;
   white-space: nowrap;
   -webkit-text-stroke-width: 1px;
@@ -721,6 +721,7 @@ main {
 .visual {
   position: relative;
   height: 500vh;
+  margin-top: 10vh;
 }
 .visual-inner {
   top: 6.587rem;
@@ -794,7 +795,7 @@ main {
   gap: 0;
   flex-direction: column;
   position: sticky;
-  top: 0;
+  top: 8.587rem;
   background: #fff;
   color: #000;
   height: calc(100vh - 6.587rem - 4rem);
@@ -812,9 +813,19 @@ main {
   transition: transform 0.5s, font-variation-settings 0.5s;
   will-change: transform, font-variation-settings;
 }
+@media (max-width: 699px) {
+  .random-text {
+    transform: translateX(0) !important;
+  }
+}
 .random-text-container {
   font-size: clamp(36px, 5.1111111111vw, 92px);
   text-transform: uppercase;
+}
+@media (max-width: 480px) {
+  .random-text-container {
+    font-size: 28px;
+  }
 }
 .random-text-inner {
   display: flex;
@@ -826,6 +837,23 @@ main {
   transition: transform 0.5s;
   will-change: transform;
 }
+@media (max-width: 699px) {
+  .random-text-inner {
+    display: block;
+    transform: translateX(0) !important;
+  }
+}
 .random-text-item {
   position: relative;
+}
+@media (max-width: 699px) {
+  .random-text-item:nth-child(3), .random-text-item:nth-child(4), .random-text-item:nth-child(6) {
+    text-align: center;
+  }
+  .random-text-item:nth-child(5) {
+    text-align: right;
+  }
+  .random-text-item:nth-child(4) .serif {
+    text-align: right;
+  }
 }/*# sourceMappingURL=style.css.map */

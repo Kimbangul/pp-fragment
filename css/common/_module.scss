@@ -92,7 +92,7 @@
 /** ticker **/
 .ticker {
   @include util__font-weight(200);
-  font-size: 1.328vw;
+  font-size: clamp(21px, 1.328vw, 30px);
   display: flex;
   white-space: nowrap;
   -webkit-text-stroke-width: 1px;
