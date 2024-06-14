@@ -1,3 +1,6 @@
+// PARAM 랜덤 텍스트 아이템 타이머
+let timer = null;
+
 // FUNCTION header 메뉴 버튼 클릭 시 수행
 const onClickMenuBtn = () => {
   const menuBtn = document.querySelectorAll('.menu-close-btn');
@@ -31,38 +34,30 @@ const onRandomizeText = () => {
     }`;
   });
 
-  const distance = {
-    max: Array.from(textArr).map((el, idx) => {
-      return el.offsetParent.offsetWidth - el.offsetWidth;
-    }),
-    center: Array.from(textArr).map((el, idx) => {
-      return el.offsetParent.offsetWidth / 2 - el.offsetWidth / 2;
-    }),
-  };
-  const position = [
-    ['0', '60vw', `${distance.center[0]}px`, `${distance.max[0]}px`],
-    ['0', '60%', `${distance.max[1]}px`],
-    ['0', `${distance.center[2]}px`, `${distance.max[2]}px`],
-    ['0', `${distance.center[3]}px`],
-    ['0', `${distance.max[4] - textArr[4].offsetLeft}px`],
-    ['0', '40vw', `${distance.max[5]}px`],
-    ['0', '25%', '50%', `${distance.max[6]}px`],
-    ['0', '40%', '80%'],
-  ];
+  const windowWidth = window.innerWidth;
 
+  console.log(windowWidth);
+
+  // 텍스트 포지션 변경
   textArr.forEach((el, idx) => {
-    // 텍스트 포지션 변경
+    const center = el.offsetParent.offsetWidth / 2 - el.offsetWidth / 2;
+    const parentVw = (el.offsetParent.offsetWidth / windowWidth) * 100;
+    const centerVw = (center / windowWidth) * 100;
+
+    const pos = [0, `${centerVw}vw`, `calc(${parentVw}vw - 100%)`];
+    const randomPos = pos[getRandomInt(pos.length)];
+
     if (![3, 4].includes(idx)) {
-      // 인덱스가 3,4가 아닐 떄
-      const posArr = position[idx];
-      const randomPos = getRandomInt(posArr.length);
-      el.style.transform = `translateX(${posArr[randomPos]})`;
+      // 인덱스가 3,4가 아닐 때
+      el.style.transform = `translateX(${randomPos})`;
+      console.log(randomPos);
     } else if (idx === 3) {
-      // 인덱스가 3일 떄
-      const randomIdx = getRandomInt(2);
-      console.log(textArr[3]);
-      textArr[3].style.transform = `translateX(${position[3][randomIdx]})`;
-      textArr[4].style.transform = `translateX(${position[4][randomIdx]})`;
+      const inner = document.querySelector('.random-text-inner');
+      const parentVw = (inner.offsetParent.offsetWidth / windowWidth) * 100;
+      const pos = [0, `calc(${parentVw}vw - 100%)`];
+      const randomPos = pos[getRandomInt(pos.length)];
+
+      inner.style.transform = `translateX(${randomPos})`;
     }
   });
 };
@@ -74,4 +69,5 @@ const onRandomizeText = () => {
   menuOpener.addEventListener('click', onClickMenuBtn);
 
   onRandomizeText();
+  timer = setInterval(onRandomizeText, 5000);
 })();

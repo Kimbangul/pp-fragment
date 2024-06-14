@@ -784,6 +784,9 @@ main {
   height: 300vh;
   position: relative;
 }
+.sans-to-serif-inner {
+  height: 100%;
+}
 .sans-to-serif-contents {
   display: flex;
   justify-content: space-between;
@@ -813,13 +816,16 @@ main {
   font-size: clamp(36px, 5.1111111111vw, 92px);
   text-transform: uppercase;
 }
-.random-text-item {
-  position: relative;
-}
-.random-text-item[data-line="4"] {
+.random-text-inner {
   display: flex;
-  justify-content: stretch;
+  justify-content: start;
   align-items: stretch;
   gap: 10vw;
   flex-direction: row;
+  display: inline-flex;
+  transition: transform 0.5s;
+  will-change: transform;
+}
+.random-text-item {
+  position: relative;
 }/*# sourceMappingURL=style.css.map */

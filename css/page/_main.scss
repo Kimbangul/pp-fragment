@@ -495,6 +495,9 @@ main {
   margin-top: -100vh;
   height: 300vh;
   position: relative;
+  &-inner {
+    height: 100%;
+  }
   &-contents {
     @include util__flex(space-between, stretch, 0, column);
     position: sticky;
@@ -520,11 +523,14 @@ main {
     font-size: clamp(36px, 92/1800 * 100vw, 92px);
     text-transform: uppercase;
   }
+  &-inner {
+    @include util__flex(start, stretch, 10vw);
+    display: inline-flex;
+    transition: transform 0.5s;
+    will-change: transform;
+  }
   &-item {
     position: relative;
-    &[data-line='4'] {
-      @include util__flex(stretch, stretch, 10vw);
-    }
   }
 }
 // // section
