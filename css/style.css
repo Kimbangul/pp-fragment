@@ -168,6 +168,7 @@ body {
   word-break: keep-all;
   position: relative;
   overflow-x: hidden;
+  line-height: 1;
 }
 
 main {
@@ -483,6 +484,13 @@ main {
   }
 }
 
+.main-inner {
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
+  gap: 0;
+  flex-direction: row;
+}
 .main-text-container {
   position: absolute;
   top: 50%;
@@ -523,6 +531,16 @@ main {
   flex-direction: row;
   text-transform: uppercase;
   font-size: 1.4rem;
+}
+.main-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0;
+  flex-direction: row;
+  width: 100%;
+  align-self: flex-end;
+  font-size: 1.6rem;
 }
 .main-bg-item {
   display: flex;

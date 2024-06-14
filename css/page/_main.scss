@@ -267,6 +267,9 @@ main {
 // // header
 // section
 .main {
+  &-inner {
+    @include util__flex(stretch);
+  }
   &-text {
     &-container {
       @include util__absolute-center;
@@ -303,6 +306,12 @@ main {
     @include util__flex(space-between, center);
     text-transform: uppercase;
     font-size: 1.4rem;
+  }
+  &-bottom {
+    @include util__flex(space-between, center);
+    width: 100%;
+    align-self: flex-end;
+    font-size: 1.6rem;
   }
   &-bg {
     &-item {
