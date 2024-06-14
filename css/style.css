@@ -60,6 +60,7 @@
   padding: 1.2rem 2rem;
   position: relative;
   line-height: 1;
+  font-size: 1.2rem;
   text-transform: uppercase;
 }
 .btn-white {
@@ -93,6 +94,25 @@
   height: 1px;
   margin: -1px;
   clip: rect(0, 0, 0, 0);
+}
+
+/** 스펙 표 **/
+.spec-row {
+  display: flex;
+  justify-content: stretch;
+  align-items: flex-start;
+  gap: 0;
+  flex-direction: row;
+  font-size: 1.6rem;
+  padding: 0.8rem 0;
+  border-top: 1px solid #fff;
+  gap: 2rem;
+}
+.spec-cate {
+  flex: 1 0 0;
+}
+.spec-desc {
+  flex: 1 0 0;
 }
 
 html {
@@ -242,7 +262,6 @@ main {
   height: 100vh;
   z-index: 998;
   top: 0;
-  left: -37.5vw;
   border-right: 1px solid rgba(255, 255, 255, 0.2);
   font-weight: 100;
   font-size: 2.8rem;
@@ -250,7 +269,8 @@ main {
   background: #000;
   color: #fff;
   font-size: 2.8rem;
-  transition: left 0.35s;
+  transition: transform 0.35s;
+  transform: translateX(calc(-100% + 6.2rem));
 }
 .menu a:hover {
   text-decoration: underline;
@@ -258,23 +278,22 @@ main {
 @media (min-width: 1000px) and (max-width: 1199px) {
   .menu {
     width: calc(50vw + 6.2rem);
-    left: -50vw;
   }
 }
 @media (min-width: 700px) and (max-width: 999px) {
   .menu {
     width: calc(50vw + 6.2rem);
-    left: -50vw;
   }
 }
 @media (max-width: 699px) {
   .menu {
     width: 100%;
-    left: -100vw;
+    transform: translateX(-100%);
   }
 }
 .menu--open {
   left: 0;
+  transform: translateX(0);
 }
 .menu-opener {
   display: flex;
@@ -536,7 +555,7 @@ main {
 .main-bottom {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   gap: 0;
   flex-direction: row;
   width: 100%;
@@ -562,64 +581,128 @@ main {
 }
 .introduce-desc {
   font-variation-settings: "wght" 200;
-  font-size: 4rem;
+  font-size: clamp(2.4rem, 3.33vw, 4rem);
   width: 33.3vw;
 }
 .introduce-desc:nth-child(2) {
   margin-left: 50%;
+}
+@media (max-width: 699px) {
+  .introduce-desc:nth-child(2) {
+    margin-left: auto;
+    margin-right: 0;
+    margin-top: 10vh;
+  }
+}
+@media (max-width: 699px) {
+  .introduce-desc {
+    width: 75vw;
+  }
 }
 .introduce-info-img {
   width: 100%;
 }
 .introduce-info-grid {
   display: grid;
-  grid-template: "a b" "c c";
+  grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 999px) {
+  .introduce-info-grid {
+    display: block;
+    padding-top: 10vh;
+  }
 }
 .introduce-info-item:first-child {
   margin-right: 13.31vw;
+}
+@media (max-width: 999px) {
+  .introduce-info-item:first-child {
+    margin-right: 0;
+  }
 }
 .introduce-info-item:nth-child(2) {
   display: grid;
   grid-template: "a b" "c c";
   padding-top: 17rem;
 }
+@media (max-width: 999px) {
+  .introduce-info-item:nth-child(2) {
+    padding-top: 10vh;
+  }
+}
+@media (max-width: 699px) {
+  .introduce-info-item:nth-child(2) {
+    display: block;
+  }
+}
 .introduce-info-btn-container {
   white-space: nowrap;
   grid-area: c;
+}
+@media (max-width: 999px) {
+  .introduce-info-btn-container {
+    margin-top: 2.4rem;
+  }
+}
+@media (max-width: 699px) {
+  .introduce-info-btn-container {
+    margin-top: 10vh;
+  }
 }
 .introduce-info-btn-container .btn {
   border: 1px solid #fff;
 }
 .introduce-info-text {
+  font-variation-settings: "wght" 400;
   padding-right: 10%;
   font-size: 1.6rem;
-  line-height: 1.2;
+  line-height: 1.4;
 }
 @media (min-width: 1200px) {
   .introduce-info-text {
     padding-right: 25%;
   }
 }
-@media (max-width: 699px) {
+@media (max-width: 999px) {
   .introduce-info-text {
     padding-right: 25%;
   }
 }
+@media (max-width: 699px) {
+  .introduce-info-text {
+    padding-right: 0;
+    width: 75vw;
+  }
+}
+.introduce-info-text:nth-child(2) {
+  margin-right: 0;
+  margin-left: auto;
+  margin-top: 10vh;
+}
 
-.spec-row {
-  display: flex;
-  justify-content: stretch;
-  align-items: flex-start;
-  gap: 0;
-  flex-direction: row;
-  font-size: 1.6rem;
-  padding: 0.8rem 0;
-  border-top: 1px solid #fff;
-  gap: 2rem;
+.visual-text {
+  font-variation-settings: "wght" 200;
+  font-size: 12vw;
+  text-transform: uppercase;
 }
-.spec-cate {
-  flex: 1 0 0;
+.visual-text:nth-child(1) {
+  text-align: left;
+  font-family: "PPSerif", sans-serif;
 }
-.spec-desc {
-  flex: 1 0 0;
+.visual-text:nth-child(1)::first-letter {
+  font-family: "PPSans", sans-serif;
+}
+.visual-text:nth-child(2) {
+  text-align: right;
+  font-family: "PPGlare", sans-serif;
+}
+.visual-text:nth-child(2)::first-letter {
+  font-family: "PPSans", sans-serif;
+}
+.visual-text:nth-child(3) {
+  text-align: center;
+  font-family: "PPSans", sans-serif;
+}
+.visual-text:nth-child(3)::first-letter {
+  font-family: "PPGlare", sans-serif;
 }/*# sourceMappingURL=style.css.map */

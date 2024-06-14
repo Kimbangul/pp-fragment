@@ -31,6 +31,7 @@
   padding: 1.2rem 2rem;
   position: relative;
   line-height: 1;
+  font-size: 1.2rem;
   text-transform: uppercase;
   &-white {
     background: $color__white;
@@ -68,4 +69,21 @@
   height: 1px;
   margin: -1px;
   clip: rect(0, 0, 0, 0);
+}
+
+/** 스펙 표 **/
+.spec {
+  &-row {
+    @include util__flex(stretch, flex-start);
+    font-size: 1.6rem;
+    padding: 0.8rem 0;
+    border-top: 1px solid $color__white;
+    gap: 2rem;
+  }
+  &-cate {
+    flex: 1 0 0;
+  }
+  &-desc {
+    flex: 1 0 0;
+  }
 }

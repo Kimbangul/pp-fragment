@@ -40,7 +40,6 @@ main {
   height: 100vh;
   z-index: 998;
   top: 0;
-  left: -37.5vw;
   border-right: 1px solid rgba(255, 255, 255, 0.2);
   font-weight: 100;
   font-size: 2.8rem;
@@ -48,26 +47,26 @@ main {
   background: $color__black;
   color: $color__white;
   font-size: 2.8rem;
-  transition: left 0.35s;
+  transition: transform 0.35s;
+  transform: translateX(calc(-100% + 6.2rem));
   a:hover {
     text-decoration: underline;
   }
 
   @include pc-sm {
     width: calc(50vw + $size__side-opener-width);
-    left: -50vw;
   }
   @include tb {
     width: calc(50vw + $size__side-opener-width);
-    left: -50vw;
   }
   @include mb {
     width: 100%;
-    left: -100vw;
+    transform: translateX(-100%);
   }
 
   &--open {
     left: 0;
+    transform: translateX(0);
   }
 
   &-opener {
@@ -308,7 +307,7 @@ main {
     font-size: 1.4rem;
   }
   &-bottom {
-    @include util__flex(space-between, center);
+    @include util__flex(space-between, flex-end);
     width: 100%;
     align-self: flex-end;
     font-size: 1.6rem;
@@ -336,11 +335,21 @@ main {
 
   &-desc {
     @include util__font-weight(200);
-    font-size: 4rem;
+    font-size: clamp(2.4rem, 3.33vw, 4rem);
     width: 33.3vw;
 
     &:nth-child(2) {
       margin-left: 50%;
+
+      @include mb {
+        margin-left: auto;
+        margin-right: 0;
+        margin-top: 10vh;
+      }
+    }
+
+    @include mb {
+      width: 75vw;
     }
   }
 
@@ -350,53 +359,101 @@ main {
     }
     &-grid {
       display: grid;
-      grid-template: 'a b' 'c c';
+      grid-template-columns: 1fr 1fr;
+
+      @media (max-width: $size__tb) {
+        display: block;
+        padding-top: 10vh;
+      }
     }
     &-item {
       &:first-child {
         margin-right: 13.31vw;
+        @media (max-width: $size__tb) {
+          margin-right: 0;
+        }
       }
       &:nth-child(2) {
         display: grid;
         grid-template: 'a b' 'c c';
         padding-top: 17rem;
+        @media (max-width: $size__tb) {
+          padding-top: 10vh;
+        }
+        @include mb {
+          display: block;
+        }
       }
     }
     &-btn-container {
       white-space: nowrap;
       grid-area: c;
 
+      @media (max-width: $size__tb) {
+        margin-top: 2.4rem;
+      }
+
+      @include mb {
+        margin-top: 10vh;
+      }
+
       .btn {
         border: 1px solid $color__white;
       }
     }
     &-text {
+      @include util__font-weight(400);
       padding-right: 10%;
       font-size: 1.6rem;
-      line-height: 1.2;
+      line-height: 1.4;
+
       @media (min-width: 1200px) {
         padding-right: 25%;
       }
-      @include mb {
+      @media (max-width: $size__tb) {
         padding-right: 25%;
+      }
+      @include mb {
+        padding-right: 0;
+        width: 75vw;
+      }
+
+      &:nth-child(2) {
+        margin-right: 0;
+        margin-left: auto;
+        margin-top: 10vh;
       }
     }
   }
 }
 
-.spec {
-  &-row {
-    @include util__flex(stretch, flex-start);
-    font-size: 1.6rem;
-    padding: 0.8rem 0;
-    border-top: 1px solid $color__white;
-    gap: 2rem;
-  }
-  &-cate {
-    flex: 1 0 0;
-  }
-  &-desc {
-    flex: 1 0 0;
+.visual {
+  &-text {
+    @include util__font-weight(200);
+    font-size: 12vw;
+    text-transform: uppercase;
+
+    &:nth-child(1) {
+      text-align: left;
+      font-family: $font__serif;
+      &::first-letter {
+        font-family: $font__sans;
+      }
+    }
+    &:nth-child(2) {
+      text-align: right;
+      font-family: $font__glare;
+      &::first-letter {
+        font-family: $font__sans;
+      }
+    }
+    &:nth-child(3) {
+      text-align: center;
+      font-family: $font__sans;
+      &::first-letter {
+        font-family: $font__glare;
+      }
+    }
   }
 }
 // // section
