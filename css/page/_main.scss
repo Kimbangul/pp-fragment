@@ -34,7 +34,7 @@ main {
   height: 100vh;
   z-index: 998;
   top: 0;
-  left: 0;
+  left: -37.5vw;
   border-right: 1px solid rgba(255, 255, 255, 0.2);
   font-weight: 100;
   font-size: 2.8rem;
@@ -42,11 +42,26 @@ main {
   background: $color__black;
   color: $color__white;
   font-size: 2.8rem;
+  transition: left 0.35s;
   a:hover {
     text-decoration: underline;
   }
+
+  @include pc-sm {
+    width: calc(50vw + 6.2rem);
+    left: -50vw;
+  }
+  @include tb {
+    width: calc(50vw + 6.2rem);
+    left: -50vw;
+  }
   @include mb {
     width: 100%;
+    left: -100vw;
+  }
+
+  &--open {
+    left: 0;
   }
 
   &-opener {
@@ -95,22 +110,55 @@ main {
       transform: translateX(2rem);
     }
 
-    &:hover {
-      transform: scale(0.75);
-    }
-
+    $gap: 4px;
+    $hover-gap: 6px;
     &::after,
     &::before {
-      @include util__pseudo(50%, 0.2rem);
+      @include util__pseudo(50%, 2px);
       @include util__absolute-center;
       display: inline-block;
       background: $color__white;
+      width: 60%;
+      transition: width 0.3s, transform 0.3s;
     }
     &::before {
-      transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+      transform: translateX(-50%) translateY(calc(-50% - $gap));
     }
     &::after {
-      transform: translateX(-50%) translateY(-50%) rotate(45deg);
+      transform: translateX(-50%) translateY(calc(-50% + $gap));
+    }
+    &:hover {
+      &::before {
+        transform: translateX(-50%) translateY(calc(-50% - $hover-gap));
+      }
+      &::after {
+        transform: translateX(-50%) translateY(calc(-50% + $hover-gap));
+      }
+    }
+
+    &--open {
+      &::after,
+      &::before {
+        width: 50%;
+      }
+      &::before {
+        transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+      }
+      &::after {
+        transform: translateX(-50%) translateY(-50%) rotate(45deg);
+      }
+      &:hover {
+        &::after,
+        &::before {
+          width: calc(50% * 0.75);
+        }
+        &::before {
+          transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+        }
+        &::after {
+          transform: translateX(-50%) translateY(-50%) rotate(45deg);
+        }
+      }
     }
   }
   &-inner {

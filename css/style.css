@@ -226,7 +226,7 @@ main {
   height: 100vh;
   z-index: 998;
   top: 0;
-  left: 0;
+  left: -37.5vw;
   border-right: 1px solid rgba(255, 255, 255, 0.2);
   font-weight: 100;
   font-size: 2.8rem;
@@ -234,14 +234,31 @@ main {
   background: #000;
   color: #fff;
   font-size: 2.8rem;
+  transition: left 0.35s;
 }
 .menu a:hover {
   text-decoration: underline;
 }
+@media (min-width: 1000px) and (max-width: 1199px) {
+  .menu {
+    width: calc(50vw + 6.2rem);
+    left: -50vw;
+  }
+}
+@media (min-width: 700px) and (max-width: 999px) {
+  .menu {
+    width: calc(50vw + 6.2rem);
+    left: -50vw;
+  }
+}
 @media (max-width: 699px) {
   .menu {
     width: 100%;
+    left: -100vw;
   }
+}
+.menu--open {
+  left: 0;
 }
 .menu-opener {
   display: flex;
@@ -294,15 +311,12 @@ main {
   width: 6.2rem;
   transform: translateX(2rem);
 }
-.menu-close-btn:hover {
-  transform: scale(0.75);
-}
 .menu-close-btn::after, .menu-close-btn::before {
   content: "";
   display: block;
   position: absolute;
   width: 50%;
-  height: 0.2rem;
+  height: 2px;
   left: 0;
   top: 0;
   position: absolute;
@@ -311,11 +325,37 @@ main {
   transform: translateX(-50%) translateY(-50%);
   display: inline-block;
   background: #fff;
+  width: 60%;
+  transition: width 0.3s, transform 0.3s;
 }
 .menu-close-btn::before {
-  transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+  transform: translateX(-50%) translateY(calc(-50% - 4px));
 }
 .menu-close-btn::after {
+  transform: translateX(-50%) translateY(calc(-50% + 4px));
+}
+.menu-close-btn:hover::before {
+  transform: translateX(-50%) translateY(calc(-50% - 6px));
+}
+.menu-close-btn:hover::after {
+  transform: translateX(-50%) translateY(calc(-50% + 6px));
+}
+.menu-close-btn--open::after, .menu-close-btn--open::before {
+  width: 50%;
+}
+.menu-close-btn--open::before {
+  transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+}
+.menu-close-btn--open::after {
+  transform: translateX(-50%) translateY(-50%) rotate(45deg);
+}
+.menu-close-btn--open:hover::after, .menu-close-btn--open:hover::before {
+  width: 37.5%;
+}
+.menu-close-btn--open:hover::before {
+  transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+}
+.menu-close-btn--open:hover::after {
   transform: translateX(-50%) translateY(-50%) rotate(45deg);
 }
 .menu-inner {
