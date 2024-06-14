@@ -96,6 +96,7 @@
   display: flex;
   white-space: nowrap;
   -webkit-text-stroke-width: 1px;
+  animation: animation__ticker 5s linear infinite both;
 
   &-item {
     text-transform: uppercase;

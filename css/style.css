@@ -23,6 +23,14 @@
   font-weight: 100 200 300 400 500 600 700 800 900;
   src: url("../assets/fonts/PPFragment-TextVariable.woff2") format("woff2");
 }
+@keyframes animation__ticker {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-51.75%);
+  }
+}
 /* 폰트 관련 */
 .glare {
   font-family: "PPGlare", sans-serif;
@@ -123,6 +131,7 @@
   display: flex;
   white-space: nowrap;
   -webkit-text-stroke-width: 1px;
+  animation: animation__ticker 5s linear infinite both;
 }
 .ticker-item {
   text-transform: uppercase;
@@ -770,17 +779,47 @@ main {
   left: 0;
 }
 
-.sans {
+.sans-to-serif {
   margin-top: -100vh;
   height: 300vh;
   position: relative;
 }
-.sans-contents {
+.sans-to-serif-contents {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 0;
+  flex-direction: column;
   position: sticky;
   top: 0;
   background: #fff;
   color: #000;
   height: calc(100vh - 6.587rem - 4rem);
-  padding: 1.2rem 0 2rem 0;
+  padding: 1.2rem 2rem 2rem 2rem;
   border-radius: 16px;
+}
+.sans-to-serif-btn {
+  width: 50vw;
+  border: 1px solid #000;
+  margin: 0 auto;
+}
+
+.random-text {
+  display: inline-block;
+  transition: transform 0.5s, font-variation-settings 0.5s;
+  will-change: transform, font-variation-settings;
+}
+.random-text-container {
+  font-size: clamp(36px, 5.1111111111vw, 92px);
+  text-transform: uppercase;
+}
+.random-text-item {
+  position: relative;
+}
+.random-text-item[data-line="4"] {
+  display: flex;
+  justify-content: stretch;
+  align-items: stretch;
+  gap: 10vw;
+  flex-direction: row;
 }/*# sourceMappingURL=style.css.map */
