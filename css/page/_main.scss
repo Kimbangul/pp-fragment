@@ -5,6 +5,7 @@ main {
 
 // header
 .header {
+  @include util__font-weight(400);
   width: 100%;
   height: $size__header-height;
   position: fixed;
@@ -12,7 +13,6 @@ main {
   top: 0;
   left: 0;
   font-size: 1.2rem;
-  font-weight: 100;
   background: $color__black;
 
   &-inner {
@@ -45,11 +45,19 @@ main {
   a:hover {
     text-decoration: underline;
   }
+  @include mb {
+    width: 100%;
+  }
 
   &-opener {
+    @include util__flex(center, center);
     width: 6.2rem;
     order: 1;
+    flex-shrink: 0;
     position: relative;
+    @include mb {
+      display: none;
+    }
   }
   &-title {
     position: absolute;
@@ -78,12 +86,31 @@ main {
     position: relative;
     width: 100%;
     padding-bottom: 100%;
+    cursor: pointer;
+    transition: transform 0.3s;
+
+    &-container {
+      display: flex;
+      width: 6.2rem;
+      transform: translateX(2rem);
+    }
+
+    &:hover {
+      transform: scale(0.75);
+    }
+
     &::after,
-    ::before {
+    &::before {
       @include util__pseudo(50%, 0.2rem);
       @include util__absolute-center;
       display: inline-block;
       background: $color__white;
+    }
+    &::before {
+      transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+    }
+    &::after {
+      transform: translateX(-50%) translateY(-50%) rotate(45deg);
     }
   }
   &-inner {
@@ -92,26 +119,42 @@ main {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    flex-shrink: 1;
+    white-space: nowrap;
+    overflow: hidden;
   }
   &-contents {
+    @include util__font-weight(300);
     flex-grow: 1;
+    @include mb {
+      width: 100%;
+      font-size: 3.2rem;
+    }
   }
   &-site-title {
+    @include util__font-weight(350);
     font-family: $font__serif;
     font-size: 2.8rem;
-    font-weight: 100;
     padding-top: 2.1rem;
     padding-bottom: 5.6rem;
+    @include mb {
+      width: 100%;
+      font-size: 3.2rem;
+    }
   }
   &-list {
-    font-weight: 100;
     margin-bottom: 4.2rem;
   }
   &-item {
+    line-height: 1.2;
     a {
       position: relative;
       &::before {
         display: inline-block;
+        width: 5.6rem;
+        @include mb {
+          width: 6.5rem;
+        }
       }
     }
     &:nth-child(1) a::before {
@@ -133,8 +176,19 @@ main {
       content: '⑥';
     }
   }
-  &-external-list {
-    font-size: 1.6rem;
+  &-external {
+    &-list {
+      font-size: 1.6rem;
+    }
+    &-item {
+      @include util__flex(stretch, center);
+      line-height: 1.2;
+      &::before {
+        content: '→';
+        display: inline-block;
+        width: 3.2rem;
+      }
+    }
   }
   &-bottom {
     @include util__flex(space-between, center);
@@ -150,6 +204,10 @@ main {
   @include util__absolute-center;
   font-size: inherit;
   font-weight: inherit;
-  position: absolute;
+
+  @include mb {
+    position: static;
+    transform: none;
+  }
 }
 // // header

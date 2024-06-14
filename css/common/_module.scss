@@ -11,10 +11,22 @@
 .text {
   font-family: $font__text;
 }
+
+.pc-only {
+  @include mb {
+    display: none !important;
+  }
+}
+.mb-only {
+  @media (min-width: 700px) {
+    display: none !important;
+  }
+}
 /**모바일/pc 관련*/
 
 /*버튼 관련*/
 .btn {
+  @include util__font-weight(500);
   display: inline-block;
   padding: 1.2rem 2rem;
   position: relative;

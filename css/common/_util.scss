@@ -64,3 +64,7 @@
   left: 0;
   top: 0;
 }
+
+@mixin util__font-weight($weight: 400) {
+  font-variation-settings: 'wght' $weight;
+}

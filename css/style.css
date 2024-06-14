@@ -2,25 +2,25 @@
 @font-face {
   font-family: "PPGlare";
   font-style: normal;
-  font-weight: 400;
+  font-weight: 100 200 300 400 500 600 700 800 900;
   src: url("../assets/fonts/PPFragment-GlareVariable.woff2") format("woff2");
 }
 @font-face {
   font-family: "PPSans";
   font-style: normal;
-  font-weight: 400;
+  font-weight: 100 200 300 400 500 600 700 800 900;
   src: url("../assets/fonts/PPFragment-SansVariable.woff2") format("woff2");
 }
 @font-face {
   font-family: "PPSerif";
   font-style: normal;
-  font-weight: 400;
+  font-weight: 100 200 300 400 500 600 700 800 900;
   src: url("../assets/fonts/PPFragment-SerifVariable.woff2") format("woff2");
 }
 @font-face {
   font-family: "PPText";
   font-style: normal;
-  font-weight: 400;
+  font-weight: 100 200 300 400 500 600 700 800 900;
   src: url("../assets/fonts/PPFragment-TextVariable.woff2") format("woff2");
 }
 /* 폰트 관련 */
@@ -40,9 +40,22 @@
   font-family: "PPText", sans-serif;
 }
 
+@media (max-width: 699px) {
+  .pc-only {
+    display: none !important;
+  }
+}
+
+@media (min-width: 700px) {
+  .mb-only {
+    display: none !important;
+  }
+}
+
 /**모바일/pc 관련*/
 /*버튼 관련*/
 .btn {
+  font-variation-settings: "wght" 500;
   display: inline-block;
   padding: 1.2rem 2rem;
   position: relative;
@@ -81,17 +94,17 @@ html {
 }
 @media (max-width: 699px) {
   html {
-    font-size: 50%;
+    font-size: calc(62.5% - 7.8%);
   }
 }
 @media (min-width: 700px) and (max-width: 999px) {
   html {
-    font-size: 50%;
+    font-size: calc(62.5% - 7.8%);
   }
 }
 @media (min-width: 1000px) and (max-width: 1199px) {
   html {
-    font-size: 56.25%;
+    font-size: calc(62.5% - 3.9%);
   }
 }
 @media (min-width: 1200px) and (max-width: 1599px) {
@@ -101,17 +114,17 @@ html {
 }
 @media (min-width: 1600px) and (max-width: 1999px) {
   html {
-    font-size: 68.75%;
+    font-size: calc(62.5% + 3.9%);
   }
 }
 @media (min-width: 2000px) and (max-width: 2399px) {
   html {
-    font-size: 75%;
+    font-size: calc(62.5% + 7.8%);
   }
 }
 @media (min-width: 2400px) {
   html {
-    font-size: 81.25%;
+    font-size: calc(62.5% + 11.7%);
   }
 }
 
@@ -142,6 +155,7 @@ button {
 }
 
 body {
+  font-variation-settings: "wght" 300;
   word-break: keep-all;
   font-family: "PPSans", sans-serif;
   word-break: keep-all;
@@ -175,6 +189,7 @@ main {
 }
 
 .header {
+  font-variation-settings: "wght" 400;
   width: 100%;
   height: 6.587rem;
   position: fixed;
@@ -182,7 +197,6 @@ main {
   top: 0;
   left: 0;
   font-size: 1.2rem;
-  font-weight: 100;
   background: #000;
 }
 .header-inner {
@@ -224,10 +238,26 @@ main {
 .menu a:hover {
   text-decoration: underline;
 }
+@media (max-width: 699px) {
+  .menu {
+    width: 100%;
+  }
+}
 .menu-opener {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  flex-direction: row;
   width: 6.2rem;
   order: 1;
+  flex-shrink: 0;
   position: relative;
+}
+@media (max-width: 699px) {
+  .menu-opener {
+    display: none;
+  }
 }
 .menu-title {
   position: absolute;
@@ -256,9 +286,18 @@ main {
   position: relative;
   width: 100%;
   padding-bottom: 100%;
+  cursor: pointer;
+  transition: transform 0.3s;
 }
-.menu-close-btn::after,
-.menu-close-btn ::before {
+.menu-close-btn-container {
+  display: flex;
+  width: 6.2rem;
+  transform: translateX(2rem);
+}
+.menu-close-btn:hover {
+  transform: scale(0.75);
+}
+.menu-close-btn::after, .menu-close-btn::before {
   content: "";
   display: block;
   position: absolute;
@@ -273,32 +312,62 @@ main {
   display: inline-block;
   background: #fff;
 }
+.menu-close-btn::before {
+  transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+}
+.menu-close-btn::after {
+  transform: translateX(-50%) translateY(-50%) rotate(45deg);
+}
 .menu-inner {
   padding: 2rem;
   height: 100%;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  flex-shrink: 1;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .menu-contents {
+  font-variation-settings: "wght" 300;
   flex-grow: 1;
 }
+@media (max-width: 699px) {
+  .menu-contents {
+    width: 100%;
+    font-size: 3.2rem;
+  }
+}
 .menu-site-title {
+  font-variation-settings: "wght" 350;
   font-family: "PPSerif", sans-serif;
   font-size: 2.8rem;
-  font-weight: 100;
   padding-top: 2.1rem;
   padding-bottom: 5.6rem;
 }
+@media (max-width: 699px) {
+  .menu-site-title {
+    width: 100%;
+    font-size: 3.2rem;
+  }
+}
 .menu-list {
-  font-weight: 100;
   margin-bottom: 4.2rem;
+}
+.menu-item {
+  line-height: 1.2;
 }
 .menu-item a {
   position: relative;
 }
 .menu-item a::before {
   display: inline-block;
+  width: 5.6rem;
+}
+@media (max-width: 699px) {
+  .menu-item a::before {
+    width: 6.5rem;
+  }
 }
 .menu-item:nth-child(1) a::before {
   content: "①";
@@ -321,6 +390,19 @@ main {
 .menu-external-list {
   font-size: 1.6rem;
 }
+.menu-external-item {
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+  gap: 0;
+  flex-direction: row;
+  line-height: 1.2;
+}
+.menu-external-item::before {
+  content: "→";
+  display: inline-block;
+  width: 3.2rem;
+}
 .menu-bottom {
   display: flex;
   justify-content: space-between;
@@ -339,5 +421,10 @@ main {
   transform: translateX(-50%) translateY(-50%);
   font-size: inherit;
   font-weight: inherit;
-  position: absolute;
+}
+@media (max-width: 699px) {
+  .title {
+    position: static;
+    transform: none;
+  }
 }/*# sourceMappingURL=style.css.map */
