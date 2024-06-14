@@ -164,6 +164,7 @@ button {
 body {
   font-variation-settings: "wght" 300;
   word-break: keep-all;
+  font-size: 1.6rem;
   font-family: "PPSans", sans-serif;
   word-break: keep-all;
   position: relative;
@@ -554,4 +555,71 @@ main {
   width: 100%;
   -o-object-fit: contain;
      object-fit: contain;
+}
+
+.introduce-inner {
+  padding-top: 25vh;
+}
+.introduce-desc {
+  font-variation-settings: "wght" 200;
+  font-size: 4rem;
+  width: 33.3vw;
+}
+.introduce-desc:nth-child(2) {
+  margin-left: 50%;
+}
+.introduce-info-img {
+  width: 100%;
+}
+.introduce-info-grid {
+  display: grid;
+  grid-template: "a b" "c c";
+}
+.introduce-info-item:first-child {
+  margin-right: 13.31vw;
+}
+.introduce-info-item:nth-child(2) {
+  display: grid;
+  grid-template: "a b" "c c";
+  padding-top: 17rem;
+}
+.introduce-info-btn-container {
+  white-space: nowrap;
+  grid-area: c;
+}
+.introduce-info-btn-container .btn {
+  border: 1px solid #fff;
+}
+.introduce-info-text {
+  padding-right: 10%;
+  font-size: 1.6rem;
+  line-height: 1.2;
+}
+@media (min-width: 1200px) {
+  .introduce-info-text {
+    padding-right: 25%;
+  }
+}
+@media (max-width: 699px) {
+  .introduce-info-text {
+    padding-right: 25%;
+  }
+}
+
+.spec-row {
+  display: flex;
+  justify-content: stretch;
+  align-items: flex-start;
+  gap: 0;
+  flex-direction: row;
+  font-size: 1.6rem;
+  padding: 0.8rem 0;
+  border-top: 1px solid #fff;
+  gap: 2rem;
+}
+.spec-cate {
+  flex: 1 0 0;
+}
+.spec-desc {
+  flex: 1 0 0;
 }/*# sourceMappingURL=style.css.map */

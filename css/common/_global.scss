@@ -53,6 +53,7 @@ button {
 body {
   @include util__font-weight(300);
   word-break: keep-all;
+  font-size: 1.6rem;
   font-family: $font__sans;
   word-break: keep-all;
   position: relative;
