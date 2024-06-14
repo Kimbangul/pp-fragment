@@ -1,6 +1,12 @@
 main {
   background: $color__black;
   color: $color__white;
+  padding-top: $size__header-height;
+  padding-left: $size__side-opener-width;
+
+  @include mb {
+    padding-left: 0;
+  }
 }
 
 // header
@@ -30,7 +36,7 @@ main {
 .menu {
   @include util__flex;
   position: fixed;
-  width: calc(37.5vw + 6.2rem);
+  width: calc(37.5vw + $size__side-opener-width);
   height: 100vh;
   z-index: 998;
   top: 0;
@@ -48,11 +54,11 @@ main {
   }
 
   @include pc-sm {
-    width: calc(50vw + 6.2rem);
+    width: calc(50vw + $size__side-opener-width);
     left: -50vw;
   }
   @include tb {
-    width: calc(50vw + 6.2rem);
+    width: calc(50vw + $size__side-opener-width);
     left: -50vw;
   }
   @include mb {
@@ -66,7 +72,7 @@ main {
 
   &-opener {
     @include util__flex(center, center);
-    width: 6.2rem;
+    width: $size__side-opener-width;
     order: 1;
     flex-shrink: 0;
     position: relative;
@@ -259,3 +265,58 @@ main {
   }
 }
 // // header
+// section
+.main {
+  &-text {
+    &-container {
+      @include util__absolute-center;
+      text-align: center;
+      z-index: 1;
+    }
+  }
+  &-title {
+    position: relative;
+    font-size: 10vw;
+    white-space: nowrap;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    &-roller {
+      display: inline-block;
+    }
+    &::after,
+    &::before {
+      top: 4vw;
+      position: absolute;
+      font-size: 2.4rem;
+    }
+    &::before {
+      content: '②⓪';
+      left: 15%;
+    }
+    &::after {
+      content: '②②';
+      right: 15%;
+    }
+  }
+  &-sub {
+    @include util__flex(space-between, center);
+    text-transform: uppercase;
+    font-size: 1.4rem;
+  }
+  &-bg {
+    &-item {
+      display: flex;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      img {
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+}
+// // section

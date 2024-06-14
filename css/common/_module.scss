@@ -48,6 +48,14 @@
     }
   }
 }
+/** 섹션 **/
+.sc {
+  &-inner {
+    min-height: calc(100vh - $size__header-height);
+    padding: 2rem;
+    position: relative;
+  }
+}
 
 /** 접근성 관련 **/
 .blind {
