@@ -301,24 +301,30 @@
       <!-- glyph set -->
       <section class="sc glyph">
         <h2 class="blind">Glyph set</h2>
-        <div class="sc-inner">
-          <div class="select-wrap">
-            <select name="glyph-selector" id="glyph-selector">
-              <option value="Sans thin">Sans Thin</option>
-              <option value="Sans thin">Sans Extra Light</option>
-            </select>
+        <div class="selector-wrap glyph-selector-wrap">
+          <button
+            class="selector"
+            name="glyph-selector"
+            id="glyph-selector"
+            tabindex="0"
+          >
+            Sans Thin
+          </button>
+          <ul class="selector-option">
+            <li class="selector-option-item">Sans Thin</li>
+            <li class="selector-option-item">Sans Extra light</li>
+          </ul>
+        </div>
+        <div class="glyph-grid">
+          <div class="glyph-cell">
+            <p class="glyph-text serif">
+              Pangram Pangram® Foundry offers you an elegant & retro
+              contemporary new font — Fragment
+            </p>
+            <ul class="glyph-list"></ul>
           </div>
-          <div class="glyph-grid">
-            <div class="glyph-cell">
-              <p>
-                Pangram Pangram® Foundry offers you an elegant & retro
-                contemporary new font — Fragment
-              </p>
-              <ul class="glyph-list"></ul>
-            </div>
-            <div class="glyph-cell">
-              <div class="glyph-word"></div>
-            </div>
+          <div class="glyph-cell">
+            <div class="glyph-word">F</div>
           </div>
         </div>
       </section>
@@ -329,67 +335,93 @@
         <div class="sc-inner">
           <div class="label">Font</div>
           <div class="sampler-grid">
-            <div class="sampler-btn-container">
-              <button class="btn">Sans</button>
-              <button class="btn">Glare</button>
-              <button class="btn">Serif</button>
-              <button class="btn">Text</button>
+            <div class="sampler-btn-container pc-only">
+              <button class="sampler-btn btn sampler-btn--active">Sans</button>
+              <button class="sampler-btn btn">Glare</button>
+              <button class="sampler-btn btn">Serif</button>
+              <button class="sampler-btn btn">Text</button>
             </div>
-            <div class="slider-wrap">
-              <div class="slider-info">
-                <label class="slider-label" for="size">Size</label>
-                <span class="slider-value">10pt</span>
-              </div>
-              <input
-                id="size"
-                name="size"
-                type="range"
-                min="1"
-                max="10"
-                value="5"
-              />
+            <div class="selector-wrap sampler-selector-wrap mb-only">
+              <button
+                class="selector sampler-selector"
+                name="sampler-selector"
+                id="sampler-selector"
+                tabindex="0"
+              >
+                Sans
+              </button>
+              <ul class="selector-option">
+                <li class="selector-option-item">Sans</li>
+                <li class="selector-option-item">Glare</li>
+                <li class="selector-option-item">Serif</li>
+                <li class="selector-option-item">Text</li>
+              </ul>
             </div>
-            <div class="slider-wrap">
-              <div class="slider-info">
-                <label class="slider-label" for="weight">Weight</label>
-                <span class="slider-value">382</span>
+            <div class="sampler-slider-container">
+              <div class="slider-wrap sampler-slider-wrap">
+                <div class="slider-info">
+                  <label class="label slider-label" for="size">Size</label>
+                  <span class="slider-value">10pt</span>
+                </div>
+                <input
+                  id="size"
+                  name="size"
+                  type="range"
+                  class="slider"
+                  min="1"
+                  max="10"
+                  value="5"
+                />
               </div>
-              <input
-                id="weight"
-                name="weight"
-                type="range"
-                min="1"
-                max="10"
-                value="5"
-              />
-            </div>
-            <div class="slider-wrap">
-              <div class="slider-info">
-                <label class="slider-label" for="spacing">Letter Spacing</label>
-                <span class="slider-value">10%</span>
+              <div class="slider-wrap sampler-slider-wrap">
+                <div class="slider-info">
+                  <label class="label slider-label" for="weight">Weight</label>
+                  <span class="slider-value">382</span>
+                </div>
+                <input
+                  id="weight"
+                  name="weight"
+                  type="range"
+                  class="slider"
+                  min="1"
+                  max="10"
+                  value="5"
+                />
               </div>
-              <input
-                id="spacing"
-                name="spacing"
-                type="range"
-                min="1"
-                max="10"
-                value="5"
-              />
-            </div>
-            <div class="slider-wrap">
-              <div class="slider-info">
-                <label class="slider-label" for="height">Line Height</label>
-                <span class="slider-value">13pt</span>
+              <div class="slider-wrap sampler-slider-wrap">
+                <div class="slider-info">
+                  <label class="label slider-label" for="spacing"
+                    >Letter Spacing</label
+                  >
+                  <span class="slider-value">10%</span>
+                </div>
+                <input
+                  id="spacing"
+                  name="spacing"
+                  type="range"
+                  class="slider"
+                  min="1"
+                  max="10"
+                  value="5"
+                />
               </div>
-              <input
-                id="height"
-                name="height"
-                type="range"
-                min="1"
-                max="10"
-                value="5"
-              />
+              <div class="slider-wrap sampler-slider-wrap">
+                <div class="slider-info">
+                  <label class="label slider-label" for="height"
+                    >Line Height</label
+                  >
+                  <span class="slider-value">13pt</span>
+                </div>
+                <input
+                  id="height"
+                  name="height"
+                  type="range"
+                  class="slider"
+                  min="1"
+                  max="10"
+                  value="5"
+                />
+              </div>
             </div>
           </div>
           <p class="sampler-result">Sphinx of Black Quartz, Judge My Vow</p>

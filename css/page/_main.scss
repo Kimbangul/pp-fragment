@@ -563,4 +563,140 @@ main {
     }
   }
 }
+
+.glyph {
+  margin: 10vh 0;
+  &-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    @include mb {
+      display: block;
+    }
+  }
+
+  &-selector {
+    &-wrap {
+      position: sticky;
+      z-index: 2;
+      top: calc($size__header-height);
+      width: 50%;
+      border: 1px solid $color__white;
+
+      @include mb {
+        width: 100%;
+      }
+    }
+  }
+
+  &-text {
+    @include util__font-weight(200);
+    font-size: $size__font-size-h2;
+    width: 37.5vw;
+    padding: 2em 0;
+
+    @include mb {
+      display: none;
+    }
+  }
+  &-cell {
+    padding: 2rem;
+    border: 1px solid $color__white;
+    &:nth-child(1) {
+      border-top: none;
+      border-left: none;
+      border-right: none;
+    }
+    &:nth-child(2) {
+      @include mb {
+        display: none;
+      }
+    }
+  }
+
+  &-list {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+
+    @include mb {
+      grid-template-columns: repeat(13, 1fr);
+    }
+  }
+  &-item {
+    padding-bottom: 100%;
+    position: relative;
+    &-text {
+      @include util__absolute-center;
+      font-size: 2.4rem;
+    }
+  }
+  &-word {
+    @include util__flex(center, center);
+    font-size: 35vw;
+    position: sticky;
+    top: 0;
+    line-height: 1;
+    height: 100vh;
+    padding-top: $size__header-height;
+  }
+}
+
+.sampler {
+  &-btn {
+    border: 1px solid $color__white;
+    opacity: 0.6;
+    &-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 0 2rem;
+    }
+    &--active {
+      opacity: 1;
+    }
+  }
+  &-slider {
+    &-container {
+      margin-top: 3.2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 0 2rem;
+
+      @include mb {
+        display: block;
+      }
+    }
+
+    &-wrap {
+      @include mb {
+        margin-top: 2.8rem;
+      }
+
+      &:first-child {
+        @include mb {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+
+  &-selector {
+    padding: 1.2rem 0;
+    &:focus {
+      background: inherit;
+      color: inherit;
+    }
+    &-wrap {
+      border-bottom: 1px solid $color__white;
+      &::after {
+        right: 0;
+      }
+    }
+  }
+
+  &-result {
+    padding: 10vh 0;
+    text-align: center;
+  }
+}
+
 // // section
