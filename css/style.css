@@ -1015,12 +1015,7 @@ main {
 }
 .glyph-list {
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
-}
-@media (max-width: 699px) {
-  .glyph-list {
-    grid-template-columns: repeat(13, 1fr);
-  }
+  grid-template-columns: repeat(auto-fit, minmax(4.8rem, 1fr));
 }
 .glyph-item {
   padding-bottom: 100%;
