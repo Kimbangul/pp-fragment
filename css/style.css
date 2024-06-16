@@ -54,6 +54,12 @@
   }
 }
 
+@media (min-width: 1000px) {
+  .tb-only {
+    display: none !important;
+  }
+}
+
 @media (min-width: 700px) {
   .mb-only {
     display: none !important;
@@ -89,6 +95,11 @@
   min-height: calc(100vh - 6.587rem);
   padding: 2rem;
   position: relative;
+}
+.sc-title {
+  font-variation-settings: "wght" 200;
+  font-family: "PPGlare", sans-serif;
+  font-size: clamp(18px, 2.3333333333vw, 42px);
 }
 
 /** 접근성 관련 **/
@@ -279,6 +290,11 @@ html {
   html {
     font-size: calc(62.5% + 11.7%);
   }
+}
+
+html,
+body {
+  background: #000;
 }
 
 * {
@@ -1330,4 +1346,100 @@ main {
      object-fit: contain;
   -o-object-position: center;
      object-position: center;
+}
+
+.credits-list {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 2rem;
+  margin-top: 10vh;
+}
+@media (min-width: 700px) and (max-width: 999px) {
+  .credits-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 699px) {
+  .credits-list {
+    grid-template-columns: 1fr;
+    gap: 5vh;
+  }
+}
+.credits-inner {
+  min-height: auto;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+}
+.credits-item {
+  font-variation-settings: "wght" 400;
+}
+.credits-item:first-child .credits-contents {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+}
+@media (min-width: 700px) and (max-width: 999px) {
+  .credits-item:first-child .credits-contents {
+    display: block;
+  }
+}
+@media (max-width: 699px) {
+  .credits-item:first-child .credits-contents {
+    display: block;
+  }
+}
+.credits-desc {
+  padding-right: 15%;
+}
+@media (min-width: 700px) and (max-width: 999px) {
+  .credits-desc {
+    margin-top: 2.4rem;
+    padding-right: 0;
+  }
+}
+@media (max-width: 699px) {
+  .credits-desc {
+    margin-top: 2.4rem;
+    padding-right: 10vw;
+  }
+}
+.credits-title {
+  font-size: 1.6rem;
+  padding-bottom: 1.6rem;
+  margin-bottom: 1.6rem;
+  border-bottom: 1px solid #fff;
+}
+
+.footer {
+  background: #000;
+  color: #fff;
+  padding-left: 6.2rem;
+  overflow: hidden;
+}
+@media (max-width: 699px) {
+  .footer {
+    padding-left: 0;
+  }
+}
+.footer-inner {
+  position: relative;
+}
+.footer-bg {
+  width: 100%;
+  height: 1.6em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  flex-direction: row;
+  font-size: 66vw;
+  text-align: center;
+}
+.footer-copy {
+  font-variation-settings: "wght" 400;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translateX(-50%) translateY(-50%);
 }/*# sourceMappingURL=style.css.map */

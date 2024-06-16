@@ -17,6 +17,11 @@
     display: none !important;
   }
 }
+.tb-only {
+  @media (min-width: 1000px) {
+    display: none !important;
+  }
+}
 .mb-only {
   @media (min-width: 700px) {
     display: none !important;
@@ -55,6 +60,11 @@
     min-height: calc(100vh - $size__header-height);
     padding: 2rem;
     position: relative;
+  }
+  &-title {
+    @include util__font-weight(200);
+    font-family: $font__glare;
+    font-size: $size__font-size-h3;
   }
 }
 
