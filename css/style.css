@@ -1080,4 +1080,104 @@ main {
 .sampler-result {
   padding: 10vh 0;
   text-align: center;
+}
+
+.use {
+  position: relative;
+  height: 200vh;
+}
+.use-inner {
+  height: 100%;
+}
+.use-btn {
+  background: #000;
+  color: #fff;
+  margin: auto auto 3.2935rem auto;
+}
+
+.slide-container {
+  display: flex;
+  width: 100%;
+  height: calc(100vh - 6.587rem - 4rem);
+  position: sticky;
+  top: 8.587rem;
+}
+.slide-bg-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+}
+.slide-bg-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 48px;
+  background-size: cover;
+  background-position: center;
+}
+.slide-bg-item:nth-child(1) {
+  background: url("/assets/img/posters/bg-1.png");
+}
+.slide-bg-item:nth-child(2) {
+  background: url("/assets/img/posters/bg-2.png");
+}
+.slide-bg-item:nth-child(3) {
+  background: url("/assets/img/posters/bg-3.png");
+}
+.slide-bg-item:nth-child(4) {
+  background: url("/assets/img/posters/bg-4.png");
+}
+.slide-bg-item:nth-child(5) {
+  background: url("/assets/img/posters/bg-5.png");
+}
+.slide-bg-item:nth-child(6) {
+  background: url("/assets/img/posters/bg-6.png");
+}
+.slide-bg-item:nth-child(7) {
+  background: url("/assets/img/posters/bg-7.png");
+}
+.slide-bg-item:nth-child(8) {
+  background: url("/assets/img/posters/bg-8.png");
+}
+.slide-card-item {
+  width: 30vw;
+  height: 30vw;
+  position: absolute;
+  min-width: 220px;
+  transform: translateX(-50%) translateY(-50%);
+  top: 50%;
+  left: 50%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.slide-card-item:nth-child(1) {
+  background-image: url("/assets/img/posters/poster-1.png");
+}
+.slide-card-item:nth-child(2) {
+  background-image: url("/assets/img/posters/poster-2.png");
+}
+.slide-card-item:nth-child(3) {
+  background-image: url("/assets/img/posters/poster-3.png");
+}
+.slide-card-item:nth-child(4) {
+  background-image: url("/assets/img/posters/poster-4.png");
+}
+.slide-card-item:nth-child(5) {
+  background-image: url("/assets/img/posters/poster-5.png");
+}
+.slide-card-item:nth-child(6) {
+  background-image: url("/assets/img/posters/poster-6.png");
+}
+.slide-card-item:nth-child(7) {
+  background-image: url("/assets/img/posters/poster-7.png");
+}
+@media (max-width: 699px) {
+  .slide-card-item {
+    width: 80vw;
+    height: 80vw;
+  }
 }/*# sourceMappingURL=style.css.map */
