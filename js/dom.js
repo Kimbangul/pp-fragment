@@ -31,7 +31,63 @@ const setGlyphItem = () => {
   insertDom('.glyph-list', glyphNode);
 };
 
+// FUNCTION language 추가하는 함수
+const setLanguageList = () => {
+  const languages = [
+    [
+      'Afrikaans',
+      'Basque',
+      'Breton',
+      'Catalan',
+      'Croatian',
+      'Czech',
+      'Danish',
+      'Dutch',
+      'English',
+    ],
+    [
+      'Estonian',
+      'Finnish',
+      'French',
+      'Gaelic',
+      'German',
+      'Hungarian',
+      'Icelandic',
+      'Indonesian',
+      'Irish',
+    ],
+    [
+      'Italian',
+      'Latvian',
+      'Lithuanian',
+      'Norwegian',
+      'Polish',
+      'Portuguese',
+      'Romanian',
+      'Saami',
+      'Serbian',
+    ],
+    [
+      'Slovak',
+      'Slovenian',
+      'Spanish',
+      'Swahili',
+      'Swedish',
+      'Turkish',
+      '(And more)',
+    ],
+  ];
+  const languageNode = languages.map((el, idx) => {
+    return `<ul class="language-list">${el
+      .map((lang) => `<li class="language-item">${lang}</li>`)
+      .join('')}</ul>`;
+  });
+
+  insertDom('.language', languageNode);
+};
+
 (function () {
   setMainBg();
   setGlyphItem();
+  setLanguageList();
 })();
