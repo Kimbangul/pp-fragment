@@ -1,12 +1,21 @@
 // PARAM 랜덤 텍스트 아이템 타이머
 let timer = null;
+let slideTimer = null;
 
 // PARAM sampler 관련 변수
-
 const samplerResult = document.querySelector('.sampler-result'); // 결과
 const samplerValue = document.querySelectorAll('[data-category]');
-// PARAM 이벤트 리스너 부착 대상
 
+// PARAM 이미지 슬라이드 관련 변수
+const slideBg = document.querySelectorAll('.slide-bg-item');
+const slideCard = document.querySelectorAll('.slide-card-item');
+let slideIdx = {
+  bg: 0,
+  card: 0,
+};
+const slideBtn = document.querySelector('.use-btn');
+
+// PARAM 이벤트 리스너 부착 대상
 const randomizeBtn = document.querySelector('.sans-to-serif-btn');
 const glyphItem = document.querySelectorAll('.glyph-item');
 const selector = document.querySelectorAll('.selector');
@@ -173,6 +182,27 @@ const setSamplerHeight = () => {
   samplerResult.style.height = `${samplerResult.scrollHeight}px`;
 };
 
+// FUNCTION  fragments in use slide 부분
+const setSlideImg = () => {
+  slideCard[slideIdx.card].classList.remove('active');
+  slideBg[slideIdx.bg].classList.remove('active');
+  console.log(slideIdx);
+
+  slideIdx = {
+    bg: slideIdx.bg < slideBg.length - 1 ? slideIdx.bg + 1 : 0,
+    card: slideIdx.card < slideCard.length - 1 ? slideIdx.card + 1 : 0,
+  };
+  console.log(slideIdx);
+
+  slideCard[slideIdx.card].classList.add('active');
+  slideBg[slideIdx.bg].classList.add('active');
+};
+const onInitSlideImg = () => {
+  clearInterval(slideTimer);
+  setSlideImg();
+  slideTimer = setInterval(setSlideImg, 5000);
+};
+
 (function () {
   const menuOpener = document.querySelector('.menu-opener');
   const mbMenuBtn = document.querySelector('.menu-close-btn-container');
@@ -199,6 +229,8 @@ const setSamplerHeight = () => {
 
   onInitRandomizeText();
   setSamplerStyle();
+  onInitSlideImg();
 
   randomizeBtn.addEventListener('click', onInitRandomizeText);
+  slideBtn.addEventListener('click', onInitSlideImg);
 })();
