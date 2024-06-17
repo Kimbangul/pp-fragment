@@ -190,11 +190,6 @@
   font-size: 1.4rem;
   line-height: normal;
 
-  &:focus {
-    outline: none;
-    background: $color__white;
-    color: $color__black;
-  }
   &-wrap {
     position: relative;
     &::after {
@@ -205,7 +200,21 @@
       right: 2rem;
       font-size: 1.6rem;
       transform: translateY(-50%);
+      transform-origin: center;
+      transition: color 0.3s, transform 0.3s;
       pointer-events: none;
+    }
+
+    &--focus {
+      .selector {
+        outline: none;
+        background: $color__white;
+        color: $color__black;
+      }
+      &::after {
+        transform: translateY(-50%) rotate(180deg);
+        color: $color__black;
+      }
     }
   }
   &-option {
@@ -218,15 +227,21 @@
     background: $color__black;
     color: $color__white;
     max-height: 50vh;
+    overflow-y: auto;
     &-item {
       border: 1px solid $color__white;
-      padding: 1.2rem 2rem;
       border-top: none;
       font-size: 1.4rem;
       line-height: normal;
       &:first-child {
         border-top: 1px solid $color__white;
       }
+    }
+    &-btn {
+      width: 100%;
+      padding: 1.2rem 2rem;
+      cursor: pointer;
+      text-align: left;
     }
   }
 }

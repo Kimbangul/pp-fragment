@@ -98,9 +98,50 @@ const setBtnTextSplit = () => {
   });
 };
 
+// FUNCTION selector에 option 추가
+const setSelectorOption = () => {
+  const glyphOption = [
+    { text: 'Sans Thin', fontFamily: 'sans', fontWeight: 100 },
+    { text: 'Sans Extra Light', fontFamily: 'sans', fontWeight: 200 },
+    { text: 'Sans Light', fontFamily: 'sans', fontWeight: 300 },
+    { text: 'Sans Regular', fontFamily: 'sans', fontWeight: 400 },
+    { text: 'Sans Medium', fontFamily: 'sans', fontWeight: 500 },
+    { text: 'Sans Semi Bold', fontFamily: 'sans', fontWeight: 600 },
+    { text: 'Sans Bold', fontFamily: 'sans', fontWeight: 700 },
+    { text: 'Sans Extra Bold', fontFamily: 'sans', fontWeight: 800 },
+    { text: 'Glare Thin', fontFamily: 'glare', fontWeight: 100 },
+    { text: 'Glare Extra Light', fontFamily: 'glare', fontWeight: 200 },
+    { text: 'Glare Light', fontFamily: 'glare', fontWeight: 300 },
+    { text: 'Glare Regular', fontFamily: 'glare', fontWeight: 400 },
+    { text: 'Glare Medium', fontFamily: 'glare', fontWeight: 500 },
+    { text: 'Glare Semi Bold', fontFamily: 'glare', fontWeight: 600 },
+    { text: 'Glare Bold', fontFamily: 'glare', fontWeight: 700 },
+    { text: 'Glare Extra Bold', fontFamily: 'glare', fontWeight: 800 },
+    { text: 'Serif Thin', fontFamily: 'serif', fontWeight: 100 },
+    { text: 'Serif Extra Light', fontFamily: 'serif', fontWeight: 200 },
+    { text: 'Serif Light', fontFamily: 'serif', fontWeight: 300 },
+    { text: 'Serif Regular', fontFamily: 'serif', fontWeight: 400 },
+    { text: 'Serif Medium', fontFamily: 'serif', fontWeight: 500 },
+    { text: 'Serif Semi Bold', fontFamily: 'serif', fontWeight: 600 },
+    { text: 'Serif Bold', fontFamily: 'serif', fontWeight: 700 },
+    { text: 'Serif Extra Bold', fontFamily: 'serif', fontWeight: 800 },
+    { text: 'Text Light', fontFamily: 'text', fontWeight: 300 },
+    { text: 'Text Regular', fontFamily: 'text', fontWeight: 400 },
+    { text: 'Text Medium', fontFamily: 'text', fontWeight: 500 },
+    { text: 'Text Semi Bold', fontFamily: 'text', fontWeight: 600 },
+  ];
+  const glyphNode = glyphOption.map(
+    (el) =>
+      `<li class="selector-option-item"><button class="selector-option-btn" data-weight="${el.fontWeight}" data-family="${el.fontFamily}">${el.text}</button></li>`
+  );
+
+  insertDom('.glyph .selector-option', glyphNode);
+};
+
 (function () {
   setMainBg();
   setGlyphItem();
   setLanguageList();
   setBtnTextSplit();
+  setSelectorOption();
 })();

@@ -4,6 +4,7 @@ let timer = null;
 // PARAM 이벤트 리스너 부착 대상
 const randomizeBtn = document.querySelector('.sans-to-serif-btn');
 const glyphItem = document.querySelectorAll('.glyph-item');
+const selector = document.querySelectorAll('.selector');
 
 // FUNCTION header 메뉴 버튼 클릭 시 수행
 const onClickMenuBtn = () => {
@@ -79,7 +80,7 @@ const onInitRandomizeText = () => {
   timer = setInterval(onRandomizeText, 5000);
 };
 
-// FUNCTION
+// FUNCTION glyph item hover시 실행
 const onHoverGlyphItem = (e) => {
   const word = document.querySelector('.glyph-word');
   glyphItem.forEach((el) => {
@@ -87,6 +88,18 @@ const onHoverGlyphItem = (e) => {
   });
   e.currentTarget.classList.add('glyph-item--active');
   word.innerText = e.currentTarget.innerText;
+};
+
+// FUNCTION select 클릭 시 실행
+const onClickSelector = (e) => {
+  const wrap = e.currentTarget.parentElement;
+  wrap.classList.toggle('selector-wrap--focus');
+  const option = e.currentTarget.nextElementSibling;
+  if (option.style.display === 'block') {
+    option.style.display = 'none';
+  } else {
+    option.style.display = 'block';
+  }
 };
 
 (function () {
@@ -97,6 +110,9 @@ const onHoverGlyphItem = (e) => {
   window.addEventListener('click', onClickBody);
   glyphItem.forEach((el) => {
     el.addEventListener('mouseenter', onHoverGlyphItem);
+  });
+  selector.forEach((el) => {
+    el.addEventListener('click', onClickSelector);
   });
 
   onInitRandomizeText();
