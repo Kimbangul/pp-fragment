@@ -213,6 +213,7 @@
       }
       .selector-option {
         display: block;
+        z-index: 1;
       }
       &::after {
         transform: translateY(-50%) rotate(180deg);

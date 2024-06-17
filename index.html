@@ -328,16 +328,19 @@
           <div class="label">Font</div>
           <div class="sampler-grid">
             <div class="sampler-btn-container pc-only">
-              <button class="sampler-btn btn sampler-btn--active">
+              <button
+                class="sampler-btn btn sampler-btn--active"
+                data-family="Sans"
+              >
                 <span class="btn-slide">Sans</span>
               </button>
-              <button class="sampler-btn btn">
+              <button class="sampler-btn btn" data-family="Glare">
                 <span class="btn-slide">Glare</span>
               </button>
-              <button class="sampler-btn btn">
+              <button class="sampler-btn btn" data-family="Serif">
                 <span class="btn-slide">Serif</span>
               </button>
-              <button class="sampler-btn btn">
+              <button class="sampler-btn btn" data-family="Text">
                 <span class="btn-slide">Text</span>
               </button>
             </div>
@@ -351,10 +354,26 @@
                 Sans
               </button>
               <ul class="selector-option">
-                <li class="selector-option-item">Sans</li>
-                <li class="selector-option-item">Glare</li>
-                <li class="selector-option-item">Serif</li>
-                <li class="selector-option-item">Text</li>
+                <li class="selector-option-item">
+                  <button class="selector-option-btn" data-family="Sans">
+                    Sans
+                  </button>
+                </li>
+                <li class="selector-option-item">
+                  <button class="selector-option-btn" data-family="Glare">
+                    Glare
+                  </button>
+                </li>
+                <li class="selector-option-item">
+                  <button class="selector-option-btn" data-family="Serif">
+                    Serif
+                  </button>
+                </li>
+                <li class="selector-option-item">
+                  <button class="selector-option-btn" data-family="Text">
+                    Text
+                  </button>
+                </li>
               </ul>
             </div>
             <div class="sampler-slider-container">

@@ -351,6 +351,7 @@
 }
 .selector-wrap--focus .selector-option {
   display: block;
+  z-index: 1;
 }
 .selector-wrap--focus::after {
   transform: translateY(-50%) rotate(180deg);
@@ -1219,15 +1220,18 @@ main {
 .sampler-selector {
   padding: 1.2rem 0;
 }
-.sampler-selector:focus {
-  background: inherit;
-  color: inherit;
-}
 .sampler-selector-wrap {
   border-bottom: 1px solid #fff;
 }
 .sampler-selector-wrap::after {
   right: 0;
+}
+.sampler .selector-wrap--focus .selector {
+  background: #000;
+  color: #fff;
+}
+.sampler .selector-wrap--focus::after {
+  color: #fff;
 }
 .sampler-result {
   padding: 10vh 0;

@@ -7,6 +7,10 @@ const glyphItem = document.querySelectorAll('.glyph-item');
 const selector = document.querySelectorAll('.selector');
 const glyphOption = document.querySelectorAll('.glyph .selector-option-btn');
 const menuItem = document.querySelectorAll('.menu-item');
+const samplerOption = document.querySelectorAll(
+  '.sampler .sampler-btn, .sampler .selector-option-btn'
+);
+console.log(samplerOption);
 
 // FUNCTION header 메뉴 버튼 클릭 시 수행
 const onClickMenuBtn = () => {
@@ -118,6 +122,27 @@ const onClickGlyphOption = (e) => {
   selector.innerText = data.text;
 };
 
+// FUNCTION font sampler selector 클릭 시 폰트 변경
+const onClickSamplerOption = (e) => {
+  const sampler = document.querySelector('.sampler');
+  const data = e.currentTarget.dataset.family;
+  const selector = document.querySelector('.sampler-selector');
+  const tab = document.querySelectorAll('.sampler-btn');
+  const result = document.querySelector('.sampler-result');
+
+  tab.forEach((el) => el.classList.remove('sampler-btn--active'));
+  sampler
+    .querySelector(`.sampler-btn[data-family='${data}']`)
+    .classList.add('sampler-btn--active');
+
+  sampler
+    .querySelector('.selector-wrap')
+    .classList.remove('selector-wrap--focus');
+
+  selector.innerText = data;
+  result.style.fontFamily = `'PP${data}', sans-serif`;
+};
+
 (function () {
   const menuOpener = document.querySelector('.menu-opener');
   const mbMenuBtn = document.querySelector('.menu-close-btn-container');
@@ -134,6 +159,9 @@ const onClickGlyphOption = (e) => {
   });
   glyphOption.forEach((el) => {
     el.addEventListener('click', onClickGlyphOption);
+  });
+  samplerOption.forEach((el) => {
+    el.addEventListener('click', onClickSamplerOption);
   });
 
   onInitRandomizeText();

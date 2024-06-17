@@ -689,10 +689,7 @@ main {
 
   &-selector {
     padding: 1.2rem 0;
-    &:focus {
-      background: inherit;
-      color: inherit;
-    }
+
     &-wrap {
       border-bottom: 1px solid $color__white;
       &::after {
@@ -701,6 +698,15 @@ main {
     }
   }
 
+  .selector-wrap--focus {
+    .selector {
+      background: $color__black;
+      color: $color__white;
+    }
+    &::after {
+      color: $color__white;
+    }
+  }
   &-result {
     padding: 10vh 0;
     text-align: center;
