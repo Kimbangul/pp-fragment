@@ -6,6 +6,7 @@ const randomizeBtn = document.querySelector('.sans-to-serif-btn');
 const glyphItem = document.querySelectorAll('.glyph-item');
 const selector = document.querySelectorAll('.selector');
 const glyphOption = document.querySelectorAll('.glyph .selector-option-btn');
+const menuItem = document.querySelectorAll('.menu-item');
 
 // FUNCTION header 메뉴 버튼 클릭 시 수행
 const onClickMenuBtn = () => {
@@ -122,6 +123,8 @@ const onClickGlyphOption = (e) => {
   const mbMenuBtn = document.querySelector('.menu-close-btn-container');
   mbMenuBtn.addEventListener('click', onClickMenuBtn);
   menuOpener.addEventListener('click', onClickMenuBtn);
+  menuItem.forEach((el) => el.addEventListener('click', onClickMenuBtn));
+
   window.addEventListener('click', onClickBody);
   glyphItem.forEach((el) => {
     el.addEventListener('mouseenter', onHoverGlyphItem);
