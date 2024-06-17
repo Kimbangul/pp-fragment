@@ -1263,6 +1263,7 @@ main {
   background: #000;
   color: #fff;
   margin: auto auto 3.2935rem auto;
+  z-index: 3;
 }
 
 .slide {
@@ -1272,6 +1273,7 @@ main {
 .slide-container {
   display: flex;
   width: 100%;
+  overflow: hidden;
   height: calc(100vh - 6.587rem - 4rem);
   position: sticky;
   top: 8.587rem;
@@ -1291,6 +1293,8 @@ main {
   border-radius: 48px;
   background-size: cover;
   background-position: center;
+  transform: translateY(100vh) scale(0.5);
+  z-index: 1;
 }
 .slide-bg-item:nth-child(1) {
   background: url("/assets/img/posters/bg-1.png");
@@ -1316,17 +1320,29 @@ main {
 .slide-bg-item:nth-child(8) {
   background: url("/assets/img/posters/bg-8.png");
 }
+.slide-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  flex-direction: row;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
 .slide-card-item {
   width: 30vw;
   height: 30vw;
   position: absolute;
   min-width: 220px;
-  transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(100vh) scale(0.5);
   top: 50%;
   left: 50%;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  z-index: 2;
 }
 .slide-card-item:nth-child(1) {
   background-image: url("/assets/img/posters/poster-1.png");

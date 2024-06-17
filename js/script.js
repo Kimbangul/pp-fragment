@@ -165,7 +165,6 @@ const setSamplerStyle = debounce(() => {
     height: `${Number(samplerRange.height * samplerRange.size).toFixed(0)}px`,
   };
 
-  console.log(samplerRange);
   samplerResult.style.fontSize = resultValue.size;
   samplerResult.style.fontVariationSettings = `"wght" ${samplerRange.weight}`;
   samplerResult.style.letterSpacing = `${samplerRange.spacing}em`;
@@ -186,17 +185,56 @@ const setSamplerHeight = () => {
 const setSlideImg = () => {
   slideCard[slideIdx.card].classList.remove('active');
   slideBg[slideIdx.bg].classList.remove('active');
-  console.log(slideIdx);
+  const innerHeight = () => window.innerHeight;
+
+  gsap.to(slideCard[slideIdx.card], {
+    y: () => `-${window.innerHeight * 1.5}px`,
+    duration: 0.7,
+    repeatRefresh: true,
+  });
+  gsap.to(slideBg[slideIdx.bg], {
+    y: () => `-${window.innerHeight}px`,
+    scale: 0.65,
+    duration: 0.65,
+    repeatRefresh: true,
+  });
+
+  const nextBg = slideIdx.bg + 1;
+  const nextCard = slideIdx.card + 1;
 
   slideIdx = {
-    bg: slideIdx.bg < slideBg.length - 1 ? slideIdx.bg + 1 : 0,
-    card: slideIdx.card < slideCard.length - 1 ? slideIdx.card + 1 : 0,
+    bg: slideIdx.bg < slideBg.length - 1 ? nextBg : 0,
+    card: slideIdx.card < slideCard.length - 1 ? nextCard : 0,
   };
-  console.log(slideIdx);
+
+  gsap.set(slideCard[slideIdx.card], {
+    y: () => `${window.innerHeight}px`,
+    scale: 0.7,
+    repeatRefresh: true,
+  });
+  gsap.set(slideBg[slideIdx.bg], {
+    y: () => `${window.innerHeight}px`,
+    scale: 0.65,
+    repeatRefresh: true,
+  });
 
   slideCard[slideIdx.card].classList.add('active');
   slideBg[slideIdx.bg].classList.add('active');
+
+  gsap.to(slideCard[slideIdx.card], {
+    y: () => `-50%`,
+    scale: 1,
+    duration: 0.7,
+    repeatRefresh: true,
+  });
+  gsap.to(slideBg[slideIdx.bg], {
+    y: 0,
+    scale: 1,
+    duration: 0.65,
+    repeatRefresh: true,
+  });
 };
+
 const onInitSlideImg = () => {
   clearInterval(slideTimer);
   setSlideImg();
