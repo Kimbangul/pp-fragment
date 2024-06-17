@@ -645,6 +645,10 @@ main {
 }
 
 .sampler {
+  &-inner {
+    display: flex;
+    flex-direction: column;
+  }
   &-btn {
     border: 1px solid $color__white;
     opacity: 0.6;
@@ -716,6 +720,7 @@ main {
     border: none;
     background: none;
     font-family: inherit;
+    flex-grow: 1;
 
     &:focus {
       outline: none;

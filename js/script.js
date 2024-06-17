@@ -143,24 +143,35 @@ const onClickSamplerOption = (e) => {
 // FUNCTION sampler 결과 부분 데이터 바인딩
 const setSamplerStyle = debounce(() => {
   const samplerRange = {
+    size: document.querySelector('#size').value,
+    weight: document.querySelector('#weight').value,
+    spacing: parseInt(document.querySelector('#spacing').value) * 0.01,
+    height: document.querySelector('#height').value / 10,
+  };
+
+  const resultValue = {
     size: `${document.querySelector('#size').value}px`,
     weight: `${document.querySelector('#weight').value}`,
     spacing: `${document.querySelector('#spacing').value}%`,
-    height: `${document.querySelector('#height').value / 10}`,
+    height: `${Number(samplerRange.height * samplerRange.size).toFixed(0)}px`,
   };
+
   console.log(samplerRange);
-  samplerResult.style.fontSize = samplerRange.size;
+  samplerResult.style.fontSize = resultValue.size;
   samplerResult.style.fontVariationSettings = `"wght" ${samplerRange.weight}`;
-  samplerResult.style.letterSpacing = samplerRange.spacing;
-  samplerResult.style.lineHeight = samplerRange.height;
+  samplerResult.style.letterSpacing = `${samplerRange.spacing}em`;
+  samplerResult.style.lineHeight = resultValue.height;
 
   samplerValue.forEach((el) => {
     const category = el.dataset.category;
-    el.innerText = samplerRange[category];
+    el.innerText = resultValue[category];
   });
-}, 300);
-
-const onChangeRange = () => {};
+  setSamplerHeight();
+}, 100);
+const setSamplerHeight = () => {
+  samplerResult.style.height = 'auto';
+  samplerResult.style.height = `${samplerResult.scrollHeight}px`;
+};
 
 (function () {
   const menuOpener = document.querySelector('.menu-opener');
