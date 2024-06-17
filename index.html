@@ -8,6 +8,7 @@
     <script src="/js/lib/gsap.min.js"></script>
     <script src="/js/lib/scrolltrigger.min.js"></script>
     <script src="/js/lib/splittype.js"></script>
+    <script src="/js/lib/debounce.min.js"></script>
     <script src="/js/dom.js" defer></script>
     <script src="/js/script.js" defer></script>
   </head>
@@ -380,7 +381,7 @@
               <div class="slider-wrap sampler-slider-wrap">
                 <div class="slider-info">
                   <label class="label slider-label" for="size">Size</label>
-                  <span class="slider-value">10pt</span>
+                  <span class="slider-value" data-category="size">10pt</span>
                 </div>
                 <input
                   id="size"
@@ -388,23 +389,21 @@
                   type="range"
                   class="slider"
                   min="1"
-                  max="10"
-                  value="5"
+                  max="190"
                 />
               </div>
               <div class="slider-wrap sampler-slider-wrap">
                 <div class="slider-info">
                   <label class="label slider-label" for="weight">Weight</label>
-                  <span class="slider-value">382</span>
+                  <span class="slider-value" data-category="weight">382</span>
                 </div>
                 <input
                   id="weight"
                   name="weight"
                   type="range"
                   class="slider"
-                  min="1"
-                  max="10"
-                  value="5"
+                  min="100"
+                  max="900"
                 />
               </div>
               <div class="slider-wrap sampler-slider-wrap">
@@ -412,16 +411,15 @@
                   <label class="label slider-label" for="spacing"
                     >Letter Spacing</label
                   >
-                  <span class="slider-value">10%</span>
+                  <span class="slider-value" data-category="spacing">10%</span>
                 </div>
                 <input
                   id="spacing"
                   name="spacing"
                   type="range"
                   class="slider"
-                  min="1"
+                  min="-10"
                   max="10"
-                  value="5"
                 />
               </div>
               <div class="slider-wrap sampler-slider-wrap">
@@ -429,16 +427,15 @@
                   <label class="label slider-label" for="height"
                     >Line Height</label
                   >
-                  <span class="slider-value">13pt</span>
+                  <span class="slider-value" data-category="height">13pt</span>
                 </div>
                 <input
                   id="height"
                   name="height"
                   type="range"
                   class="slider"
-                  min="1"
-                  max="10"
-                  value="5"
+                  min="10"
+                  max="20"
                 />
               </div>
             </div>

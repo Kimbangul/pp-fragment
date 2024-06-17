@@ -1,7 +1,12 @@
 // PARAM 랜덤 텍스트 아이템 타이머
 let timer = null;
 
+// PARAM sampler 관련 변수
+
+const samplerResult = document.querySelector('.sampler-result'); // 결과
+const samplerValue = document.querySelectorAll('[data-category]');
 // PARAM 이벤트 리스너 부착 대상
+
 const randomizeBtn = document.querySelector('.sans-to-serif-btn');
 const glyphItem = document.querySelectorAll('.glyph-item');
 const selector = document.querySelectorAll('.selector');
@@ -10,7 +15,7 @@ const menuItem = document.querySelectorAll('.menu-item');
 const samplerOption = document.querySelectorAll(
   '.sampler .sampler-btn, .sampler .selector-option-btn'
 );
-console.log(samplerOption);
+const samplerRange = document.querySelectorAll('.sampler .slider');
 
 // FUNCTION header 메뉴 버튼 클릭 시 수행
 const onClickMenuBtn = () => {
@@ -100,13 +105,6 @@ const onHoverGlyphItem = (e) => {
 const onClickSelector = (e) => {
   const wrap = e.currentTarget.parentElement;
   wrap.classList.toggle('selector-wrap--focus');
-  const option = e.currentTarget.nextElementSibling;
-
-  // if (wrap.classList.contains('selector-wrap--focus')) {
-  //   option.style.display = 'none';
-  // } else {
-  //   option.style.display = 'block';
-  // }
 };
 // FUNCTION glyph selector 클릭 시 폰트 변경
 const onClickGlyphOption = (e) => {
@@ -128,7 +126,6 @@ const onClickSamplerOption = (e) => {
   const data = e.currentTarget.dataset.family;
   const selector = document.querySelector('.sampler-selector');
   const tab = document.querySelectorAll('.sampler-btn');
-  const result = document.querySelector('.sampler-result');
 
   tab.forEach((el) => el.classList.remove('sampler-btn--active'));
   sampler
@@ -140,8 +137,30 @@ const onClickSamplerOption = (e) => {
     .classList.remove('selector-wrap--focus');
 
   selector.innerText = data;
-  result.style.fontFamily = `'PP${data}', sans-serif`;
+  samplerResult.style.fontFamily = `'PP${data}', sans-serif`;
 };
+
+// FUNCTION sampler 결과 부분 데이터 바인딩
+const setSamplerStyle = debounce(() => {
+  const samplerRange = {
+    size: `${document.querySelector('#size').value}px`,
+    weight: `${document.querySelector('#weight').value}`,
+    spacing: `${document.querySelector('#spacing').value}%`,
+    height: `${document.querySelector('#height').value / 10}`,
+  };
+  console.log(samplerRange);
+  samplerResult.style.fontSize = samplerRange.size;
+  samplerResult.style.fontVariationSettings = `"wght" ${samplerRange.weight}`;
+  samplerResult.style.letterSpacing = samplerRange.spacing;
+  samplerResult.style.lineHeight = samplerRange.height;
+
+  samplerValue.forEach((el) => {
+    const category = el.dataset.category;
+    el.innerText = samplerRange[category];
+  });
+}, 300);
+
+const onChangeRange = () => {};
 
 (function () {
   const menuOpener = document.querySelector('.menu-opener');
@@ -163,8 +182,12 @@ const onClickSamplerOption = (e) => {
   samplerOption.forEach((el) => {
     el.addEventListener('click', onClickSamplerOption);
   });
+  samplerRange.forEach((el) => {
+    el.addEventListener('change', setSamplerStyle);
+  });
 
   onInitRandomizeText();
+  setSamplerStyle();
 
   randomizeBtn.addEventListener('click', onInitRandomizeText);
 })();
