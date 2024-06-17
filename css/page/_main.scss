@@ -627,6 +627,11 @@ main {
       @include util__absolute-center;
       font-size: 2.4rem;
     }
+
+    &--active {
+      background: $color__white;
+      color: $color__black;
+    }
   }
   &-word {
     @include util__flex(center, center);

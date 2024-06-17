@@ -3,17 +3,26 @@ let timer = null;
 
 // PARAM 이벤트 리스너 부착 대상
 const randomizeBtn = document.querySelector('.sans-to-serif-btn');
+const glyphItem = document.querySelectorAll('.glyph-item');
 
 // FUNCTION header 메뉴 버튼 클릭 시 수행
 const onClickMenuBtn = () => {
   const menuBtn = document.querySelectorAll('.menu-close-btn');
   const menu = document.querySelector('.menu');
 
-  // menuBtn.classList.toggle('');
   menu.classList.toggle('menu--open');
   menuBtn.forEach((el) => {
     el.classList.toggle('menu-close-btn--open');
   });
+};
+
+// FUNCTION nav menu 열렸을 때, body를 클릭하면 닫기
+const onClickBody = (e) => {
+  const menu = document.querySelector('.menu');
+  const header = document.querySelector('.header');
+  if (!menu.classList.contains('menu--open')) return;
+  // 헤더 메뉴가 열려 있을 때
+  if (!header.contains(e.target)) onClickMenuBtn();
 };
 
 // FUNCTION 랜덤 수 구하는 함수
@@ -39,8 +48,6 @@ const onRandomizeText = () => {
 
   const windowWidth = window.innerWidth;
 
-  console.log(windowWidth);
-
   if (windowWidth < 700) return;
   // 텍스트 포지션 변경
   textArr.forEach((el, idx) => {
@@ -54,7 +61,6 @@ const onRandomizeText = () => {
     if (![3, 4].includes(idx)) {
       // 인덱스가 3,4가 아닐 때
       el.style.transform = `translateX(${randomPos})`;
-      console.log(randomPos);
     } else if (idx === 3) {
       const inner = document.querySelector('.random-text-inner');
       const parentVw = (inner.offsetParent.offsetWidth / windowWidth) * 100;
@@ -73,11 +79,25 @@ const onInitRandomizeText = () => {
   timer = setInterval(onRandomizeText, 5000);
 };
 
+// FUNCTION
+const onHoverGlyphItem = (e) => {
+  const word = document.querySelector('.glyph-word');
+  glyphItem.forEach((el) => {
+    el.classList.remove('glyph-item--active');
+  });
+  e.currentTarget.classList.add('glyph-item--active');
+  word.innerText = e.currentTarget.innerText;
+};
+
 (function () {
   const menuOpener = document.querySelector('.menu-opener');
   const mbMenuBtn = document.querySelector('.menu-close-btn-container');
   mbMenuBtn.addEventListener('click', onClickMenuBtn);
   menuOpener.addEventListener('click', onClickMenuBtn);
+  window.addEventListener('click', onClickBody);
+  glyphItem.forEach((el) => {
+    el.addEventListener('mouseenter', onHoverGlyphItem);
+  });
 
   onInitRandomizeText();
 
