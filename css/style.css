@@ -31,6 +31,20 @@
     transform: translateX(-51.75%);
   }
 }
+@keyframes animation__roll {
+  0% {
+    transform: translate(0);
+  }
+  40% {
+    transform: translateY(-115%);
+  }
+  40.001% {
+    transform: translateY(115%);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
 /* 폰트 관련 */
 .glare {
   font-family: "PPGlare", sans-serif;
@@ -70,6 +84,11 @@
 /*버튼 관련*/
 .btn {
   font-variation-settings: "wght" 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  flex-direction: row;
   display: inline-block;
   padding: 1.2rem 2rem;
   position: relative;
@@ -80,6 +99,104 @@
 .btn-white {
   background: #fff;
   color: #000;
+}
+.btn:hover .char {
+  animation: animation__roll 0.7s both;
+  animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.btn:hover .char:nth-child(1) {
+  animation-delay: 0s;
+}
+.btn:hover .char:nth-child(2) {
+  animation-delay: 0.02s;
+}
+.btn:hover .char:nth-child(3) {
+  animation-delay: 0.04s;
+}
+.btn:hover .char:nth-child(4) {
+  animation-delay: 0.06s;
+}
+.btn:hover .char:nth-child(5) {
+  animation-delay: 0.08s;
+}
+.btn:hover .char:nth-child(6) {
+  animation-delay: 0.1s;
+}
+.btn:hover .char:nth-child(7) {
+  animation-delay: 0.12s;
+}
+.btn:hover .char:nth-child(8) {
+  animation-delay: 0.14s;
+}
+.btn:hover .char:nth-child(9) {
+  animation-delay: 0.16s;
+}
+.btn:hover .char:nth-child(10) {
+  animation-delay: 0.18s;
+}
+.btn:hover .char:nth-child(11) {
+  animation-delay: 0.2s;
+}
+.btn:hover .char:nth-child(12) {
+  animation-delay: 0.22s;
+}
+.btn:hover .char:nth-child(13) {
+  animation-delay: 0.24s;
+}
+.btn:hover .char:nth-child(14) {
+  animation-delay: 0.26s;
+}
+.btn:hover .char:nth-child(15) {
+  animation-delay: 0.28s;
+}
+.btn:hover .char:nth-child(16) {
+  animation-delay: 0.3s;
+}
+.btn:hover .char:nth-child(17) {
+  animation-delay: 0.32s;
+}
+.btn:hover .char:nth-child(18) {
+  animation-delay: 0.34s;
+}
+.btn:hover .char:nth-child(19) {
+  animation-delay: 0.36s;
+}
+.btn:hover .char:nth-child(20) {
+  animation-delay: 0.38s;
+}
+.btn:hover .char:nth-child(21) {
+  animation-delay: 0.4s;
+}
+.btn:hover .char:nth-child(22) {
+  animation-delay: 0.42s;
+}
+.btn:hover .char:nth-child(23) {
+  animation-delay: 0.44s;
+}
+.btn:hover .char:nth-child(24) {
+  animation-delay: 0.46s;
+}
+.btn:hover .char:nth-child(25) {
+  animation-delay: 0.48s;
+}
+.btn:hover .char:nth-child(26) {
+  animation-delay: 0.5s;
+}
+.btn:hover .char:nth-child(27) {
+  animation-delay: 0.52s;
+}
+.btn:hover .char:nth-child(28) {
+  animation-delay: 0.54s;
+}
+.btn:hover .char:nth-child(29) {
+  animation-delay: 0.56s;
+}
+.btn:hover .char:nth-child(30) {
+  animation-delay: 0.58s;
+}
+.btn-slide {
+  display: inline-block;
+  overflow: hidden;
 }
 .btn-slide:not(:first-child) {
   position: absolute;
@@ -901,6 +1018,7 @@ main {
   gap: 0;
   flex-direction: column;
   position: sticky;
+  overflow: hidden;
   top: 8.587rem;
   background: #fff;
   color: #000;
@@ -935,7 +1053,7 @@ main {
 }
 .random-text-inner {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: stretch;
   gap: 10vw;
   flex-direction: row;
@@ -1045,6 +1163,10 @@ main {
 .sampler-btn {
   border: 1px solid #fff;
   opacity: 0.6;
+  transition: opacity 0.3s;
+}
+.sampler-btn:hover {
+  opacity: 1;
 }
 .sampler-btn-container {
   display: grid;
@@ -1299,6 +1421,43 @@ main {
   display: inline-block;
   transition: transform 0.3s;
   align-self: flex-start;
+}
+.purchase-item a:hover .line {
+  overflow: hidden;
+}
+.purchase-item a:hover .char {
+  animation: animation__roll 1.2s both;
+  animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.purchase-item a:hover .char:nth-child(1) {
+  animation-delay: 0s;
+}
+.purchase-item a:hover .char:nth-child(2) {
+  animation-delay: 0.03s;
+}
+.purchase-item a:hover .char:nth-child(3) {
+  animation-delay: 0.06s;
+}
+.purchase-item a:hover .char:nth-child(4) {
+  animation-delay: 0.09s;
+}
+.purchase-item a:hover .char:nth-child(5) {
+  animation-delay: 0.12s;
+}
+.purchase-item a:hover .char:nth-child(6) {
+  animation-delay: 0.15s;
+}
+.purchase-item a:hover .char:nth-child(7) {
+  animation-delay: 0.18s;
+}
+.purchase-item a:hover .char:nth-child(8) {
+  animation-delay: 0.21s;
+}
+.purchase-item a:hover .char:nth-child(9) {
+  animation-delay: 0.24s;
+}
+.purchase-item a:hover .char:nth-child(10) {
+  animation-delay: 0.27s;
 }
 .purchase-item a:hover::after {
   transform: translateX(100%);

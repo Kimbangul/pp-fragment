@@ -86,8 +86,21 @@ const setLanguageList = () => {
   insertDom('.language', languageNode);
 };
 
+// FUNCTION 버튼 글자 나누기
+const setBtnTextSplit = () => {
+  const splitWord = new SplitType('.btn-slide', {
+    types: 'chars',
+    tagName: 'span',
+  });
+  new SplitType('.purchase-item-text-slider', {
+    types: 'chars, lines',
+    tagName: 'span',
+  });
+};
+
 (function () {
   setMainBg();
   setGlyphItem();
   setLanguageList();
+  setBtnTextSplit();
 })();

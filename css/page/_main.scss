@@ -503,6 +503,7 @@ main {
   &-contents {
     @include util__flex(space-between, stretch, 0, column);
     position: sticky;
+    overflow: hidden;
     top: calc($size__header-height + 2rem);
     background: $color__white;
     color: $color__black;
@@ -535,7 +536,7 @@ main {
     }
   }
   &-inner {
-    @include util__flex(start, stretch, 10vw);
+    @include util__flex(flex-start, stretch, 10vw);
     display: inline-flex;
     transition: transform 0.5s;
     will-change: transform;
@@ -642,6 +643,11 @@ main {
   &-btn {
     border: 1px solid $color__white;
     opacity: 0.6;
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 1;
+    }
     &-container {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -866,6 +872,20 @@ main {
         align-self: flex-start;
       }
       &:hover {
+        .line {
+          overflow: hidden;
+        }
+        .char {
+          animation: animation__roll 1.2s both;
+          animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+
+          @for $i from 1 to 11 {
+            &:nth-child(#{$i}) {
+              animation-delay: #{0.03 * ($i - 1)}s;
+            }
+          }
+        }
+
         &::after {
           transform: translateX(100%);
         }

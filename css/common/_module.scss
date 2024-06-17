@@ -32,6 +32,7 @@
 /*버튼 관련*/
 .btn {
   @include util__font-weight(400);
+  @include util__flex(center, center);
   display: inline-block;
   padding: 1.2rem 2rem;
   position: relative;
@@ -43,7 +44,22 @@
     color: $color__black;
   }
 
+  &:hover {
+    .char {
+      animation: animation__roll 0.7s both;
+      animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+
+      @for $i from 1 to 31 {
+        &:nth-child(#{$i}) {
+          animation-delay: #{0.02 * ($i - 1)}s;
+        }
+      }
+    }
+  }
+
   &-slide {
+    display: inline-block;
+    overflow: hidden;
     &:not(:first-child) {
       position: absolute;
       display: none;

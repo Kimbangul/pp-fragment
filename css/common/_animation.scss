@@ -6,3 +6,18 @@
     transform: translateX(-51.75%);
   }
 }
+
+@keyframes animation__roll {
+  0% {
+    transform: translate(0);
+  }
+  40% {
+    transform: translateY(-115%);
+  }
+  40.001% {
+    transform: translateY(115%);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
