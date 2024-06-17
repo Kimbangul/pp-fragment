@@ -5,6 +5,7 @@ let timer = null;
 const randomizeBtn = document.querySelector('.sans-to-serif-btn');
 const glyphItem = document.querySelectorAll('.glyph-item');
 const selector = document.querySelectorAll('.selector');
+const glyphOption = document.querySelectorAll('.glyph .selector-option-btn');
 
 // FUNCTION header 메뉴 버튼 클릭 시 수행
 const onClickMenuBtn = () => {
@@ -95,11 +96,25 @@ const onClickSelector = (e) => {
   const wrap = e.currentTarget.parentElement;
   wrap.classList.toggle('selector-wrap--focus');
   const option = e.currentTarget.nextElementSibling;
-  if (option.style.display === 'block') {
-    option.style.display = 'none';
-  } else {
-    option.style.display = 'block';
-  }
+
+  // if (wrap.classList.contains('selector-wrap--focus')) {
+  //   option.style.display = 'none';
+  // } else {
+  //   option.style.display = 'block';
+  // }
+};
+// FUNCTION glyph selector 클릭 시 폰트 변경
+const onClickGlyphOption = (e) => {
+  const wrap = e.currentTarget.parentElement.parentElement.parentElement;
+  const data = e.currentTarget.dataset;
+  const grid = document.querySelector('.glyph-grid');
+  const selector = document.querySelector('#glyph-selector');
+
+  wrap.classList.remove('selector-wrap--focus');
+  grid.style.fontFamily = `'${data.family}', 'sans-serif'`;
+  grid.style.fontVariationSettings = `"wght" ${data.weight}`;
+
+  selector.innerText = data.text;
 };
 
 (function () {
@@ -113,6 +128,9 @@ const onClickSelector = (e) => {
   });
   selector.forEach((el) => {
     el.addEventListener('click', onClickSelector);
+  });
+  glyphOption.forEach((el) => {
+    el.addEventListener('click', onClickGlyphOption);
   });
 
   onInitRandomizeText();

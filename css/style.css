@@ -349,6 +349,9 @@
   background: #fff;
   color: #000;
 }
+.selector-wrap--focus .selector-option {
+  display: block;
+}
 .selector-wrap--focus::after {
   transform: translateY(-50%) rotate(180deg);
   color: #000;
