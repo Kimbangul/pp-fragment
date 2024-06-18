@@ -251,7 +251,10 @@
 }
 
 /* text line 관련 */
-.line {
+.line-wrap {
   display: inline-block;
   overflow: hidden;
+}
+.char {
+  display: inline-block;
 }

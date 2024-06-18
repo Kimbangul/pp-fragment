@@ -1,7 +1,7 @@
 main {
   background: $color__black;
   color: $color__white;
-  padding-top: $size__header-height;
+
   padding-left: $size__side-opener-width;
 
   @include mb {
@@ -19,7 +19,6 @@ main {
   top: 0;
   left: 0;
   font-size: 1.2rem;
-  background: $color__black;
 
   &-inner {
     @include util__flex(space-between, center);
@@ -76,7 +75,7 @@ main {
 
   &--open {
     left: 0;
-    transform: translateX(0);
+    transform: translateX(0) !important;
   }
 
   &-opener {
@@ -277,24 +276,32 @@ main {
 
 // section
 .main {
+  overflow-x: hidden;
+  padding-bottom: 25vh;
+  overflow-y: hidden;
   &-inner {
+    padding-top: $size__header-height;
     @include util__flex(stretch);
+    position: relative;
+    min-height: 100vh;
+    min-height: 100dvh;
   }
   &-text {
     &-container {
       @include util__absolute-center;
       text-align: center;
       z-index: 1;
+      margin-top: #{$size__header-height / 2};
     }
   }
   &-title {
     position: relative;
     font-size: 10vw;
     white-space: nowrap;
-    line-height: 0.95;
-    letter-spacing: -0.04em;
+    line-height: 0.9;
+    //    letter-spacing: -0.04em;
     text-transform: uppercase;
-    margin-top: calc(-#{$size__header-height} - 2rem);
+
     &-roller {
       display: inline-block;
       overflow-y: hidden;
@@ -312,9 +319,10 @@ main {
     }
 
     &-year {
-      top: -2vw;
+      top: 25%;
       position: absolute;
       font-size: 2.4rem;
+      transform: translateY(-50%);
       display: inline-block;
       opacity: 0;
 
@@ -423,10 +431,10 @@ main {
 
       display: flex;
       position: absolute;
-      width: 60vw;
+      width: 30vw;
       height: 100%;
-      top: -2rem;
       left: 50%;
+      margin-top: -#{$size__header-height};
       transform: translateX(-50%);
 
       &.float {
@@ -459,7 +467,7 @@ main {
 
 .introduce {
   &-inner {
-    padding-top: 25vh;
+    //  padding-top: 25vh;
   }
 
   &-desc {
