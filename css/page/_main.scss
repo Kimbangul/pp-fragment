@@ -798,11 +798,12 @@ main {
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
-      z-index: 2;
+      // z-index: 2;
 
       @for $i from 1 to 8 {
         &:nth-child(#{$i}) {
           background-image: url('/assets/img/posters/poster-#{$i}.png');
+          z-index: #{9 - $i};
         }
       }
 

@@ -176,6 +176,7 @@ const setSamplerStyle = debounce(() => {
   });
   setSamplerHeight();
 }, 100);
+
 const setSamplerHeight = () => {
   samplerResult.style.height = 'auto';
   samplerResult.style.height = `${samplerResult.scrollHeight}px`;
@@ -185,19 +186,29 @@ const setSamplerHeight = () => {
 const setSlideImg = () => {
   slideCard[slideIdx.card].classList.remove('active');
   slideBg[slideIdx.bg].classList.remove('active');
-  const innerHeight = () => window.innerHeight;
+  const tl = gsap.timeline({
+    repeatRefresh: true,
+  });
 
-  gsap.to(slideCard[slideIdx.card], {
-    y: () => `-${window.innerHeight * 1.5}px`,
-    duration: 0.7,
-    repeatRefresh: true,
-  });
-  gsap.to(slideBg[slideIdx.bg], {
-    y: () => `-${window.innerHeight}px`,
-    scale: 0.65,
-    duration: 0.65,
-    repeatRefresh: true,
-  });
+  tl.to(
+    slideCard[slideIdx.card],
+    {
+      y: () => `-${window.innerHeight * 1.5}px`,
+      duration: 0.8,
+      repeatRefresh: true,
+    },
+    'prev-up'
+  );
+  tl.to(
+    slideBg[slideIdx.bg],
+    {
+      y: () => `-${window.innerHeight}px`,
+      scale: 0.7,
+      duration: 0.7,
+      repeatRefresh: true,
+    },
+    'prev-up'
+  );
 
   const nextBg = slideIdx.bg + 1;
   const nextCard = slideIdx.card + 1;
@@ -207,32 +218,49 @@ const setSlideImg = () => {
     card: slideIdx.card < slideCard.length - 1 ? nextCard : 0,
   };
 
-  gsap.set(slideCard[slideIdx.card], {
-    y: () => `${window.innerHeight}px`,
-    scale: 0.7,
-    repeatRefresh: true,
-  });
-  gsap.set(slideBg[slideIdx.bg], {
-    y: () => `${window.innerHeight}px`,
-    scale: 0.65,
-    repeatRefresh: true,
-  });
+  /** 다음 슬라이드 아래로 위치 조정 */
+  tl.set(
+    slideCard[slideIdx.card],
+    {
+      y: () => `-50%`,
+      scale: 0.8,
+      repeatRefresh: true,
+    },
+    'prev-up'
+  );
+  tl.set(
+    slideBg[slideIdx.bg],
+    {
+      y: () => `${window.innerHeight}px`,
+      scale: 0.7,
+      repeatRefresh: true,
+    },
+    'prev-up'
+  );
 
   slideCard[slideIdx.card].classList.add('active');
   slideBg[slideIdx.bg].classList.add('active');
 
-  gsap.to(slideCard[slideIdx.card], {
-    y: () => `-50%`,
-    scale: 1,
-    duration: 0.7,
-    repeatRefresh: true,
-  });
-  gsap.to(slideBg[slideIdx.bg], {
-    y: 0,
-    scale: 1,
-    duration: 0.65,
-    repeatRefresh: true,
-  });
+  tl.to(
+    slideCard[slideIdx.card],
+    {
+      // y: () => `-50%`,
+      scale: 1,
+      duration: 0.8,
+      repeatRefresh: true,
+    },
+    'prev-up'
+  );
+  tl.to(
+    slideBg[slideIdx.bg],
+    {
+      y: 0,
+      scale: 1,
+      duration: 0.7,
+      repeatRefresh: true,
+    },
+    'prev-up+=0.1'
+  );
 };
 
 const onInitSlideImg = () => {
@@ -271,4 +299,7 @@ const onInitSlideImg = () => {
 
   randomizeBtn.addEventListener('click', onInitRandomizeText);
   slideBtn.addEventListener('click', onInitSlideImg);
+
+  window.addEventListener('resize', debounce(setSamplerHeight, 300));
+  samplerResult.addEventListener('keydown', debounce(setSamplerHeight, 50));
 })();
