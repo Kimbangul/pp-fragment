@@ -24,12 +24,12 @@
 
 @keyframes animation__float {
   0% {
-    transform: var(--move);
+    transform: translateX(-50%);
   }
   50% {
-    transform: var(--move) translateY(10%);
+    transform: translateX(-50%) translateY(5%);
   }
   100% {
-    transform: var(--move) translate(0);
+    transform: translateX(-50%) translate(0);
   }
 }

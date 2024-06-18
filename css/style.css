@@ -47,13 +47,13 @@
 }
 @keyframes animation__float {
   0% {
-    transform: var(--move);
+    transform: translateX(-50%);
   }
   50% {
-    transform: var(--move) translateY(10%);
+    transform: translateX(-50%) translateY(5%);
   }
   100% {
-    transform: var(--move) translate(0);
+    transform: translateX(-50%) translate(0);
   }
 }
 /* 폰트 관련 */
@@ -822,6 +822,14 @@ main {
 }
 .main-title-roller {
   display: inline-block;
+  overflow-y: hidden;
+  position: relative;
+}
+.main-title-roller-item:nth-child(2) {
+  display: inline-block;
+  position: absolute;
+  top: 100%;
+  left: 0;
 }
 .main-title::after, .main-title::before {
   top: 4vw;
@@ -863,6 +871,16 @@ main {
   top: -2rem;
   left: 50%;
   transform: translateX(-50%);
+}
+.main-bg-item.float {
+  animation: animation__float 5s ease-in-out infinite alternate both;
+}
+.main-bg-item.float:nth-child(3n+2) {
+  animation-direction: alternate-reverse;
+  animation-delay: 0.3s;
+}
+.main-bg-item.float:nth-child(3n+3) {
+  animation-delay: 0.6s;
 }
 .main-bg-item img {
   width: 100%;
