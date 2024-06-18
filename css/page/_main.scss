@@ -30,6 +30,11 @@ main {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     position: relative;
     z-index: 1000;
+    transition: transform 0.3s;
+
+    &.inactive {
+      transform: translateY(-100%);
+    }
   }
 
   &-link {
@@ -62,6 +67,10 @@ main {
     text-decoration: underline;
   }
 
+  &.inactive {
+    transform: translateX(-100%);
+  }
+
   @include pc-sm {
     width: calc(50vw + $size__side-opener-width);
   }
@@ -75,7 +84,7 @@ main {
 
   &--open {
     left: 0;
-    transform: translateX(0) !important;
+    transform: translateX(0);
   }
 
   &-opener {

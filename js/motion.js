@@ -131,40 +131,20 @@ const introMotion = () => {
       opacity: 1,
       stagger: 0.05,
       duration: 0.3,
+      // 헤더, 메뉴 표시하기
+      onComplete: () => {
+        const header = document.querySelector('.header-inner');
+        const menu = document.querySelector('.menu');
+
+        header.classList.remove('inactive');
+        menu.classList.remove('inactive');
+      },
     },
     'sub'
   );
 
-  // 헤더, 메뉴 표시하기
-  tl.fromTo(
-    '.header-inner',
-    {
-      yPercent: () => -100,
-    },
-    {
-      yPercent: () => 0,
-      transition: 0.3,
-    },
-    'header'
-  );
-  tl.fromTo(
-    '.menu',
-    {
-      xPercent: () => -100,
-    },
-    {
-      xPercent: () => 0,
-      transition: 0.3,
-      onComplete: () => {
-        document.body.style.height = 'auto';
-        document.body.style.overflowY = 'auto';
-      },
-    },
-    'header'
-  );
-
-  tl.add(lineUpMotion('.main-bottom-text:first-child', 0.3, 0.01), 'header');
-  tl.add(lineUpMotion('.main-bottom-text:nth-child(2)', 0.3, 0.01), 'header');
+  tl.add(lineUpMotion('.main-bottom-text:first-child', 0.3, 0.01), 'sub');
+  tl.add(lineUpMotion('.main-bottom-text:nth-child(2)', 0.3, 0.01), 'sub');
 };
 
 //  FUNCTION introduce 모션
