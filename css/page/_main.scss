@@ -32,6 +32,16 @@ main {
     position: relative;
     z-index: 1000;
   }
+
+  &-link {
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &-wrap {
+      @include util__flex(stretch, center);
+    }
+  }
 }
 .menu {
   @include util__flex;
@@ -316,6 +326,88 @@ main {
   }
   &-bg {
     &-item {
+      $x: (
+        -50vw,
+        -50vw,
+        -20vw,
+        20vw,
+        10vw,
+        30vw,
+        -20vw,
+        40vw,
+        50vw,
+        60vw,
+        -30vw,
+        -20vw,
+        -15vw,
+        -5vw,
+        -40vw,
+        -10vw,
+        15vw,
+        20vw,
+        5vw,
+        -5vw,
+        40vw,
+        20vw,
+        7vw,
+        40vw,
+        -10vw
+      );
+      $y: (
+        -40vh,
+        -20vh,
+        -50vh,
+        20vh,
+        10vh,
+        -40vh,
+        -50vh,
+        -10vh,
+        -90vh,
+        -20vh,
+        -20vh,
+        50vh,
+        30vh,
+        50vh,
+        20vh,
+        20vh,
+        -20vh,
+        50vh,
+        70vh,
+        40vh,
+        -15vh,
+        30vh,
+        20vh,
+        10vh,
+        50vh
+      );
+      $rotate: (
+        10deg,
+        45deg,
+        -45deg,
+        -15deg,
+        45deg,
+        -25deg,
+        -30deg,
+        -35deg,
+        45deg,
+        -30deg,
+        25deg,
+        15deg,
+        -30deg,
+        -10deg,
+        -20deg,
+        10deg,
+        -10deg,
+        -30deg,
+        -10deg,
+        25deg,
+        15deg,
+        -10deg,
+        -5deg,
+        -10deg,
+        10deg
+      );
+
       display: flex;
       position: absolute;
       width: 60vw;
@@ -326,6 +418,14 @@ main {
       img {
         width: 100%;
         object-fit: contain;
+      }
+
+      @for $i from 1 through length($x) {
+        &:nth-child(#{$i}) img {
+          --move: translateX(#{nth($x, $i)})
+            translateY(#{nth($y, $i)})
+            rotate(#{nth($rotate, $i)});
+        }
       }
     }
   }
