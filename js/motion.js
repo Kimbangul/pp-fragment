@@ -1,6 +1,7 @@
 // PARAM selector
 const mainTextRoller = document.querySelectorAll('.main-title-roller');
 
+// FUNCTION 텍스트가 랜덤하게 롤링되는 모션
 const textRollMotion = (selector, duration, repeat = 4) => {
   const tl = gsap.timeline({
     ease: 'ease.inOut',
@@ -8,7 +9,6 @@ const textRollMotion = (selector, duration, repeat = 4) => {
 
   tl.fromTo(selector, { opacity: 0 }, { opacity: 1 });
   selector.forEach((el, idx) => {
-    console.log(el.children);
     tl.fromTo(
       el.children,
       {
@@ -28,17 +28,49 @@ const textRollMotion = (selector, duration, repeat = 4) => {
   return tl;
 };
 
+// PARAM splittype 라인 옵션
+const lineUpSplitOption = {
+  types: 'lines, chars',
+  tagName: 'span',
+  lineClass: 'line-wrap',
+  charClass: 'char',
+};
+// FUNCTION 한 줄씩 텍스트가 올라오는 모션
+const lineUpMotion = (selector, duration, stagger) => {
+  const target = document.querySelector(selector);
+
+  const tl = gsap.timeline({
+    repeatRefresh: true,
+    stagger: stagger,
+    ease: 'none',
+  });
+  const lines = target.querySelectorAll('.line-wrap');
+
+  lines.forEach((el, idx) => {
+    const chars = el.querySelectorAll('.char');
+    tl.fromTo(
+      chars,
+      { yPercent: () => 100 },
+      {
+        yPercent: () => 0,
+        duration: duration,
+        onComplete: () => {
+          el.style.overflow = 'unset';
+        },
+      },
+      `-=${duration - 0.05}`
+    );
+  });
+
+  return tl;
+};
+
 // FUNCTION intro 글씨 깨지는 효과
 const introMotion = () => {
   const bgItem = gsap.utils.toArray('.main-bg-item');
   const bgImg = gsap.utils.toArray('.main-bg-item img');
   const subText = gsap.utils.toArray('.main-sub-text');
-  const bottomText = new SplitType('.main-bottom-text', {
-    types: 'lines, chars',
-    tagName: 'span',
-    lineClass: 'line-wrap',
-    charClass: 'char',
-  });
+  const bottomText = new SplitType('.main-bottom-text', lineUpSplitOption);
 
   const tl = gsap.timeline({
     repeatRefresh: true,
@@ -123,46 +155,36 @@ const introMotion = () => {
     {
       xPercent: () => 0,
       transition: 0.3,
+      onComplete: () => {
+        document.body.style.height = 'auto';
+        document.body.style.overflowY = 'auto';
+      },
     },
     'header'
   );
 
-  const firstLine = [bottomText.lines[0], bottomText.lines[2]];
-  const secondLine = [bottomText.lines[1], bottomText.lines[3]];
-  const line = [...firstLine, ...secondLine];
+  tl.add(lineUpMotion('.main-bottom-text:first-child', 0.3, 0.01), 'header');
+  tl.add(lineUpMotion('.main-bottom-text:nth-child(2)', 0.3, 0.01), 'header');
+};
 
-  firstLine.forEach((el, idx) => {
-    tl.fromTo(
-      el.querySelectorAll('.char'),
-      {
-        yPercent: () => 100,
-      },
-      {
-        yPercent: () => 0,
-        duration: 0.2,
-      }
-    );
-  }, 'first-line');
-  secondLine.forEach((el, idx) => {
-    tl.fromTo(
-      el.querySelectorAll('.char'),
-      {
-        yPercent: () => 100,
-      },
-      {
-        yPercent: () => 0,
-        duration: 0.2,
-      }
-    );
-  }, 'second-line');
+//  FUNCTION introduce 모션
+const introduceMotion = () => {
+  const descTl = gsap.timeline({
+    repeatRefresh: true,
+    scrollTrigger: {
+      // trigger: '.intro',
+      markers: true,
+      // end: () => `+=${(introDesc.length + 1) * window.innerHeight}`,
+    },
+  });
+  const descText = new SplitType('.introduce-desc', lineUpSplitOption);
 
-  console.log(bottomText.chars);
-  // tl.fromTo(bottomText.lines, {
-
-  // })
+  descTl.add(lineUpMotion('.introduce-desc:first-of-type', 0.35, 0));
+  descTl.add(lineUpMotion('.introduce-desc:nth-of-type(2)', 0.35, 0));
 };
 
 (function () {
   console.log('motion ready');
   introMotion();
+  introduceMotion();
 })();
