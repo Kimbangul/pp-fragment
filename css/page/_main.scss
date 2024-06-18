@@ -301,27 +301,29 @@ main {
       position: relative;
 
       &-item {
+        display: inline-block;
+
         &:nth-child(2) {
-          display: inline-block;
           position: absolute;
           top: 100%;
           left: 0;
         }
       }
     }
-    &::after,
-    &::before {
-      top: 4vw;
+
+    &-year {
+      top: -2vw;
       position: absolute;
       font-size: 2.4rem;
-    }
-    &::before {
-      content: '②⓪';
-      left: 15%;
-    }
-    &::after {
-      content: '②②';
-      right: 15%;
+      display: inline-block;
+      opacity: 0;
+
+      &:nth-of-type(1) {
+        left: 15%;
+      }
+      &:nth-of-type(2) {
+        right: 15%;
+      }
     }
   }
   &-sub {
