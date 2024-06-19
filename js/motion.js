@@ -258,20 +258,87 @@ const introduceMotion = () => {
 
 // FUNCTION visual 모션
 const visualMotion = () => {
+  const visualTextRoller = document.querySelectorAll('.visual .roller');
+  const textTl = gsap.timeline({
+    repeatRefresh: true,
+    scrollTrigger: {
+      markers: true,
+      trigger: '.visual',
+    },
+  });
+
   // 텍스트 롤링 애니메이션
+  textTl.add(textRollMotion(visualTextRoller, 1));
+
+  const visualBg = gsap.utils.toArray('.visual-overlay img');
   const visualTl = gsap.timeline({
     repeatRefresh: true,
     scrollTrigger: {
       markers: true,
       trigger: '.visual',
-      scrub: true,
+      start: () => `top top`,
+      scrub: 0.5,
     },
   });
-  visualTl.add(textRollMotion(mainTextRoller, 1.2), 'move-=0.1');
+
+  // 배경 이미지 페이드인
+  visualTl.fromTo(
+    visualBg[0],
+    {
+      x: `50%`,
+      y: `-25%`,
+      rotate: 20,
+      opacity: 0,
+    },
+    { x: `0`, y: `0`, rotate: 0, opacity: 1, duration: 1.5 },
+    'fade-in'
+  );
+  visualTl.fromTo(
+    visualBg[1],
+    {
+      x: `-25%`,
+      y: `-100%`,
+      rotate: -30,
+      opacity: 0,
+    },
+    { x: `0`, y: `0`, rotate: 0, opacity: 1, duration: 1.5 },
+    'fade-in'
+  );
+  visualTl.fromTo(
+    visualBg[2],
+    {
+      x: `-50%`,
+      y: `15%`,
+      rotate: -45,
+      opacity: 0,
+    },
+    { x: `0`, y: `0`, rotate: 0, opacity: 1, duration: 1.5 },
+    'fade-in'
+  );
+
+  // 배경 이미지 페이드아웃
+  visualTl.to(
+    visualBg[0],
+    { x: `15%`, y: `-100%`, opacity: 0, duration: 2 },
+    'fade-in+=2.5'
+  );
+  visualTl.to(
+    visualBg[1],
+    { x: `-15%`, y: `60%`, opacity: 0, duration: 2 },
+    'fade-in+=2.5'
+  );
+  visualTl.to(
+    visualBg[2],
+    { x: `-15%`, y: `60%`, opacity: 0, duration: 2 },
+    'fade-in+=2.5'
+  );
+
+  visualTl.to('.visual', { opacity: 0, duration: 0 }, '-=1');
 };
 
 (function () {
   console.log('motion ready');
   introMotion();
   introduceMotion();
+  visualMotion();
 })();
