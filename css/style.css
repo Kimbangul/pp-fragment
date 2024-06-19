@@ -440,6 +440,21 @@
   display: inline-block;
 }
 
+/* text roller 관련*/
+.roller {
+  display: inline-block;
+  overflow-y: hidden;
+  position: relative;
+}
+.roller-item {
+  display: inline-block;
+}
+.roller-item:nth-child(2) {
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
+
 html {
   width: 100%;
   font-size: 62.5%;
@@ -876,19 +891,6 @@ main {
   white-space: nowrap;
   line-height: 0.9;
   text-transform: uppercase;
-}
-.main-title-roller {
-  display: inline-block;
-  overflow-y: hidden;
-  position: relative;
-}
-.main-title-roller-item {
-  display: inline-block;
-}
-.main-title-roller-item:nth-child(2) {
-  position: absolute;
-  top: 100%;
-  left: 0;
 }
 .main-title-year {
   top: 25%;

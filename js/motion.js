@@ -1,5 +1,6 @@
 // PARAM selector
-const mainTextRoller = document.querySelectorAll('.main-title-roller');
+const mainTextRoller = document.querySelectorAll('.main .roller');
+const visualTextRoller = document.querySelectorAll('.visual-text-roller');
 
 // FUNCTION 텍스트가 랜덤하게 롤링되는 모션
 const textRollMotion = (selector, duration, repeat = 4) => {
@@ -131,7 +132,7 @@ const introMotion = () => {
     { opacity: 0 },
     {
       opacity: 1,
-      stagger: 0.05,
+      stagger: 0.1,
       duration: 0.7,
       onComplete: () => {
         bgItem.forEach((el) => el.classList.add('float'));
@@ -253,6 +254,20 @@ const introduceMotion = () => {
     }),
     'img-=0.1'
   );
+};
+
+// FUNCTION visual 모션
+const visualMotion = () => {
+  // 텍스트 롤링 애니메이션
+  const visualTl = gsap.timeline({
+    repeatRefresh: true,
+    scrollTrigger: {
+      markers: true,
+      trigger: '.visual',
+      scrub: true,
+    },
+  });
+  visualTl.add(textRollMotion(mainTextRoller, 1.2), 'move-=0.1');
 };
 
 (function () {

@@ -138,10 +138,26 @@ const setSelectorOption = () => {
   insertDom('.glyph .selector-option', glyphNode);
 };
 
+// FUNCTION text roller 용 dom 추가
+const setTextRoller = (selector) => {
+  const dom = document.querySelectorAll(selector);
+
+  dom.forEach((el, idx) => {
+    const words = el.innerText.split('');
+    el.innerText = '';
+
+    words.forEach((word) => {
+      const node = `<span aria-hidden="true" class="roller"><span class="roller-item">${word}</span><span class="roller-item">${word}</span></span>`;
+      el.insertAdjacentHTML('beforeend', node);
+    });
+  });
+};
+
 (function () {
   setMainBg();
   setGlyphItem();
   setLanguageList();
   setBtnTextSplit();
   setSelectorOption();
+  setTextRoller('.visual-text');
 })();

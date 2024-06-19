@@ -278,3 +278,20 @@
 .char {
   display: inline-block;
 }
+
+/* text roller 관련*/
+.roller {
+  display: inline-block;
+  overflow-y: hidden;
+  position: relative;
+
+  &-item {
+    display: inline-block;
+
+    &:nth-child(2) {
+      position: absolute;
+      top: 100%;
+      left: 0;
+    }
+  }
+}

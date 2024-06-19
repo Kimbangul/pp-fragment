@@ -311,22 +311,6 @@ main {
     //    letter-spacing: -0.04em;
     text-transform: uppercase;
 
-    &-roller {
-      display: inline-block;
-      overflow-y: hidden;
-      position: relative;
-
-      &-item {
-        display: inline-block;
-
-        &:nth-child(2) {
-          position: absolute;
-          top: 100%;
-          left: 0;
-        }
-      }
-    }
-
     &-year {
       top: 25%;
       position: absolute;
