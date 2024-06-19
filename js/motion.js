@@ -68,8 +68,6 @@ const lineUpMotion = (selector, option) => {
     repeatRefresh: true,
     stagger: option.stagger,
     ease: 'none',
-    // scrollTrigger: option.trigger,
-    // markers: true,
   });
   const lines = target.querySelectorAll('.line-wrap');
 
@@ -352,7 +350,6 @@ const glyphMotion = () => {
       duration: 0.35,
       stagger: 0.05,
       trigger: '.glyph-text',
-      markers: true,
     })
   );
 };
@@ -390,7 +387,6 @@ const languageMotion = () => {
         scrollTrigger: {
           trigger: img,
           invalidateOnRefresh: true,
-          markers: true,
           scrub: 1,
         },
       }
@@ -421,7 +417,6 @@ const languageMotion = () => {
       start: () => 'top bottom',
       end: () => 'bottom top',
       invalidateOnRefresh: true,
-      markers: true,
       scrub: 0.3,
     },
   });
@@ -444,7 +439,6 @@ const purchaseMotion = () => {
     scrollTrigger: {
       trigger: '.purchase',
       invalidateOnRefresh: true,
-      markers: true,
       scrub: 1,
     },
   });
@@ -506,7 +500,6 @@ const creditMotion = () => {
     lineUpMotion('.credits .sc-title', {
       duration: 0.5,
       trigger: '.credits .sc-title',
-      markers: true,
     }),
     'sc-title'
   );
@@ -516,7 +509,6 @@ const creditMotion = () => {
       lineUpMotion(title, {
         duration: 0.5,
         trigger: '.credits-title',
-        markers: true,
       }),
       'title'
     );
@@ -542,11 +534,37 @@ const creditMotion = () => {
         duration: 0.35,
         stagger: 0.05,
         trigger: '.credits-desc',
-        markers: true,
       }),
       'desc'
     );
   });
+};
+
+const footerMotion = () => {
+  const footerTl = gsap.timeline({
+    repeatRefresh: true,
+    scrollTrigger: {
+      trigger: '.footer',
+      start: () => `top bottom`,
+      end: () => `bottom bottom`,
+      scrub: 0.5,
+      markers: true,
+    },
+  });
+
+  footerTl.fromTo(
+    '.footer-bg-glyph',
+    {
+      y: () => `15%`,
+      scale: () => `0`,
+      fontVariationSettings: `"wght" ${700}`,
+    },
+    {
+      y: () => `0%`,
+      scale: () => `2`,
+      fontVariationSettings: `"wght" ${100}`,
+    }
+  );
 };
 
 (function () {
@@ -557,4 +575,5 @@ const creditMotion = () => {
   languageMotion();
   purchaseMotion();
   creditMotion();
+  footerMotion();
 })();
