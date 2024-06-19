@@ -1144,7 +1144,16 @@ main {
     font-size: 1.6rem;
     padding-bottom: 1.6rem;
     margin-bottom: 1.6rem;
-    border-bottom: 1px solid $color__white;
+    position: relative;
+    &::after {
+      @include util__line;
+      top: unset;
+      bottom: 0;
+    }
+
+    &.active::after {
+      transform: scaleX(1);
+    }
   }
 }
 // // section

@@ -107,13 +107,7 @@
     gap: 2rem;
     position: relative;
     &::before {
-      @include util__pseudo(100%, 1px);
-      background: $color__white;
-      position: absolute;
-      transform: scaleX(0);
-      transform-origin: left;
-      transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
-      transition: transform 0.3s;
+      @include util__line;
     }
     @for $i from 1 to 6 {
       &:nth-child(#{$i})::before {

@@ -36,6 +36,13 @@ const lineUpSplitOption = {
   lineClass: 'line-wrap',
   wordClass: 'char',
 };
+const wordUpSplitOption = {
+  types: 'chars, words',
+  tagName: 'div',
+  wordClass: 'line-wrap',
+  charClass: 'char',
+};
+
 // PARAM lineup 트리거 옵션
 const lineUpTriggerOption = (triggerSelector) => {
   return {
@@ -202,8 +209,6 @@ const introduceMotion = () => {
     ...lineUpTriggerOption('.introduce-info-text'),
     onComplete: () => {
       infoText.revert();
-      console.log(infoText);
-      console.log('remove');
     },
   });
   infoTl
@@ -244,9 +249,7 @@ const introduceMotion = () => {
       ease: 'power4.inOut',
       onComplete: () => {
         const spec = document.querySelector('.spec');
-        console.log(spec);
         spec.classList.add('active');
-        console.log(spec);
       },
     },
     'img'
@@ -339,19 +342,28 @@ const visualMotion = () => {
   visualTl.to('.visual', { opacity: 0, duration: 0 }, '-=1');
 };
 
+// FUNCTION glyph 모션
+const glyphMotion = () => {
+  const textTl = gsap.timeline(lineUpTriggerOption('.glyph-text'));
+
+  const glyphText = new SplitType('.glyph-text', lineUpSplitOption);
+  textTl.add(
+    lineUpMotion('.glyph-text', {
+      duration: 0.35,
+      stagger: 0.05,
+      trigger: '.glyph-text',
+      markers: true,
+    })
+  );
+};
+
 // FUNCTION language 모션
 const languageMotion = () => {
   // 언어 목록 모션
   const langTl = gsap.timeline(lineUpTriggerOption('.introduce-desc'));
   const langList = gsap.utils.toArray('.language-list');
-  const langText = new SplitType(langList, {
-    types: 'chars, words',
-    tagName: 'div',
-    wordClass: 'line-wrap',
-    charClass: 'char',
-  });
+  const langText = new SplitType(langList, wordUpSplitOption);
   langList.forEach((list, idx) => {
-    console.log(list);
     langTl.add(
       lineUpMotion(list, {
         duration: 0.3,
@@ -465,8 +477,7 @@ const purchaseMotion = () => {
   bgImgMotion(bgTl, purchaseBgItem[4], '30%', '-40%', -25, 'fadein');
   bgImgMotion(bgTl, purchaseBgItem[5], '20%', '50%', -20, 'fadein');
 
-  //TODO
-  tl.fromTo(purchaseList, {}, {});
+  bgTl.fromTo(purchaseList, {}, {});
 
   // bg out
   const reverseTl = gsap.timeline({});
@@ -480,11 +491,70 @@ const purchaseMotion = () => {
   bgTl.add(reverseTl.reverse());
 };
 
+// FUNCTION credit 모션
+const creditMotion = () => {
+  const descTl = gsap.timeline(lineUpTriggerOption('.credits-desc'));
+  const descText = new SplitType('.credits-desc', lineUpSplitOption);
+  const descArr = gsap.utils.toArray('.credits-desc');
+
+  const titleArr = gsap.utils.toArray('.credits-title');
+  const titleText = new SplitType('.credits-title', wordUpSplitOption);
+
+  const sectionTitle = new SplitType('.credits .sc-title', wordUpSplitOption);
+
+  descTl.add(
+    lineUpMotion('.credits .sc-title', {
+      duration: 0.5,
+      trigger: '.credits .sc-title',
+      markers: true,
+    }),
+    'sc-title'
+  );
+
+  titleArr.forEach((title) => {
+    descTl.add(
+      lineUpMotion(title, {
+        duration: 0.5,
+        trigger: '.credits-title',
+        markers: true,
+      }),
+      'title'
+    );
+  });
+
+  const titleTl = gsap.timeline({
+    ...lineUpTriggerOption('.credits-title'),
+    onComplete: () => {
+      const title = document.querySelectorAll('.credits-title');
+      console.log(title);
+      title.forEach((el) => {
+        el.classList.add('active');
+      });
+      console.log(title);
+    },
+  });
+
+  descTl.add(titleTl);
+
+  descArr.forEach((desc) => {
+    descTl.add(
+      lineUpMotion(desc, {
+        duration: 0.35,
+        stagger: 0.05,
+        trigger: '.credits-desc',
+        markers: true,
+      }),
+      'desc'
+    );
+  });
+};
+
 (function () {
-  console.log('motion ready');
   introMotion();
   introduceMotion();
   visualMotion();
+  glyphMotion();
   languageMotion();
   purchaseMotion();
+  creditMotion();
 })();

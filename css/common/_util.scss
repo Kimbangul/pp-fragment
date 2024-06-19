@@ -65,6 +65,16 @@
   top: 0;
 }
 
+@mixin util__line {
+  @include util__pseudo(100%, 1px);
+  background: $color__white;
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition: transform 0.3s;
+}
+
 @mixin util__font-weight($weight: 400) {
   font-variation-settings: 'wght' $weight;
 }
