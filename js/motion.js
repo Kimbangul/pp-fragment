@@ -41,7 +41,6 @@ const lineUpTriggerOption = (triggerSelector) => {
     repeatRefresh: true,
     scrollTrigger: {
       trigger: triggerSelector,
-      markers: true,
       start: () => 'center bottom',
       invalidateOnRefresh: true,
     },
@@ -192,7 +191,6 @@ const introduceMotion = () => {
       trigger: '.introduce-desc:nth-of-type(2)',
     })
   );
-  //introduce-info-text
   const infoText = new SplitType('.introduce-info-text', lineUpSplitOption);
   const infoTl = gsap.timeline({
     ...lineUpTriggerOption('.introduce-info-text'),
@@ -205,18 +203,56 @@ const introduceMotion = () => {
   infoTl
     .add(
       lineUpMotion('.introduce-info-text:first-of-type', {
-        duration: 5,
-        stagger: 0.05,
+        duration: 0.35,
+        stagger: 0.02,
         trigger: '.introduce-info-text:first-of-type',
       })
     )
     .add(
       lineUpMotion('.introduce-info-text:nth-of-type(2)', {
-        duration: 5,
-        stagger: 0.05,
+        duration: 0.35,
+        stagger: 0.02,
         trigger: '.introduce-info-text:nth-of-type(2)',
       })
     );
+
+  const specText = new SplitType('.spec-cate,.spec-desc', lineUpSplitOption);
+  const specTl = gsap.timeline({
+    repeatRefresh: true,
+    scrollTrigger: {
+      trigger: '.introduce-info-img',
+      start: () => 'start bottom',
+      invalidateOnRefresh: true,
+    },
+  });
+  specTl.fromTo(
+    '.introduce-info-img',
+    {
+      opacity: 0,
+      y: () => `5%`,
+    },
+    {
+      opacity: 1,
+      y: () => `0`,
+      duration: 1,
+      ease: 'power4.inOut',
+      onComplete: () => {
+        const spec = document.querySelector('.spec');
+        console.log(spec);
+        spec.classList.add('active');
+        console.log(spec);
+      },
+    },
+    'img'
+  );
+  specTl.add(
+    lineUpMotion('.spec', {
+      duration: 0.5,
+      stagger: 0.1,
+      trigger: '.spec',
+    }),
+    'img-=0.1'
+  );
 };
 
 (function () {

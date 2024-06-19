@@ -253,8 +253,41 @@
   font-variation-settings: "wght" 400;
   font-size: 1.6rem;
   padding: 0.8rem 0;
-  border-top: 1px solid #fff;
   gap: 2rem;
+  position: relative;
+}
+.spec-row::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  left: 0;
+  top: 0;
+  background: #fff;
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition: transform 0.3s;
+}
+.spec-row:nth-child(1)::before {
+  transition-delay: 0.1s;
+}
+.spec-row:nth-child(2)::before {
+  transition-delay: 0.2s;
+}
+.spec-row:nth-child(3)::before {
+  transition-delay: 0.3s;
+}
+.spec-row:nth-child(4)::before {
+  transition-delay: 0.4s;
+}
+.spec-row:nth-child(5)::before {
+  transition-delay: 0.5s;
+}
+.spec.active .spec-row::before {
+  transform: scaleX(1);
 }
 .spec-cate {
   flex: 1 0 0;
@@ -399,6 +432,7 @@
 /* text line 관련 */
 .line-wrap {
   display: inline-block;
+  white-space: nowrap;
   overflow: hidden;
 }
 
