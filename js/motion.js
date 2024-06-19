@@ -5,10 +5,10 @@ const visualTextRoller = document.querySelectorAll('.visual-text-roller');
 // FUNCTION 텍스트가 랜덤하게 롤링되는 모션
 const textRollMotion = (selector, duration, repeat = 4) => {
   const tl = gsap.timeline({
-    ease: 'ease.inOut',
+    ease: 'power4.inOut',
   });
 
-  tl.fromTo(selector, { opacity: 0 }, { opacity: 1 });
+  tl.fromTo(selector, { opacity: 0 }, { opacity: 1, duration: 1, delay: 1 });
   selector.forEach((el, idx) => {
     tl.fromTo(
       el.children,
@@ -19,7 +19,7 @@ const textRollMotion = (selector, duration, repeat = 4) => {
         repeat: repeat,
         ease: 'none',
         yPercent: 0,
-        duration: duration / repeat,
+        //duration: duration / repeat,
         delay: idx % 2 === 0 ? 0.15 : 0,
       },
       'slide'
@@ -357,13 +357,13 @@ const glyphMotion = () => {
 // FUNCTION language 모션
 const languageMotion = () => {
   // 언어 목록 모션
-  const langTl = gsap.timeline(lineUpTriggerOption('.introduce-desc'));
+  const langTl = gsap.timeline(lineUpTriggerOption('.language-list'));
   const langList = gsap.utils.toArray('.language-list');
   const langText = new SplitType(langList, wordUpSplitOption);
   langList.forEach((list, idx) => {
     langTl.add(
       lineUpMotion(list, {
-        duration: 0.3,
+        duration: 0.5,
         stagger: 0.01,
       }),
       'lang'
@@ -440,6 +440,9 @@ const purchaseMotion = () => {
       trigger: '.purchase',
       invalidateOnRefresh: true,
       scrub: 1,
+      markers: true,
+      start: () => `top top`,
+      end: () => `bottom bottom`,
     },
   });
 
@@ -473,6 +476,56 @@ const purchaseMotion = () => {
 
   bgTl.fromTo(purchaseList, {}, {});
 
+  // item in
+  // const itemTl = gsap.timeline({
+  //   stagger: 0.1,
+  //   repeatRefresh: true,
+  // });
+  const item = document.querySelectorAll('.purchase-item');
+
+  item.forEach((el, idx) => {
+    bgTl.fromTo(
+      el,
+      {
+        y: () => `100vh`,
+      },
+      {
+        y: () => `0`,
+        duration: 1,
+        delay: 0.1 * idx,
+      },
+      'item-in'
+    );
+  });
+
+  item.forEach((el, idx) => {
+    bgTl.to(
+      el,
+      {
+        y: () => `-100vh`,
+        duration: 1,
+        delay: 0.5 + 0.1 * idx,
+      },
+      'item-down'
+    );
+  });
+
+  // itemTl.fromTo(
+  //   '.purchase-item',
+  //   {
+  //     y: () => `100vh`,
+  //   },
+  //   {
+  //     y: () => `0`,
+  //   }
+  // );
+
+  // itemTl.to('.purchase-item', {
+  //   y: () => `-100vh`,
+  //   delay: 0.5,
+  // });
+
+  // bgTl.add(itemTl);
   // bg out
   const reverseTl = gsap.timeline({});
   bgImgMotion(reverseTl, purchaseBgItem[0], '0%', '-25%', 0, 'fadeout');

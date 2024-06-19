@@ -339,6 +339,7 @@ main {
     font-size: 1.6rem;
   }
   &-bg {
+    pointer-events: none;
     &-item {
       $x: (
         -50vw,
@@ -424,7 +425,7 @@ main {
 
       display: flex;
       position: absolute;
-      width: 30vw;
+      width: 50vw;
       height: 100%;
       left: 50%;
       margin-top: -#{$size__header-height};
@@ -608,6 +609,7 @@ main {
     left: 0;
     width: 100%;
     height: 100%;
+    pointer-events: none;
 
     img {
       position: absolute;
@@ -1008,9 +1010,9 @@ main {
     @include util__flex(center, center);
     width: 75vw;
     position: absolute;
-    top: 0%;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(-50%);
     gap: 2rem;
 
     @include mb {
@@ -1088,6 +1090,7 @@ main {
       height: 100%;
       object-fit: contain;
       object-position: center;
+      pointer-events: none;
     }
   }
 }
