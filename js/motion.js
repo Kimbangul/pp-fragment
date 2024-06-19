@@ -30,19 +30,34 @@ const textRollMotion = (selector, duration, repeat = 4) => {
 
 // PARAM splittype 라인 옵션
 const lineUpSplitOption = {
-  types: 'lines, chars',
+  types: 'lines, words',
   tagName: 'span',
   lineClass: 'line-wrap',
-  charClass: 'char',
+  wordClass: 'char',
+};
+// PARAM lineup 트리거 옵션
+const lineUpTriggerOption = (triggerSelector) => {
+  return {
+    repeatRefresh: true,
+    scrollTrigger: {
+      trigger: triggerSelector,
+      markers: true,
+      start: () => 'center bottom',
+      invalidateOnRefresh: true,
+    },
+  };
 };
 // FUNCTION 한 줄씩 텍스트가 올라오는 모션
-const lineUpMotion = (selector, duration, stagger) => {
+const lineUpMotion = (selector, option) => {
+  /** option: stagger, trigger, duration */
   const target = document.querySelector(selector);
 
   const tl = gsap.timeline({
     repeatRefresh: true,
-    stagger: stagger,
+    stagger: option.stagger,
     ease: 'none',
+    // scrollTrigger: option.trigger,
+    // markers: true,
   });
   const lines = target.querySelectorAll('.line-wrap');
 
@@ -53,12 +68,12 @@ const lineUpMotion = (selector, duration, stagger) => {
       { yPercent: () => 100 },
       {
         yPercent: () => 0,
-        duration: duration,
+        duration: option.duration,
         onComplete: () => {
           el.style.overflow = 'unset';
         },
       },
-      `-=${duration - 0.05}`
+      `-=${option.duration - 0.05}`
     );
   });
 
@@ -143,24 +158,65 @@ const introMotion = () => {
     'sub'
   );
 
-  tl.add(lineUpMotion('.main-bottom-text:first-child', 0.3, 0.01), 'sub');
-  tl.add(lineUpMotion('.main-bottom-text:nth-child(2)', 0.3, 0.01), 'sub');
+  tl.add(
+    lineUpMotion('.main-bottom-text:first-child', {
+      duration: 0.3,
+      stagger: 0.01,
+    }),
+    'sub'
+  );
+  tl.add(
+    lineUpMotion('.main-bottom-text:nth-child(2)', {
+      duration: 0.3,
+      stagger: 0.01,
+    }),
+    'sub'
+  );
 };
 
 //  FUNCTION introduce 모션
 const introduceMotion = () => {
-  const descTl = gsap.timeline({
-    repeatRefresh: true,
-    scrollTrigger: {
-      // trigger: '.intro',
-      markers: true,
-      // end: () => `+=${(introDesc.length + 1) * window.innerHeight}`,
+  const descTl = gsap.timeline(lineUpTriggerOption('.introduce-desc'));
+  const descText = new SplitType('.introduce-desc', lineUpSplitOption);
+  descTl.add(
+    lineUpMotion('.introduce-desc:first-of-type', {
+      duration: 0.35,
+      stagger: 0.05,
+      trigger: '.introduce-desc:first-of-type',
+    })
+  );
+  descTl.add(
+    lineUpMotion('.introduce-desc:nth-of-type(2)', {
+      duration: 0.35,
+      stagger: 0.05,
+      trigger: '.introduce-desc:nth-of-type(2)',
+    })
+  );
+  //introduce-info-text
+  const infoText = new SplitType('.introduce-info-text', lineUpSplitOption);
+  const infoTl = gsap.timeline({
+    ...lineUpTriggerOption('.introduce-info-text'),
+    onComplete: () => {
+      infoText.revert();
+      console.log(infoText);
+      console.log('remove');
     },
   });
-  const descText = new SplitType('.introduce-desc', lineUpSplitOption);
-
-  descTl.add(lineUpMotion('.introduce-desc:first-of-type', 0.35, 0));
-  descTl.add(lineUpMotion('.introduce-desc:nth-of-type(2)', 0.35, 0));
+  infoTl
+    .add(
+      lineUpMotion('.introduce-info-text:first-of-type', {
+        duration: 5,
+        stagger: 0.05,
+        trigger: '.introduce-info-text:first-of-type',
+      })
+    )
+    .add(
+      lineUpMotion('.introduce-info-text:nth-of-type(2)', {
+        duration: 5,
+        stagger: 0.05,
+        trigger: '.introduce-info-text:nth-of-type(2)',
+      })
+    );
 };
 
 (function () {
