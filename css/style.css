@@ -1657,6 +1657,7 @@ main {
 }
 .purchase-inner {
   height: 300vh;
+  position: static;
 }
 .purchase-list {
   display: flex;
@@ -1666,7 +1667,7 @@ main {
   flex-direction: row;
   width: 75vw;
   position: absolute;
-  top: 50%;
+  top: 0%;
   left: 50%;
   transform: translateX(-50%);
   gap: 2rem;

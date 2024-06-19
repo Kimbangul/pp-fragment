@@ -361,9 +361,49 @@ const languageMotion = () => {
     );
   });
 
+  // bg 애니메이션
+  const bg = gsap.utils.toArray('.special-bg-item');
+  const bgImgMotion = (img, x, y) => {
+    return gsap.fromTo(
+      img,
+      {
+        x: () => x,
+        y: () => y,
+        opacity: 0,
+      },
+      {
+        x: () => 0,
+        y: () => 0,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: img,
+          invalidateOnRefresh: true,
+          markers: true,
+          scrub: 1,
+        },
+      }
+    );
+  };
+
+  bgImgMotion(bg[0], '-20%', '20%');
+  bgImgMotion(bg[1], '20%', '0%');
+  bgImgMotion(bg[2], '0%', '15%');
+  bgImgMotion(bg[3], '-20%', '15%');
+  bgImgMotion(bg[4], '-0%', '50%');
+  bgImgMotion(bg[5], '20%', '50%');
+
   // 스크롤 시 font-weight가 변화하는 모션
+  const specialText = new SplitType('.special-text', lineUpSplitOption);
+  const textTl = gsap.timeline(lineUpTriggerOption('.special-text'));
+  textTl.add(
+    lineUpMotion('.special-text', {
+      duration: 0.3,
+      stagger: 0.01,
+    }),
+    'line-up'
+  );
+
   const weightTl = gsap.timeline({
-    //repeatRefresh: true,
     scrollTrigger: {
       trigger: '.special-text',
       start: () => 'top bottom',
@@ -385,10 +425,66 @@ const languageMotion = () => {
   );
 };
 
+// FUNCTION purchase 모션
+const purchaseMotion = () => {
+  // 배경이미지 모션
+  const bgTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.purchase',
+      invalidateOnRefresh: true,
+      markers: true,
+      scrub: 1,
+    },
+  });
+
+  const purchaseBgItem = gsap.utils.toArray('.purchase-bg-item');
+  const purchaseList = gsap.utils.toArray('.purchase-item');
+  const bgImgMotion = (tl, img, x, y, rotate, timing) => {
+    return tl.fromTo(
+      img,
+      {
+        x: () => x,
+        y: () => y,
+        opacity: 0,
+        rotate: `${rotate}deg`,
+      },
+      {
+        x: () => 0,
+        y: () => 0,
+        opacity: 1,
+        rotate: `0deg`,
+      },
+      timing
+    );
+  };
+  // bg in
+  bgImgMotion(bgTl, purchaseBgItem[0], '0%', '-25%', 0, 'fadein');
+  bgImgMotion(bgTl, purchaseBgItem[1], '-25%', '-100%', 45, 'fadein');
+  bgImgMotion(bgTl, purchaseBgItem[2], '50%', '-50%', -45, 'fadein');
+  bgImgMotion(bgTl, purchaseBgItem[3], '-20%', '25%', -30, 'fadein');
+  bgImgMotion(bgTl, purchaseBgItem[4], '30%', '-40%', -25, 'fadein');
+  bgImgMotion(bgTl, purchaseBgItem[5], '20%', '50%', -20, 'fadein');
+
+  //TODO
+  tl.fromTo(purchaseList, {}, {});
+
+  // bg out
+  const reverseTl = gsap.timeline({});
+  bgImgMotion(reverseTl, purchaseBgItem[0], '0%', '-25%', 0, 'fadeout');
+  bgImgMotion(reverseTl, purchaseBgItem[1], '-25%', '-100%', 45, 'fadeout');
+  bgImgMotion(reverseTl, purchaseBgItem[2], '50%', '20%', 25, 'fadeout');
+  bgImgMotion(reverseTl, purchaseBgItem[3], '-20%', '25%', 30, 'fadeout');
+  bgImgMotion(reverseTl, purchaseBgItem[4], '30%', '-40%', 25, 'fadeout');
+  bgImgMotion(reverseTl, purchaseBgItem[5], '-30%', '-5%', 20, 'fadeout');
+
+  bgTl.add(reverseTl.reverse());
+};
+
 (function () {
   console.log('motion ready');
   introMotion();
   introduceMotion();
   visualMotion();
   languageMotion();
+  purchaseMotion();
 })();
