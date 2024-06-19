@@ -50,7 +50,12 @@ const lineUpTriggerOption = (triggerSelector) => {
 // FUNCTION 한 줄씩 텍스트가 올라오는 모션
 const lineUpMotion = (selector, option) => {
   /** option: stagger, trigger, duration */
-  const target = document.querySelector(selector);
+  let target;
+  if (typeof selector === 'string') {
+    target = document.querySelector(selector);
+  } else {
+    target = selector;
+  }
 
   const tl = gsap.timeline({
     repeatRefresh: true,
@@ -262,7 +267,6 @@ const visualMotion = () => {
   const textTl = gsap.timeline({
     repeatRefresh: true,
     scrollTrigger: {
-      markers: true,
       trigger: '.visual',
     },
   });
@@ -274,7 +278,6 @@ const visualMotion = () => {
   const visualTl = gsap.timeline({
     repeatRefresh: true,
     scrollTrigger: {
-      markers: true,
       trigger: '.visual',
       start: () => `top top`,
       scrub: 0.5,
@@ -336,9 +339,56 @@ const visualMotion = () => {
   visualTl.to('.visual', { opacity: 0, duration: 0 }, '-=1');
 };
 
+// FUNCTION language 모션
+const languageMotion = () => {
+  // 언어 목록 모션
+  const langTl = gsap.timeline(lineUpTriggerOption('.introduce-desc'));
+  const langList = gsap.utils.toArray('.language-list');
+  const langText = new SplitType(langList, {
+    types: 'chars, words',
+    tagName: 'div',
+    wordClass: 'line-wrap',
+    charClass: 'char',
+  });
+  langList.forEach((list, idx) => {
+    console.log(list);
+    langTl.add(
+      lineUpMotion(list, {
+        duration: 0.3,
+        stagger: 0.01,
+      }),
+      'lang'
+    );
+  });
+
+  // 스크롤 시 font-weight가 변화하는 모션
+  const weightTl = gsap.timeline({
+    //repeatRefresh: true,
+    scrollTrigger: {
+      trigger: '.special-text',
+      start: () => 'top bottom',
+      end: () => 'bottom top',
+      invalidateOnRefresh: true,
+      markers: true,
+      scrub: 0.3,
+    },
+  });
+
+  weightTl.fromTo(
+    '.special-text',
+    {
+      fontVariationSettings: `"wght" ${100}`,
+    },
+    {
+      fontVariationSettings: `"wght" ${900}`,
+    }
+  );
+};
+
 (function () {
   console.log('motion ready');
   introMotion();
   introduceMotion();
   visualMotion();
+  languageMotion();
 })();

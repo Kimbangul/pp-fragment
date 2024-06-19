@@ -1616,7 +1616,7 @@ main {
 }
 .language-list {
   font-family: "PPText", sans-serif;
-  display: flex;
+  display: flex !important;
   flex-direction: column;
 }
 .language-list:last-child .language-item:last-child {
@@ -1626,8 +1626,8 @@ main {
 .language-item {
   padding: 0.64rem 0;
   text-align: center;
+  display: block !important;
 }
-
 .special {
   position: relative;
 }

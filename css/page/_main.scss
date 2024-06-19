@@ -956,7 +956,7 @@ main {
 
   &-list {
     font-family: $font__text;
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     &:last-child {
       .language-item:last-child {
@@ -968,6 +968,9 @@ main {
   &-item {
     padding: 0.64rem 0;
     text-align: center;
+    display: block !important;
+    .line-wrap {
+    }
   }
 }
 
