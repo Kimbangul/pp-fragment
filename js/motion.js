@@ -8,7 +8,6 @@ const textRollMotion = (selector, duration, repeat = 4) => {
     ease: 'power4.inOut',
   });
 
-  tl.fromTo(selector, { opacity: 0 }, { opacity: 1, duration: 1, delay: 1 });
   selector.forEach((el, idx) => {
     tl.fromTo(
       el.children,
@@ -25,7 +24,12 @@ const textRollMotion = (selector, duration, repeat = 4) => {
       'slide'
     );
   });
-
+  tl.fromTo(
+    selector,
+    { opacity: 0 },
+    { opacity: 1, duration: 1, delay: 1 },
+    'slide-=0.4'
+  );
   return tl;
 };
 
@@ -106,14 +110,15 @@ const introMotion = () => {
     { opacity: 0 },
     {
       opacity: 1,
-      duration: 0.2,
+      duration: 0.15,
+      ease: 'ease.inOut',
       stagger: {
         amount: 1,
         from: 'random',
       },
     }
   );
-  tl.to(bgItem, { scale: 0.9, duration: 0.5 });
+  tl.to(bgItem, { scale: 0.9, duration: 0.5, ease: 'power1.inOut' });
   tl.to(
     bgItem,
     {
@@ -134,7 +139,7 @@ const introMotion = () => {
     'move'
   );
   // 텍스트 롤링 애니메이션
-  tl.add(textRollMotion(mainTextRoller, 1), 'move-=0.1');
+  tl.add(textRollMotion(mainTextRoller, 1), 'move-=0.5');
 
   // 서브텍스트 출력
   tl.fromTo(
