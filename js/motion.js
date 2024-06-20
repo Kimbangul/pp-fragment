@@ -340,6 +340,42 @@ const visualMotion = () => {
   visualTl.to('.visual', { opacity: 0, duration: 0 }, '-=1');
 };
 
+const sansToSerifMotion = () => {
+  const textTl = gsap.timeline(lineUpTriggerOption('.random-text'));
+  const randomText = new SplitType('.random-text', {
+    types: 'chars',
+    tagName: 'span',
+    charClass: 'char',
+  });
+  const textArr = gsap.utils.toArray('.random-text');
+
+  textArr.forEach((el, idx) => {
+    const chars = el.querySelectorAll('.char');
+    console.log(chars);
+    textTl.fromTo(
+      chars,
+      {
+        y: () => `100%`,
+      },
+      {
+        y: () => `0%`,
+        delay: 0.5,
+        stagger: 0.01,
+        duration: 0.2,
+      },
+      'up'
+    );
+  });
+
+  // textTl.add(
+  //   lineUpMotion('.random-text', {
+  //     duration: 0.35,
+  //     stagger: 0.05,
+  //     trigger: '.random-text',
+  //   })
+  // );
+};
+
 // FUNCTION glyph 모션
 const glyphMotion = () => {
   const textTl = gsap.timeline(lineUpTriggerOption('.glyph-text'));
@@ -624,6 +660,7 @@ const footerMotion = () => {
   introMotion();
   introduceMotion();
   visualMotion();
+  sansToSerifMotion();
   glyphMotion();
   languageMotion();
   purchaseMotion();

@@ -1341,6 +1341,7 @@ main {
 }
 .random-text-item {
   position: relative;
+  overflow: hidden;
 }
 @media (max-width: 699px) {
   .random-text-item:nth-child(3), .random-text-item:nth-child(4), .random-text-item:nth-child(6) {

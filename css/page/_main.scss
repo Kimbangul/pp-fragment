@@ -677,7 +677,7 @@ main {
   }
   &-item {
     position: relative;
-
+    overflow: hidden;
     @include mb {
       &:nth-child(3),
       &:nth-child(4),
