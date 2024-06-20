@@ -46,6 +46,35 @@ const wordUpSplitOption = {
   wordClass: 'line-wrap',
   charClass: 'char',
 };
+//  PARAM split text
+const splitedText = [
+  new SplitType('.introduce-info-text', lineUpSplitOption),
+  new SplitType('.main-bottom-text', lineUpSplitOption),
+  new SplitType('.introduce-desc', lineUpSplitOption),
+  new SplitType('.spec-cate,.spec-desc', lineUpSplitOption),
+  new SplitType('.random-text', {
+    types: 'chars',
+    tagName: 'span',
+    charClass: 'char',
+  }),
+  new SplitType('.glyph-text', lineUpSplitOption),
+  new SplitType(gsap.utils.toArray('.language-list'), wordUpSplitOption),
+  new SplitType('.special-text', lineUpSplitOption),
+  new SplitType('.credits-desc', lineUpSplitOption),
+  new SplitType('.credits-title', wordUpSplitOption),
+  new SplitType('.credits .sc-title', wordUpSplitOption),
+];
+
+// FUNCTION 리사이즈시 라인 변경
+const resizeObserver = new ResizeObserver(
+  debounce(([entry]) => {
+    splitedText.forEach((el) => {
+      el.split();
+    });
+    console.log('resize');
+  }, 500)
+);
+resizeObserver.observe(document.querySelector('body'));
 
 // PARAM lineup 트리거 옵션
 const lineUpTriggerOption = (triggerSelector) => {
@@ -99,7 +128,6 @@ const introMotion = () => {
   const bgItem = gsap.utils.toArray('.main-bg-item');
   const bgImg = gsap.utils.toArray('.main-bg-item img');
   const subText = gsap.utils.toArray('.main-sub-text');
-  const bottomText = new SplitType('.main-bottom-text', lineUpSplitOption);
 
   const tl = gsap.timeline({
     repeatRefresh: true,
@@ -192,7 +220,7 @@ const introMotion = () => {
 //  FUNCTION introduce 모션
 const introduceMotion = () => {
   const descTl = gsap.timeline(lineUpTriggerOption('.introduce-desc'));
-  const descText = new SplitType('.introduce-desc', lineUpSplitOption);
+
   descTl.add(
     lineUpMotion('.introduce-desc:first-of-type', {
       duration: 0.35,
@@ -207,23 +235,12 @@ const introduceMotion = () => {
       trigger: '.introduce-desc:nth-of-type(2)',
     })
   );
-  const infoText = new SplitType('.introduce-info-text', lineUpSplitOption);
-
-  const resizeObserver = new ResizeObserver(
-    debounce(([entry]) => {
-      // Note: you should add additional logic so the `split` method is only
-      // called when the **width** of the container element has changed.
-      infoText.split();
-      console.log('resize');
-    }, 500)
-  );
-  resizeObserver.observe(document.querySelector('body'));
 
   const infoTl = gsap.timeline({
     ...lineUpTriggerOption('.introduce-info-text'),
-    onComplete: () => {
-      infoText.revert();
-    },
+    // onComplete: () => {
+    //   infoText.revert();
+    // },
   });
   infoTl
     .add(
@@ -241,7 +258,6 @@ const introduceMotion = () => {
       })
     );
 
-  const specText = new SplitType('.spec-cate,.spec-desc', lineUpSplitOption);
   const specTl = gsap.timeline({
     repeatRefresh: true,
     scrollTrigger: {
@@ -358,11 +374,7 @@ const visualMotion = () => {
 
 const sansToSerifMotion = () => {
   const textTl = gsap.timeline(lineUpTriggerOption('.random-text'));
-  const randomText = new SplitType('.random-text', {
-    types: 'chars',
-    tagName: 'span',
-    charClass: 'char',
-  });
+
   const textArr = gsap.utils.toArray('.random-text');
 
   textArr.forEach((el, idx) => {
@@ -394,7 +406,6 @@ const sansToSerifMotion = () => {
 const glyphMotion = () => {
   const textTl = gsap.timeline(lineUpTriggerOption('.glyph-text'));
 
-  const glyphText = new SplitType('.glyph-text', lineUpSplitOption);
   textTl.add(
     lineUpMotion('.glyph-text', {
       duration: 0.35,
@@ -434,7 +445,7 @@ const languageMotion = () => {
   // 언어 목록 모션
   const langTl = gsap.timeline(lineUpTriggerOption('.language-list'));
   const langList = gsap.utils.toArray('.language-list');
-  const langText = new SplitType(langList, wordUpSplitOption);
+
   langList.forEach((list, idx) => {
     langTl.add(
       lineUpMotion(list, {
@@ -476,7 +487,6 @@ const languageMotion = () => {
   bgImgMotion(bg[5], '20%', '50%');
 
   // 스크롤 시 font-weight가 변화하는 모션
-  const specialText = new SplitType('.special-text', lineUpSplitOption);
   const textTl = gsap.timeline(lineUpTriggerOption('.special-text'));
   textTl.add(
     lineUpMotion('.special-text', {
@@ -611,13 +621,8 @@ const purchaseMotion = () => {
 // FUNCTION credit 모션
 const creditMotion = () => {
   const descTl = gsap.timeline(lineUpTriggerOption('.credits-desc'));
-  const descText = new SplitType('.credits-desc', lineUpSplitOption);
   const descArr = gsap.utils.toArray('.credits-desc');
-
   const titleArr = gsap.utils.toArray('.credits-title');
-  const titleText = new SplitType('.credits-title', wordUpSplitOption);
-
-  const sectionTitle = new SplitType('.credits .sc-title', wordUpSplitOption);
 
   descTl.add(
     lineUpMotion('.credits .sc-title', {
