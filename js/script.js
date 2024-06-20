@@ -302,4 +302,22 @@ const onInitSlideImg = () => {
 
   window.addEventListener('resize', debounce(setSamplerHeight, 300));
   samplerResult.addEventListener('keydown', debounce(setSamplerHeight, 50));
+
+  /** cursor */
+  gsap.set('.flair', { xPercent: -50, yPercent: -50 });
+
+  const xTo = gsap.quickTo('.cursor', 'x', {
+      duration: 0.05,
+      ease: 'power3',
+    }),
+    yTo = gsap.quickTo('.cursor', 'y', {
+      duration: 0.05,
+      ease: 'power3',
+    });
+
+  window.addEventListener('mousemove', (e) => {
+    xTo(e.clientX);
+    yTo(e.clientY);
+  });
+  /** cursor end */
 })();

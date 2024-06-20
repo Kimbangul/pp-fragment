@@ -179,7 +179,7 @@
     height: 2.4rem;
     border-radius: 100%;
     border: 1px solid $color__white;
-    cursor: pointer;
+    // cursor: pointer;
   }
 
   &-info {
@@ -257,7 +257,7 @@
     &-btn {
       width: 100%;
       padding: 1.2rem 2rem;
-      cursor: pointer;
+      // cursor: pointer;
       text-align: left;
     }
   }
@@ -287,5 +287,32 @@
       top: 100%;
       left: 0;
     }
+  }
+}
+
+/* 커서 */
+.cursor {
+  position: fixed;
+  z-index: 1000;
+  pointer-events: none;
+  width: 4rem;
+  height: 4rem;
+  top: 0;
+  left: 0;
+  mix-blend-mode: difference;
+  @media (hover: none) {
+    display: none;
+    visibility: hidden;
+  }
+
+  &-pointer {
+    @include util__flex(flex-start, flex-end);
+    position: absolute;
+    font-size: 4.6rem;
+    transition-duration: 0.3s;
+    transition-property: color;
+    color: $color__white;
+    line-height: 1;
+    padding-bottom: 1.4rem;
   }
 }

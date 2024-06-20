@@ -41,6 +41,7 @@ body {
   margin-block-end: 0;
   margin-inline-start: 0;
   margin-inline-end: 0;
+  cursor: none;
 }
 a,
 img {
@@ -82,5 +83,5 @@ button {
   font-family: $font__sans;
   background: transparent;
   border: none;
-  cursor: pointer;
+  // cursor: pointer;
 }

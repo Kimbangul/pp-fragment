@@ -345,7 +345,6 @@
   height: 2.4rem;
   border-radius: 100%;
   border: 1px solid #fff;
-  cursor: pointer;
 }
 .slider-info {
   display: flex;
@@ -425,7 +424,6 @@
 .selector-option-btn {
   width: 100%;
   padding: 1.2rem 2rem;
-  cursor: pointer;
   text-align: left;
 }
 
@@ -453,6 +451,38 @@
   position: absolute;
   top: 100%;
   left: 0;
+}
+
+/* 커서 */
+.cursor {
+  position: fixed;
+  z-index: 1000;
+  pointer-events: none;
+  width: 4rem;
+  height: 4rem;
+  top: 0;
+  left: 0;
+  mix-blend-mode: difference;
+}
+@media (hover: none) {
+  .cursor {
+    display: none;
+    visibility: hidden;
+  }
+}
+.cursor-pointer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: 0;
+  flex-direction: row;
+  position: absolute;
+  font-size: 4.6rem;
+  transition-duration: 0.3s;
+  transition-property: color;
+  color: #fff;
+  line-height: 1;
+  padding-bottom: 1.4rem;
 }
 
 html {
@@ -511,6 +541,7 @@ body {
   margin-block-end: 0;
   margin-inline-start: 0;
   margin-inline-end: 0;
+  cursor: none;
 }
 
 a,
@@ -550,7 +581,6 @@ button {
   font-family: "PPSans", sans-serif;
   background: transparent;
   border: none;
-  cursor: pointer;
 }
 
 main {
@@ -694,7 +724,6 @@ main {
   position: relative;
   width: 100%;
   padding-bottom: 100%;
-  cursor: pointer;
   transition: transform 0.3s;
 }
 .menu-close-btn-container {
