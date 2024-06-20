@@ -696,17 +696,23 @@ const footerMotion = () => {
   creditMotion();
   footerMotion();
 
-  // FUNCTION 리사이즈시 라인 변경
+  // FUNCTION 리사이즈시 scrolltrigger refresh
   const resizeObserver = new ResizeObserver(
     debounce(([entry]) => {
-      // splitedText.forEach((el) => {
-      //   el.split();
-      // });
-
-      console.log('resize');
       ScrollTrigger.refresh();
       console.log('refresh');
     }, 500)
   );
   resizeObserver.observe(document.querySelector('html'));
+
+  // FUNCTION 리사이즈 시 라인 변경
+  window.addEventListener(
+    'resize',
+    debounce(() => {
+      splitedText.forEach((el) => {
+        el.split();
+      });
+      console.log('resize');
+    }, 500)
+  );
 })();
