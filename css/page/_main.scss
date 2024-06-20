@@ -942,7 +942,7 @@ main {
 
       @for $i from 1 to 9 {
         &:nth-child(#{$i}) {
-          background: url('/assets/img/posters/bg-#{$i}.png');
+          background: url('assets/img/posters/bg-#{$i}.png');
         }
       }
     }
@@ -971,7 +971,7 @@ main {
 
       @for $i from 1 to 8 {
         &:nth-child(#{$i}) {
-          background-image: url('/assets/img/posters/poster-#{$i}.png');
+          background-image: url('assets/img/posters/poster-#{$i}.png');
           z-index: #{9 - $i};
         }
       }
