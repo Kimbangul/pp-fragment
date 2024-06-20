@@ -153,9 +153,22 @@ const setTextRoller = (selector) => {
   });
 };
 
+// FUNCTION 랜덤 텍스트 라벨 dom 추가
+const setTextLabel = () => {
+  const text = document.querySelectorAll('.random-text');
+
+  text.forEach((el) => {
+    el.insertAdjacentHTML(
+      'afterBegin',
+      `<span class="random-text-label"><span class="random-text-label-item">PP Fragment</span><span class="random-text-label-item"></span></span>`
+    );
+  });
+};
+
 (function () {
   setMainBg();
   setGlyphItem();
+  setTextLabel();
   setLanguageList();
   setBtnTextSplit();
   setSelectorOption();

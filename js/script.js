@@ -55,16 +55,43 @@ const getRandomInt = (max) => {
 const onRandomizeText = () => {
   const textArr = document.querySelectorAll('.random-text');
 
-  const weight = [100, 200, 700, 800];
+  const weight = [100, 200, 400, 500, 600, 700, 800, 900];
 
   textArr.forEach((el) => {
     const filteredWeight = weight.filter(
       (wght) => wght !== el.style.fontVariationSettings
     );
 
-    el.style.fontVariationSettings = `"wght" ${
-      filteredWeight[getRandomInt(filteredWeight.length)]
-    }`;
+    const newWeight = getRandomInt(filteredWeight.length);
+
+    el.style.fontVariationSettings = `"wght" ${filteredWeight[newWeight]}`;
+
+    const label = el.querySelectorAll('.random-text-label-item');
+    const font = window.getComputedStyle(el).fontFamily.split(',');
+    const getFontWeight = (weightNum) => {
+      switch (weightNum) {
+        case 100:
+          return 'Thin';
+        case 200:
+          return 'Light';
+        case 400:
+          return 'Regular';
+        case 500:
+          return 'Medium';
+        case 600:
+          return 'Semi Bold';
+        case 700:
+          return 'Bold';
+        case 800:
+          return 'Extra Bold';
+        case 900:
+          return 'Black';
+      }
+    };
+
+    label[1].innerText = `${font[0].replace('PP', '')} ${getFontWeight(
+      filteredWeight[newWeight]
+    )}`;
   });
 
   const windowWidth = window.innerWidth;
@@ -304,7 +331,7 @@ const onInitSlideImg = () => {
   samplerResult.addEventListener('keydown', debounce(setSamplerHeight, 50));
 
   /** cursor */
-  gsap.set('.flair', { xPercent: -50, yPercent: -50 });
+  gsap.set('.cursor', { xPercent: -50, yPercent: -50 });
 
   const xTo = gsap.quickTo('.cursor', 'x', {
       duration: 0.05,

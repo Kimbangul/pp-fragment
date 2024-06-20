@@ -351,7 +351,7 @@ const sansToSerifMotion = () => {
 
   textArr.forEach((el, idx) => {
     const chars = el.querySelectorAll('.char');
-    console.log(chars);
+
     textTl.fromTo(
       chars,
       {
@@ -362,18 +362,16 @@ const sansToSerifMotion = () => {
         delay: 0.5,
         stagger: 0.01,
         duration: 0.2,
+        onComplete: () => {
+          const lines = gsap.utils.toArray('.random-text-item');
+          lines.forEach((el) => {
+            el.style.overflow = 'unset';
+          });
+        },
       },
       'up'
     );
   });
-
-  // textTl.add(
-  //   lineUpMotion('.random-text', {
-  //     duration: 0.35,
-  //     stagger: 0.05,
-  //     trigger: '.random-text',
-  //   })
-  // );
 };
 
 // FUNCTION glyph 모션
@@ -607,11 +605,9 @@ const creditMotion = () => {
     ...lineUpTriggerOption('.credits-title'),
     onComplete: () => {
       const title = document.querySelectorAll('.credits-title');
-      console.log(title);
       title.forEach((el) => {
         el.classList.add('active');
       });
-      console.log(title);
     },
   });
 
