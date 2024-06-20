@@ -2,6 +2,7 @@ html {
   // 1200px 기준 10px
   width: 100%;
   font-size: $size__rem-base; // 10px
+
   $variable-size: 3.9%;
   @include mb {
     // font-size: 87.5%;

@@ -208,6 +208,17 @@ const introduceMotion = () => {
     })
   );
   const infoText = new SplitType('.introduce-info-text', lineUpSplitOption);
+
+  const resizeObserver = new ResizeObserver(
+    debounce(([entry]) => {
+      // Note: you should add additional logic so the `split` method is only
+      // called when the **width** of the container element has changed.
+      infoText.split();
+      console.log('resize');
+    }, 500)
+  );
+  resizeObserver.observe(document.querySelector('body'));
+
   const infoTl = gsap.timeline({
     ...lineUpTriggerOption('.introduce-info-text'),
     onComplete: () => {

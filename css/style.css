@@ -432,10 +432,12 @@
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
+  font-kerning: none;
 }
 
 .char {
   display: inline-block;
+  font-kerning: none;
 }
 
 /* text roller 관련*/
@@ -1190,6 +1192,7 @@ main {
   padding-right: 10%;
   font-size: 1.6rem;
   line-height: 1.4;
+  font-kerning: none;
 }
 @media (min-width: 1200px) {
   .introduce-info-text {
@@ -1591,28 +1594,28 @@ main {
   z-index: 1;
 }
 .slide-bg-item:nth-child(1) {
-  background: url("assets/img/posters/bg-1.png");
+  background: url("../assets/img/posters/bg-1.png");
 }
 .slide-bg-item:nth-child(2) {
-  background: url("assets/img/posters/bg-2.png");
+  background: url("../assets/img/posters/bg-2.png");
 }
 .slide-bg-item:nth-child(3) {
-  background: url("assets/img/posters/bg-3.png");
+  background: url("../assets/img/posters/bg-3.png");
 }
 .slide-bg-item:nth-child(4) {
-  background: url("assets/img/posters/bg-4.png");
+  background: url("../assets/img/posters/bg-4.png");
 }
 .slide-bg-item:nth-child(5) {
-  background: url("assets/img/posters/bg-5.png");
+  background: url("../assets/img/posters/bg-5.png");
 }
 .slide-bg-item:nth-child(6) {
-  background: url("assets/img/posters/bg-6.png");
+  background: url("../assets/img/posters/bg-6.png");
 }
 .slide-bg-item:nth-child(7) {
-  background: url("assets/img/posters/bg-7.png");
+  background: url("../assets/img/posters/bg-7.png");
 }
 .slide-bg-item:nth-child(8) {
-  background: url("assets/img/posters/bg-8.png");
+  background: url("../assets/img/posters/bg-8.png");
 }
 .slide-card-container {
   display: flex;
@@ -1638,31 +1641,31 @@ main {
   background-position: center;
 }
 .slide-card-item:nth-child(1) {
-  background-image: url("assets/img/posters/poster-1.png");
+  background-image: url("../assets/img/posters/poster-1.png");
   z-index: 8;
 }
 .slide-card-item:nth-child(2) {
-  background-image: url("assets/img/posters/poster-2.png");
+  background-image: url("../assets/img/posters/poster-2.png");
   z-index: 7;
 }
 .slide-card-item:nth-child(3) {
-  background-image: url("assets/img/posters/poster-3.png");
+  background-image: url("../assets/img/posters/poster-3.png");
   z-index: 6;
 }
 .slide-card-item:nth-child(4) {
-  background-image: url("assets/img/posters/poster-4.png");
+  background-image: url("../assets/img/posters/poster-4.png");
   z-index: 5;
 }
 .slide-card-item:nth-child(5) {
-  background-image: url("assets/img/posters/poster-5.png");
+  background-image: url("../assets/img/posters/poster-5.png");
   z-index: 4;
 }
 .slide-card-item:nth-child(6) {
-  background-image: url("assets/img/posters/poster-6.png");
+  background-image: url("../assets/img/posters/poster-6.png");
   z-index: 3;
 }
 .slide-card-item:nth-child(7) {
-  background-image: url("assets/img/posters/poster-7.png");
+  background-image: url("../assets/img/posters/poster-7.png");
   z-index: 2;
 }
 @media (max-width: 699px) {

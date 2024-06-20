@@ -268,9 +268,11 @@
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
+  font-kerning: none;
 }
 .char {
   display: inline-block;
+  font-kerning: none;
 }
 
 /* text roller 관련*/
