@@ -388,6 +388,31 @@ const glyphMotion = () => {
   );
 };
 
+// FUNCTION  slide 모션
+const slideMotion = () => {
+  const slideTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.use-slide',
+      start: () => 'top center',
+      invalidateOnRefresh: true,
+    },
+  });
+
+  slideTl.fromTo(
+    '.slide-card-item.active',
+    {
+      scale: 0.5,
+    },
+    {
+      scale: 1,
+      transition: 0.3,
+      onComplete: () => {
+        onInitSlideImg();
+      },
+    }
+  );
+};
+
 // FUNCTION language 모션
 const languageMotion = () => {
   // 언어 목록 모션
@@ -474,7 +499,7 @@ const purchaseMotion = () => {
       trigger: '.purchase',
       invalidateOnRefresh: true,
       scrub: 1,
-      markers: true,
+
       start: () => `top top`,
       end: () => `bottom bottom`,
     },
@@ -510,11 +535,6 @@ const purchaseMotion = () => {
 
   bgTl.fromTo(purchaseList, {}, {});
 
-  // item in
-  // const itemTl = gsap.timeline({
-  //   stagger: 0.1,
-  //   repeatRefresh: true,
-  // });
   const item = document.querySelectorAll('.purchase-item');
 
   item.forEach((el, idx) => {
@@ -633,7 +653,6 @@ const footerMotion = () => {
       start: () => `top bottom`,
       end: () => `bottom bottom`,
       scrub: 0.5,
-      markers: true,
     },
   });
 
@@ -658,6 +677,7 @@ const footerMotion = () => {
   visualMotion();
   sansToSerifMotion();
   glyphMotion();
+  slideMotion();
   languageMotion();
   purchaseMotion();
   creditMotion();

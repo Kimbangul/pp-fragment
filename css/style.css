@@ -1700,6 +1700,7 @@ main {
 }
 .special {
   position: relative;
+  overflow: hidden;
 }
 .special-text {
   font-size: clamp(38px, 5.1111111111vw, 92px);

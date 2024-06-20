@@ -1017,6 +1017,7 @@ main {
 
 .special {
   position: relative;
+  overflow: hidden;
   &-text {
     font-size: $size__font-size-h1;
     font-variant-ligatures: discretionary-ligatures;

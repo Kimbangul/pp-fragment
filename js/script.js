@@ -10,8 +10,8 @@ const samplerValue = document.querySelectorAll('[data-category]');
 const slideBg = document.querySelectorAll('.slide-bg-item');
 const slideCard = document.querySelectorAll('.slide-card-item');
 let slideIdx = {
-  bg: 0,
-  card: 0,
+  bg: -1,
+  card: -1,
 };
 const slideBtn = document.querySelector('.use-btn');
 
@@ -211,67 +211,63 @@ const setSamplerHeight = () => {
 
 // FUNCTION  fragments in use slide 부분
 const setSlideImg = () => {
-  slideCard[slideIdx.card].classList.remove('active');
-  slideBg[slideIdx.bg].classList.remove('active');
   const tl = gsap.timeline({
     repeatRefresh: true,
   });
+  let activeCard = document.querySelector('.slide-card-item.active');
+  let activeBg = document.querySelector('.slide-bg-item.active');
+  let nextCard =
+    activeCard?.nextElementSibling ||
+    document.querySelectorAll('.slide-card-item')[0];
+  let nextBg =
+    activeBg?.nextElementSibling ||
+    document.querySelectorAll('.slide-bg-item')[0];
 
+  /** 다음 슬라이드를 아래쪽으로 조정 */
+  tl.set(nextCard, {
+    y: () => `-50%`,
+    scale: 0.8,
+    repeatRefresh: true,
+    duration: 0.7,
+  });
+  tl.set(nextBg, {
+    y: () => `${window.innerHeight}px`,
+    scale: 0.7,
+    repeatRefresh: true,
+  });
+
+  /** 현재 활성화된 슬라이드가 있으면 위로 이동 */
+  if (activeCard && activeBg) {
+    tl.to(
+      activeCard,
+      {
+        y: () => `-${window.innerHeight * 1.5}px`,
+        duration: 1.5,
+        repeatRefresh: true,
+        ease: 'power1.inOut',
+      },
+      'prev-up'
+    );
+    tl.to(
+      activeBg,
+      {
+        y: () => `-${window.innerHeight}px`,
+        scale: 0.7,
+        duration: 0.7,
+        repeatRefresh: true,
+        ease: 'power1.inOut',
+      },
+      'prev-up'
+    );
+
+    activeCard.classList.remove('active');
+    activeBg.classList.remove('active');
+  }
+
+  /** 다음 슬라이드를 위로 이동 */
   tl.to(
-    slideCard[slideIdx.card],
+    nextCard,
     {
-      y: () => `-${window.innerHeight * 1.5}px`,
-      duration: 0.8,
-      repeatRefresh: true,
-    },
-    'prev-up'
-  );
-  tl.to(
-    slideBg[slideIdx.bg],
-    {
-      y: () => `-${window.innerHeight}px`,
-      scale: 0.7,
-      duration: 0.7,
-      repeatRefresh: true,
-    },
-    'prev-up'
-  );
-
-  const nextBg = slideIdx.bg + 1;
-  const nextCard = slideIdx.card + 1;
-
-  slideIdx = {
-    bg: slideIdx.bg < slideBg.length - 1 ? nextBg : 0,
-    card: slideIdx.card < slideCard.length - 1 ? nextCard : 0,
-  };
-
-  /** 다음 슬라이드 아래로 위치 조정 */
-  tl.set(
-    slideCard[slideIdx.card],
-    {
-      y: () => `-50%`,
-      scale: 0.8,
-      repeatRefresh: true,
-    },
-    'prev-up'
-  );
-  tl.set(
-    slideBg[slideIdx.bg],
-    {
-      y: () => `${window.innerHeight}px`,
-      scale: 0.7,
-      repeatRefresh: true,
-    },
-    'prev-up'
-  );
-
-  slideCard[slideIdx.card].classList.add('active');
-  slideBg[slideIdx.bg].classList.add('active');
-
-  tl.to(
-    slideCard[slideIdx.card],
-    {
-      // y: () => `-50%`,
       scale: 1,
       duration: 0.8,
       repeatRefresh: true,
@@ -279,15 +275,19 @@ const setSlideImg = () => {
     'prev-up'
   );
   tl.to(
-    slideBg[slideIdx.bg],
+    nextBg,
     {
-      y: 0,
+      y: () => 0,
       scale: 1,
       duration: 0.7,
       repeatRefresh: true,
+      ease: 'power1.inOut',
     },
     'prev-up+=0.1'
   );
+
+  nextCard.classList.add('active');
+  nextBg.classList.add('active');
 };
 
 const onInitSlideImg = () => {
@@ -322,7 +322,6 @@ const onInitSlideImg = () => {
 
   onInitRandomizeText();
   setSamplerStyle();
-  onInitSlideImg();
 
   randomizeBtn.addEventListener('click', onInitRandomizeText);
   slideBtn.addEventListener('click', onInitSlideImg);
