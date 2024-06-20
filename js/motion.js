@@ -65,17 +65,6 @@ const splitedText = [
   new SplitType('.credits .sc-title', wordUpSplitOption),
 ];
 
-// FUNCTION 리사이즈시 라인 변경
-const resizeObserver = new ResizeObserver(
-  debounce(([entry]) => {
-    splitedText.forEach((el) => {
-      el.split();
-    });
-    console.log('resize');
-  }, 500)
-);
-resizeObserver.observe(document.querySelector('body'));
-
 // PARAM lineup 트리거 옵션
 const lineUpTriggerOption = (triggerSelector) => {
   return {
@@ -196,6 +185,9 @@ const introMotion = () => {
 
         header.classList.remove('inactive');
         menu.classList.remove('inactive');
+
+        document.body.style.heght = 'auto';
+        document.body.style.overflowY = 'auto';
       },
     },
     'sub'
@@ -703,4 +695,18 @@ const footerMotion = () => {
   purchaseMotion();
   creditMotion();
   footerMotion();
+
+  // FUNCTION 리사이즈시 라인 변경
+  const resizeObserver = new ResizeObserver(
+    debounce(([entry]) => {
+      // splitedText.forEach((el) => {
+      //   el.split();
+      // });
+
+      console.log('resize');
+      ScrollTrigger.refresh();
+      console.log('refresh');
+    }, 500)
+  );
+  resizeObserver.observe(document.querySelector('html'));
 })();
