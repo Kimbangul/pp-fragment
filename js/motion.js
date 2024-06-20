@@ -19,7 +19,7 @@ const textRollMotion = (selector, duration, repeat = 4) => {
         repeat: repeat,
         ease: 'none',
         yPercent: 0,
-        //duration: duration / repeat,
+        duration: duration / repeat,
         delay: idx % 2 === 0 ? 0.15 : 0,
       },
       'slide'
@@ -106,7 +106,7 @@ const introMotion = () => {
     { opacity: 0 },
     {
       opacity: 1,
-      duration: 0.3,
+      duration: 0.2,
       stagger: {
         amount: 1,
         from: 'random',
@@ -134,7 +134,7 @@ const introMotion = () => {
     'move'
   );
   // 텍스트 롤링 애니메이션
-  tl.add(textRollMotion(mainTextRoller, 1.2), 'move-=0.1');
+  tl.add(textRollMotion(mainTextRoller, 1), 'move-=0.1');
 
   // 서브텍스트 출력
   tl.fromTo(
