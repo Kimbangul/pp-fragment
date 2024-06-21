@@ -495,6 +495,7 @@ main {
     &-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
+      overflow: hidden;
 
       @media (max-width: $size__tb) {
         display: block;
@@ -643,7 +644,7 @@ main {
     background: $color__white;
     color: $color__black;
     height: calc(100vh - $size__header-height - 4rem);
-    height: calc(100svh - $size__header-height - 4rem);
+    height: calc(100dvh - $size__header-height - 4rem);
     padding: 1.2rem 2rem 2rem 2rem;
     border-radius: 16px;
   }

@@ -207,6 +207,8 @@ const setSamplerStyle = debounce(() => {
 const setSamplerHeight = () => {
   samplerResult.style.height = 'auto';
   samplerResult.style.height = `${samplerResult.scrollHeight}px`;
+  ScrollTrigger.refresh();
+  console.log('refresh');
 };
 
 // FUNCTION  fragments in use slide 부분

@@ -418,13 +418,9 @@ const slideMotion = () => {
   });
 
   slideTl.fromTo(
-    '.slide-card-item.active',
+    '.slide',
+    {},
     {
-      scale: 0.5,
-    },
-    {
-      scale: 1,
-      transition: 0.3,
       onComplete: () => {
         onInitSlideImg();
       },
@@ -695,6 +691,17 @@ const footerMotion = () => {
   purchaseMotion();
   creditMotion();
   footerMotion();
+
+  /** FUNCTION Lenis Scroll */
+  const lenis = new Lenis();
+
+  lenis.on('scroll', ScrollTrigger.update);
+
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000);
+  });
+
+  gsap.ticker.lagSmoothing(0);
 
   // FUNCTION 리사이즈시 scrolltrigger refresh
   const resizeObserver = new ResizeObserver(

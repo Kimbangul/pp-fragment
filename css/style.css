@@ -1142,6 +1142,7 @@ main {
 .introduce-info-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  overflow: hidden;
 }
 @media (max-width: 999px) {
   .introduce-info-grid {
@@ -1306,7 +1307,7 @@ main {
   background: #fff;
   color: #000;
   height: calc(100vh - 6.587rem - 4rem);
-  height: calc(100svh - 6.587rem - 4rem);
+  height: calc(100dvh - 6.587rem - 4rem);
   padding: 1.2rem 2rem 2rem 2rem;
   border-radius: 16px;
 }
