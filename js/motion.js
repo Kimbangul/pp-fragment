@@ -681,7 +681,6 @@ const footerMotion = () => {
 };
 
 window.addEventListener('load', () => {
-  console.log('motion script load');
   introMotion();
   introduceMotion();
   visualMotion();

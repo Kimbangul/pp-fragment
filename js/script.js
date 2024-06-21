@@ -9,10 +9,6 @@ const samplerValue = document.querySelectorAll('[data-category]');
 // PARAM 이미지 슬라이드 관련 변수
 const slideBg = document.querySelectorAll('.slide-bg-item');
 const slideCard = document.querySelectorAll('.slide-card-item');
-let slideIdx = {
-  bg: -1,
-  card: -1,
-};
 const slideBtn = document.querySelector('.use-btn');
 
 // PARAM 이벤트 리스너 부착 대상
