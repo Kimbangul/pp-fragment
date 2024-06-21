@@ -707,7 +707,6 @@ const footerMotion = () => {
   const resizeObserver = new ResizeObserver(
     debounce(([entry]) => {
       ScrollTrigger.refresh();
-      console.log('refresh');
     }, 500)
   );
   resizeObserver.observe(document.querySelector('html'));
@@ -719,7 +718,6 @@ const footerMotion = () => {
       splitedText.forEach((el) => {
         el.split();
       });
-      console.log('resize');
     }, 500)
   );
 })();

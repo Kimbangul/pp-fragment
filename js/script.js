@@ -339,7 +339,14 @@ const onInitSlideImg = () => {
   randomizeBtn.addEventListener('click', onInitRandomizeText);
   slideBtn.addEventListener('click', onInitSlideImg);
 
-  window.addEventListener('resize', debounce(setSamplerHeight, 300));
+  window.addEventListener(
+    'resize',
+    debounce(() => {
+      setSamplerInitSize();
+      setSamplerStyle();
+      setSamplerHeight();
+    }, 300)
+  );
   samplerResult.addEventListener('keydown', debounce(setSamplerHeight, 50));
 
   /** cursor */
