@@ -1605,6 +1605,7 @@ main {
   height: 100%;
   border-radius: 48px;
   background-size: cover;
+  background-repeat: no-repeat;
   background-position: center;
   transform: translateY(100vh) scale(0.5);
   z-index: 1;
