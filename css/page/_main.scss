@@ -312,8 +312,10 @@ main {
     font-size: 10vw;
     white-space: nowrap;
     line-height: 0.9;
-    //    letter-spacing: -0.04em;
     text-transform: uppercase;
+    & .roller {
+      opacity: 0;
+    }
 
     &-year {
       top: 25%;

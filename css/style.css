@@ -940,6 +940,9 @@ main {
   line-height: 0.9;
   text-transform: uppercase;
 }
+.main-title .roller {
+  opacity: 0;
+}
 .main-title-year {
   top: 25%;
   position: absolute;
