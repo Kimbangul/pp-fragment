@@ -546,6 +546,16 @@ body {
   cursor: none;
 }
 
+::-moz-selection {
+  background-color: #fff;
+  color: #000;
+}
+
+::selection {
+  background-color: #fff;
+  color: #000;
+}
+
 a,
 img {
   display: block;

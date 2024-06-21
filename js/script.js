@@ -177,6 +177,17 @@ const onClickSamplerOption = (e) => {
 };
 
 // FUNCTION sampler 결과 부분 데이터 바인딩
+const setSamplerInitSize = () => {
+  const maxVal = Math.round(window.innerWidth * 0.3125);
+  let currentVal = Math.round(window.innerWidth * 0.16);
+  if (currentVal > 235) currentVal = 235;
+
+  const sizeInput = document.querySelector('#size');
+
+  sizeInput.setAttribute('max', maxVal);
+  sizeInput.setAttribute('value', currentVal);
+};
+
 const setSamplerStyle = debounce(() => {
   const samplerRange = {
     size: document.querySelector('#size').value,
@@ -208,7 +219,6 @@ const setSamplerHeight = () => {
   samplerResult.style.height = 'auto';
   samplerResult.style.height = `${samplerResult.scrollHeight}px`;
   ScrollTrigger.refresh();
-  console.log('refresh');
 };
 
 // FUNCTION  fragments in use slide 부분
@@ -323,6 +333,7 @@ const onInitSlideImg = () => {
   });
 
   onInitRandomizeText();
+  setSamplerInitSize();
   setSamplerStyle();
 
   randomizeBtn.addEventListener('click', onInitRandomizeText);
