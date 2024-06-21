@@ -308,7 +308,8 @@ const onInitSlideImg = () => {
   slideTimer = setInterval(setSlideImg, 5000);
 };
 
-(function () {
+window.addEventListener('load', () => {
+  console.log('script load');
   const menuOpener = document.querySelector('.menu-opener');
   const mbMenuBtn = document.querySelector('.menu-close-btn-container');
   mbMenuBtn.addEventListener('click', onClickMenuBtn);
@@ -365,5 +366,4 @@ const onInitSlideImg = () => {
     xTo(e.clientX);
     yTo(e.clientY);
   });
-  /** cursor end */
-})();
+});

@@ -680,7 +680,8 @@ const footerMotion = () => {
   );
 };
 
-(function () {
+window.addEventListener('load', () => {
+  console.log('motion script load');
   introMotion();
   introduceMotion();
   visualMotion();
@@ -720,4 +721,4 @@ const footerMotion = () => {
       });
     }, 500)
   );
-})();
+});
