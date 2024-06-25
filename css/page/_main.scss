@@ -337,6 +337,9 @@ main {
     @include util__flex(space-between, center);
     text-transform: uppercase;
     font-size: 1.4rem;
+    &-text {
+      opacity: 0;
+    }
   }
   &-bottom {
     @include util__flex(space-between, flex-end);
