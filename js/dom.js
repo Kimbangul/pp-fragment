@@ -14,7 +14,7 @@ const setMainBg = () => {
     .map((el, idx) => {
       return `<div class='main-bg-item'><img src="assets/img/main/fragment-${
         idx + 1
-      }.png" alt=""></div>`;
+      }.png" alt></div>`;
     });
 
   insertDom('.main-bg', node);

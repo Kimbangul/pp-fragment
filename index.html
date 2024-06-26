@@ -28,11 +28,11 @@
   </head>
   <body>
     <!-- header -->
-    <header class="header">
+    <header class="header" id="header">
       <div class="header-inner inactive">
-        <h1 class="title">
-          <a class="header-link" href="/" title="PP FRAGMENT">PP® Fragment</a>
-        </h1>
+        <a class="header-link title" href="/" title="PP FRAGMENT"
+          >PP® Fragment</a
+        >
         <div class="header-link-wrap">
           <a
             class="header-link"
@@ -54,7 +54,7 @@
         >
           <span class="btn-slide">Get the font</span>
         </a>
-        <div class="menu-close-btn-container mb-only">
+        <div class="menu-close-btn-container mb-only" aria-label="button">
           <button class="menu-close-btn"></button>
         </div>
       </div>
@@ -117,14 +117,14 @@
       <!-- //  메뉴 -->
     </header>
     <!-- // header -->
-    <main>
+    <main id="contents">
       <!-- main -->
       <section class="sc main">
         <div class="sc-inner main-inner">
           <div class="main-text-container">
             <span class="main-title-year" aria-label="2022">②⓪</span>
             <span class="main-title-year" aria-hidden="true">②②</span>
-            <h2 class="main-title" aria-label="pp fragment">
+            <h1 class="main-title" aria-label="pp fragment">
               <span aria-hidden="true" class="roller">
                 <span class="roller-item">P</span>
                 <span class="roller-item">P</span> </span
@@ -158,7 +158,7 @@
                 <span class="roller-item">t</span>
                 <span class="roller-item">t</span>
               </span>
-            </h2>
+            </h1>
             <div class="main-sub serif">
               <span class="main-sub-text">Sans</span>
               <span class="main-sub-text">Glare</span>
@@ -182,6 +182,7 @@
       <!-- // main -->
       <!-- introduction -->
       <section id="introduction" class="sc introduce">
+        <h2 class="blind">Introduction</h2>
         <div class="sc-inner introduce-inner">
           <p class="introduce-desc serif">
             PP Fragment is born from vintage lettering and signs, bridging
@@ -198,7 +199,7 @@
               <img
                 class="introduce-info-img"
                 src="assets/img/introduce/intro.jpg"
-                alt=""
+                alt
               />
               <dl class="spec">
                 <div class="spec-row">
@@ -260,9 +261,9 @@
                 </div>
               </div>
               <div class="visual-overlay">
-                <img src="assets/img/introduce/a-1.png" alt="" />
-                <img src="assets/img/introduce/a-2.png" alt="" />
-                <img src="assets/img/introduce/a-3.png" alt="" />
+                <img src="assets/img/introduce/a-1.png" alt />
+                <img src="assets/img/introduce/a-2.png" alt />
+                <img src="assets/img/introduce/a-3.png" alt />
               </div>
             </div>
           </div>
@@ -304,7 +305,7 @@
                 >
               </div>
             </div>
-            <button class="sans-to-serif-btn btn">
+            <button class="sans-to-serif-btn btn" aria-label="button">
               <span class="btn-slide">randomize</span>
             </button>
             <div class="random-text-container">
@@ -499,6 +500,7 @@ Sphinx of Black Quartz, Judge My Vow</textarea
       <!-- // font sampler -->
       <!-- fragments in use-->
       <section id="fragments-in-use" class="sc use">
+        <h2 class="blind">fragments in use</h2>
         <div class="sc-inner use-inner">
           <div class="slide use-slide">
             <div class="slide-container">
@@ -546,38 +548,39 @@ Sphinx of Black Quartz, Judge My Vow</textarea
           <img
             class="special-bg-item"
             src="assets/img/special/smgkuq-1.png"
-            alt=""
+            alt
           />
           <img
             class="special-bg-item"
             src="assets/img/special/smgkuq-2.png"
-            alt=""
+            alt
           />
           <img
             class="special-bg-item"
             src="assets/img/special/smgkuq-3.png"
-            alt=""
+            alt
           />
           <img
             class="special-bg-item"
             src="assets/img/special/smgkuq-4.png"
-            alt=""
+            alt
           />
           <img
             class="special-bg-item"
             src="assets/img/special/smgkuq-5.png"
-            alt=""
+            alt
           />
           <img
             class="special-bg-item"
             src="assets/img/special/smgkuq-6.png"
-            alt=""
+            alt
           />
         </div>
       </section>
       <!-- // special characters -->
       <!-- purchase -->
       <section class="sc purchase">
+        <h2 class="blind">purchase info</h2>
         <div class="purchase-bg">
           <ul class="purchase-list">
             <li class="purchase-item">
@@ -623,32 +626,32 @@ Sphinx of Black Quartz, Judge My Vow</textarea
           <img
             class="purchase-bg-item"
             src="assets/img/purchase/a-cap-1.png"
-            alt=""
+            alt
           />
           <img
             class="purchase-bg-item"
             src="assets/img/purchase/a-cap-2.png"
-            alt=""
+            alt
           />
           <img
             class="purchase-bg-item"
             src="assets/img/purchase/a-cap-3.png"
-            alt=""
+            alt
           />
           <img
             class="purchase-bg-item"
             src="assets/img/purchase/a-cap-4.png"
-            alt=""
+            alt
           />
           <img
             class="purchase-bg-item"
             src="assets/img/purchase/a-cap-5.png"
-            alt=""
+            alt
           />
           <img
             class="purchase-bg-item"
             src="assets/img/purchase/a-cap-6.png"
-            alt=""
+            alt
           />
         </div>
         <div class="sc-inner purchase-inner"></div>
@@ -704,19 +707,19 @@ Sphinx of Black Quartz, Judge My Vow</textarea
     </main>
     <!-- cursor -->
     <div class="cursor">
-      <span class="cursor-pointer">↖</span>
+      <span class="cursor-pointer" aria-hidden="true">↖</span>
     </div>
     <!-- // cursor -->
     <!-- footer -->
-    <footer class="footer">
+    <footer class="footer" id="footer">
       <div class="footer-inner">
         <div class="footer-bg">
           <span class="footer-bg-glyph" aria-hidden="true">Ω</span>
         </div>
-        <p class="footer-copy">
+        <small class="footer-copy">
           Copyright © 2022 <br class="tb-only" />Pangram Pangram Foundry<br />
           Website by Locomotive
-        </p>
+        </small>
       </div>
     </footer>
     <!-- // footer -->
