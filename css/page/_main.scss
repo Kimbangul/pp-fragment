@@ -580,6 +580,7 @@ main {
     top: $size__header-height;
     display: flex;
     height: calc(100vh - $size__header-height);
+    position: -webkit-sticky;
     position: sticky;
   }
   &-text {
@@ -643,6 +644,7 @@ main {
   }
   &-contents {
     @include util__flex(space-between, stretch, 0, column);
+    position: -webkit-sticky;
     position: sticky;
     overflow: hidden;
     top: calc($size__header-height + 2rem);
@@ -755,6 +757,7 @@ main {
 
   &-selector {
     &-wrap {
+      position: -webkit-sticky;
       position: sticky;
       z-index: 2;
       top: calc($size__header-height);
@@ -812,6 +815,7 @@ main {
   &-word {
     @include util__flex(center, center);
     font-size: 35vw;
+    position: -webkit-sticky;
     position: sticky;
     top: 0;
     line-height: 1;
@@ -925,6 +929,7 @@ main {
     width: 100%;
     overflow: hidden;
     height: calc(100vh - $size__header-height - 4rem);
+    position: -webkit-sticky;
     position: sticky;
     top: calc($size__header-height + 2rem);
   }
@@ -1128,6 +1133,7 @@ main {
   }
   &-bg {
     height: 100vh;
+    position: -webkit-sticky;
     position: sticky;
     top: 0;
     left: 0;
